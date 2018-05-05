@@ -19,7 +19,7 @@ public class Partida {
             }
         } else {
             System.out.println(":)");
-            System.out.println("Porco Aranha Matheus ");
+            System.out.println("Teste manooooo");
         }
     }
 
