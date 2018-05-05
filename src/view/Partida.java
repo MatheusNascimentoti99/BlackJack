@@ -8,9 +8,9 @@ public class Partida {
 
     public static void main(String args[]) {
         Baralho novo = new Baralho();
-        System.out.println(":)");
-        System.out.println(":)");
-        System.out.println(":)");System.out.println(":)");
+        System.out.println(":D");
+        System.out.println(":D");
+        System.out.println(":D");System.out.println(":)");
         
         if (args.equals("cartas")) {
             while (!novo.getCartas().isEmpty()) {
