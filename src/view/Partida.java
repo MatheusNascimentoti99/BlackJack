@@ -20,6 +20,7 @@ public class Partida {
         } else {
             System.out.println(":)");
             System.out.println("Teste manooooo");
+            System.out.println("Beleza! huahua");
         }
     }
 
