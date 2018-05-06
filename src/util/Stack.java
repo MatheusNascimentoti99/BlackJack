@@ -6,13 +6,14 @@
 package util;
 
 public class Stack implements IStack{
-    Celula head;
-    
+    private Celula head;
+    private int size;
     @Override
     public void push(Object data) {
         Celula novo = new Celula(data);
         novo.next = head;
         head = novo;
+        size++;
     }
 
     @Override
@@ -21,6 +22,7 @@ public class Stack implements IStack{
             
             Celula temp = head;
             head = head.next;
+            size--;
             return temp.data;
             
         }
@@ -35,6 +37,11 @@ public class Stack implements IStack{
     @Override
     public boolean isEmpty() {
         return head== null;
+    }
+
+    @Override
+    public int size() {
+        return size;
     }
     
     private class Celula{

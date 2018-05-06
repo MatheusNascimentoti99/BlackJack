@@ -10,5 +10,7 @@ public interface IStack{
     public Object peek();
 
     public boolean isEmpty();
+    
+    public int size();
 }
 

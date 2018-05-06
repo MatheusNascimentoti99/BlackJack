@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Objects;
 import util.*;
 
 public class Baralho {
@@ -19,7 +20,7 @@ public class Baralho {
     }
 
 
-    public final Stack create() {
+    private Stack create() {
         String naipe;
         IStack naipes = new Stack();
         naipes.push("Espadas");
@@ -88,4 +89,23 @@ public class Baralho {
         }
 
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Baralho other = (Baralho) obj;
+        if (!Objects.equals(this.cartas, other.cartas)) {
+            return false;
+        }
+        return true;
+    }
+    
 }
