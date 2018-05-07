@@ -2,6 +2,7 @@ package model;
 
 import java.util.Objects;
 import util.*;
+import java.util.Random;
 
 public class Baralho {
 
@@ -59,6 +60,33 @@ public class Baralho {
             }
             naipes.pop();
         }
+        return (Stack) cartas;
+    }
+    
+    //Metodo embaralhar man
+    private Stack embaralhar(){
+        
+        Carta[] cartasEmbara = new Carta[52];
+        
+        for (int i = 0; i < cartas.size(); i++){
+            
+            cartasEmbara[i] = (Carta) cartas.pop();
+        }
+        
+        Random novoIndice = new Random();
+        
+        for (int i = 0; i < cartasEmbara.length; i++){
+            
+            int num = (int) novoIndice.nextInt(cartasEmbara.length);
+            cartasEmbara[i] = cartasEmbara[num];
+            cartasEmbara[num] = cartasEmbara[i];
+            
+        }
+        
+        for (int i = 0; i < cartasEmbara.length; i++){
+            cartas.push(cartasEmbara[i]);
+        }
+        
         return (Stack) cartas;
     }
 
