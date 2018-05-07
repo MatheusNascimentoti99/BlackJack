@@ -76,10 +76,11 @@ public class Baralho {
         Random novoIndice = new Random();
         
         for (int i = 0; i < cartasEmbara.length; i++){
-            
+
             int num = (int) novoIndice.nextInt(cartasEmbara.length);
+            Carta temp = castasEmbara[i];
             cartasEmbara[i] = cartasEmbara[num];
-            cartasEmbara[num] = cartasEmbara[i];
+            cartasEmbara[num] = temp;
             
         }
         
