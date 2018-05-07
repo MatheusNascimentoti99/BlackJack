@@ -12,7 +12,25 @@ package model;
 public class Jogador {
     private String user;
     private String passeword;
+    private int pontuacao;
+    private int partidaVencidas;
 
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
+    }
+
+    public int getPartidaVencidas() {
+        return partidaVencidas;
+    }
+
+    public void setPartidaVencidas(int partidaVencidas) {
+        this.partidaVencidas = partidaVencidas;
+    }
+    
     public Jogador(String user, String passeword) {
         this.user = user;
         this.passeword = passeword;

@@ -78,7 +78,7 @@ public class Baralho {
         for (int i = 0; i < cartasEmbara.length; i++){
 
             int num = (int) novoIndice.nextInt(cartasEmbara.length);
-            Carta temp = castasEmbara[i];
+            Carta temp = cartasEmbara[i];
             cartasEmbara[i] = cartasEmbara[num];
             cartasEmbara[num] = temp;
             
