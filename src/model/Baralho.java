@@ -19,6 +19,7 @@ public class Baralho {
     public Baralho() {
         cartas = create();
     }
+ 
 
 
     private Stack create() {
@@ -63,32 +64,32 @@ public class Baralho {
         return (Stack) cartas;
     }
     
-    //Metodo embaralhar man
-    private Stack embaralhar(){
+    //Metodo embaralhar
+    public void embaralhar(){
         
         Carta[] cartasEmbara = new Carta[52];
         
-        for (int i = 0; i < cartas.size(); i++){
-            
+        for (int i = 0; i < 52; i++){
             cartasEmbara[i] = (Carta) cartas.pop();
+            
+  
+
         }
-        
+
         Random novoIndice = new Random();
         
-        for (int i = 0; i < cartasEmbara.length; i++){
+        for (int i = 0; i < cartasEmbara.length * (3/2); i++){      // o 3/2 é só para poder embaralhar mais. 
 
-            int num = (int) novoIndice.nextInt(cartasEmbara.length);
+            int num = novoIndice.nextInt(cartasEmbara.length-1);
             Carta temp = cartasEmbara[i];
             cartasEmbara[i] = cartasEmbara[num];
             cartasEmbara[num] = temp;
             
         }
-        
-        for (int i = 0; i < cartasEmbara.length; i++){
-            cartas.push(cartasEmbara[i]);
+        for (Carta cartasEmbara1 : cartasEmbara) {
+            cartas.push(cartasEmbara1);
         }
         
-        return (Stack) cartas;
     }
 
     public class Carta {
@@ -116,7 +117,10 @@ public class Baralho {
         public void setNaipe(String naipe) {
             this.naipe = naipe;
         }
-
+        @Override
+        public String toString(){
+            return ("Naipe:"+naipe +" Valor:" +value);
+        }
     }
 
     @Override

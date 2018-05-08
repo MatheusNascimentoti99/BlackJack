@@ -14,7 +14,15 @@ public class Jogador {
     private String passeword;
     private int pontuacao;
     private int partidaVencidas;
+    private MaoDeCarta mao;
 
+    public MaoDeCarta getMao() {
+        return mao;
+    }
+
+    public void setMao(MaoDeCarta mao) {
+        this.mao = mao;
+    }
     public int getPontuacao() {
         return pontuacao;
     }
@@ -50,5 +58,14 @@ public class Jogador {
 
     public void setPasseword(String passeword) {
         this.passeword = passeword;
+    }
+    public int compareTo(Jogador jogador) {
+        if (pontuacao > jogador.getPontuacao()) {
+            return -1;
+        }
+        if (this.pontuacao < jogador.getPontuacao()) {
+            return 1;
+        }
+        return 0;
     }
 }

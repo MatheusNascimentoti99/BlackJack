@@ -9,5 +9,14 @@ public class MaoDeCarta {
     public MaoDeCarta() {
         cartasNaMao = new LinkedList();
     }
+
+    /**
+     *
+     * @return  
+     */
+    @Override
+    public String toString(){
+        return "Cartas na mãe: " +cartasNaMao.size();
+    }
     
 }

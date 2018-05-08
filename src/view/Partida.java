@@ -3,6 +3,7 @@ package view;
 import model.Baralho;
 import model.Baralho.Carta;
 import util.IStack;
+import util.Stack;
 
 public class Partida {
 
@@ -11,17 +12,18 @@ public class Partida {
         System.out.println(":D");
         System.out.println(":D");
         System.out.println(":D");System.out.println(":)");
-        
-        if (args.equals("cartas")) {
-            while (!novo.getCartas().isEmpty()) {
+        IStack temp = new Stack();
+            while (!novo.getCartas().isEmpty()){
+                temp.push((Carta)novo.getCartas().pop());
+                System.out.println("naipe:" + ((Carta)temp.peek()).getNaipe() + "Valor:" + ((Carta)temp.peek()).getValue());
+            }
+            novo.setCartas(temp);
+            novo.embaralhar();
+            while (!novo.getCartas().isEmpty()){
                 Carta carta = (Carta) novo.getCartas().pop();
                 System.out.println("naipe:" + carta.getNaipe() + "Valor:" + carta.getValue());
             }
-        } else {
-            System.out.println(":)");
-            System.out.println("Teste manooooo");
-            System.out.println("Beleza! huahua");
-        }
+
     }
 
 }
