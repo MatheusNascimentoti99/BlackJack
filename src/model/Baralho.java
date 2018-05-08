@@ -19,16 +19,14 @@ public class Baralho {
     public Baralho() {
         cartas = create();
     }
- 
-
 
     private Stack create() {
         String naipe;
         IStack naipes = new Stack();
-        naipes.push("Espadas");
-        naipes.push("Copas");
-        naipes.push("Ouros");
-        naipes.push("Paus");
+        naipes.push("Espadas ♠");
+        naipes.push("Copas   ♥");
+        naipes.push("Ouros   ♦");
+        naipes.push("Paus    ♣");
         int numNaipes = 0;
         Carta nova;
         while (!naipes.isEmpty()) {
@@ -53,7 +51,7 @@ public class Baralho {
                         cartas.push(nova);
                         break;
                     default:
-                        nova = new Carta(Integer.toString(numCarta + 2), (String) naipes.peek());
+                        nova = new Carta(Integer.toString(numCarta + 1), (String) naipes.peek());
                         cartas.push(nova);
                         break;
                 }
@@ -63,33 +61,46 @@ public class Baralho {
         }
         return (Stack) cartas;
     }
-    
+
+    public void resetaBaralho() {
+        cartas = create();
+    }
+
+    public void imprimeBaralho() {
+        IStack temp = new Stack();
+        
+        while(!cartas.isEmpty()) {
+            System.out.println(((Carta)cartas.peek()).toString());
+            temp.push(cartas.pop());
+            System.out.print(cartas.toString());
+        }
+        cartas = temp;
+    }
+
     //Metodo embaralhar
-    public void embaralhar(){
-        
+    public void embaralhar() {
+
         Carta[] cartasEmbara = new Carta[52];
-        
-        for (int i = 0; i < 52; i++){
+
+        for (int i = 0; i < 52; i++) {
             cartasEmbara[i] = (Carta) cartas.pop();
-            
-  
 
         }
 
         Random novoIndice = new Random();
-        
-        for (int i = 0; i < cartasEmbara.length * (3/2); i++){      // o 3/2 é só para poder embaralhar mais. 
 
-            int num = novoIndice.nextInt(cartasEmbara.length-1);
+        for (int i = 0; i < cartasEmbara.length * (3 / 2); i++) {      // o 3/2 é só para poder embaralhar mais. 
+
+            int num = novoIndice.nextInt(cartasEmbara.length - 1);
             Carta temp = cartasEmbara[i];
             cartasEmbara[i] = cartasEmbara[num];
             cartasEmbara[num] = temp;
-            
+
         }
         for (Carta cartasEmbara1 : cartasEmbara) {
             cartas.push(cartasEmbara1);
         }
-        
+
     }
 
     public class Carta {
@@ -117,9 +128,10 @@ public class Baralho {
         public void setNaipe(String naipe) {
             this.naipe = naipe;
         }
+
         @Override
-        public String toString(){
-            return ("Naipe:"+naipe +" Valor:" +value);
+        public String toString() {
+            return ("[Naipe:" + naipe + " Valor:" + value+"]");
         }
     }
 
@@ -140,5 +152,5 @@ public class Baralho {
         }
         return true;
     }
-    
+
 }
