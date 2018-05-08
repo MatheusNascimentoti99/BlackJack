@@ -72,7 +72,6 @@ public class Baralho {
         while(!cartas.isEmpty()) {
             System.out.println(((Carta)cartas.peek()).toString());
             temp.push(cartas.pop());
-            System.out.print(cartas.toString());
         }
         cartas = temp;
     }
@@ -133,6 +132,26 @@ public class Baralho {
         public String toString() {
             return ("[Naipe:" + naipe + " Valor:" + value+"]");
         }
+
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final Carta other = (Carta) obj;
+            if (!Objects.equals(this.value, other.value)) {
+                return false;
+            }
+            return Objects.equals(this.naipe, other.naipe);
+        }
+        
     }
 
     @Override
@@ -147,10 +166,9 @@ public class Baralho {
             return false;
         }
         final Baralho other = (Baralho) obj;
-        if (!Objects.equals(this.cartas, other.cartas)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.cartas, other.cartas);
     }
+
+ 
 
 }
