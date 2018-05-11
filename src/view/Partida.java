@@ -1,27 +1,26 @@
 package view;
 
-import Control.Controller;
+import Control.ControllerUser;
 import java.util.LinkedList;
 import java.util.Scanner;
 import model.Baralho;
-import model.Baralho.Carta;
 import util.IStack;
 import util.Stack;
 
 public class Partida {
 
     public static void main(String args[]) {
-        Scanner lerescolha = new Scanner(System.in);
-        Scanner leruser = new Scanner(System.in);
-        Scanner lersenha = new Scanner(System.in);
-        Controller control = new Controller();
+        Scanner lerEscolha = new Scanner(System.in);
+        Scanner lerUser = new Scanner(System.in);
+        Scanner lerSenha = new Scanner(System.in);
+        ControllerUser control = new ControllerUser();
         int escolha;
         System.out.println(" Jogo BlackJack \n");
         
         //for só pra testar mano se aparecia que se tava cadastrado.
         for (int i = 0; i <2;i++){
         System.out.println("Deseja fazer login ou se cadastrar no jogo ? Tecle 1 para login e 2 para cadastro \n");
-        escolha = lerescolha.nextInt();
+        escolha = lerEscolha.nextInt();
         
         
         if (escolha == 1) {
@@ -29,8 +28,8 @@ public class Partida {
             System.out.println("Digite seu usuario e sua senha \n");
             String user;
             String senha;
-            user = leruser.next();
-            senha = lersenha.next();
+            user = lerUser.next();
+            senha = lerSenha.next();
 
             boolean verifica = control.verificacao(user, senha);
             if (verifica == true) {
@@ -48,14 +47,14 @@ public class Partida {
             control.cadastro(nome);
         }
 
-        Baralho novo = new Baralho();
+        Baralho novo = new Baralho(4);
         System.out.println(":D");
         System.out.println(":D");
         System.out.println(":D");
         System.out.println(":)");
         novo.imprimeBaralho();
         novo.embaralhar();
-        System.out.println("\n");
+            System.out.println("\n\n");
         novo.imprimeBaralho();
         }
     }

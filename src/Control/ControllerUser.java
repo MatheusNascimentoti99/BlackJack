@@ -14,11 +14,11 @@ import model.Jogador;
  *
  * @author Usuário 01
  */
-public class Controller {
+public class ControllerUser {
     
     LinkedList listaJogadores = new LinkedList();
     
-    public Controller() {
+    public ControllerUser() {
         
     }
     
