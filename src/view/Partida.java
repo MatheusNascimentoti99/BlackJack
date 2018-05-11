@@ -4,7 +4,6 @@ import Control.Controller;
 import java.util.LinkedList;
 import java.util.Scanner;
 import model.Baralho;
-import model.Baralho.Carta;
 import util.IStack;
 import util.Stack;
 
@@ -48,14 +47,14 @@ public class Partida {
             control.cadastro(nome);
         }
 
-        Baralho novo = new Baralho();
+        Baralho novo = new Baralho(4);
         System.out.println(":D");
         System.out.println(":D");
         System.out.println(":D");
         System.out.println(":)");
         novo.imprimeBaralho();
         novo.embaralhar();
-        System.out.println("\n");
+            System.out.println("\n\n");
         novo.imprimeBaralho();
         }
     }

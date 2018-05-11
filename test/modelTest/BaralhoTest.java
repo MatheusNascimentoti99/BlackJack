@@ -1,7 +1,7 @@
 package modelTest;
 
 import model.Baralho;
-import model.Baralho.Carta;
+import model.Carta;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -15,7 +15,7 @@ public class BaralhoTest {
 
     @Before
     public void setUp() throws Exception {
-        baralho = new Baralho();
+        baralho = new Baralho(4);
     }
 
     @Test

@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Baralho {
 
+    private int quantidadeBaralho;
     private IStack cartas = new Stack();
 
     public IStack getCartas() {
@@ -16,61 +17,64 @@ public class Baralho {
         this.cartas = cartas;
     }
 
-    public Baralho() {
-        cartas = create();
+    public Baralho(int quantidadeBaralho) {
+        this.quantidadeBaralho = quantidadeBaralho;
+        cartas = create(quantidadeBaralho);
     }
 
-    private Stack create() {
+    private Stack create(int quantidadeBaralho) {
         String naipe;
         IStack naipes = new Stack();
-        naipes.push("Espadas ♠");
-        naipes.push("Copas   ♥");
-        naipes.push("Ouros   ♦");
-        naipes.push("Paus    ♣");
-        int numNaipes = 0;
-        Carta nova;
-        while (!naipes.isEmpty()) {
-            int numCarta = 0;
-            while (numCarta < 13) {
+        for (int i = 0; i < quantidadeBaralho; i++) {
+            naipes.push("♠");
+            naipes.push("♥");
+            naipes.push("♦");
+            naipes.push("♣");
+            int numNaipes = 0;
+            Carta nova;
+            while (!naipes.isEmpty()) {
+                int numCarta = 0;
+                while (numCarta < 13) {
 
-                switch (numCarta) {
-                    case 9:
-                        nova = new Carta("J", (String) naipes.peek());
-                        cartas.push(nova);
-                        break;
-                    case 10:
-                        nova = new Carta("Q", (String) naipes.peek());
-                        cartas.push(nova);
-                        break;
-                    case 11:
-                        nova = new Carta("K", (String) naipes.peek());
-                        cartas.push(nova);
-                        break;
-                    case 12:
-                        nova = new Carta("A", (String) naipes.peek());
-                        cartas.push(nova);
-                        break;
-                    default:
-                        nova = new Carta(Integer.toString(numCarta + 1), (String) naipes.peek());
-                        cartas.push(nova);
-                        break;
+                    switch (numCarta) {
+                        case 9:
+                            nova = new Carta("J", (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                        case 10:
+                            nova = new Carta("Q", (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                        case 11:
+                            nova = new Carta("K", (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                        case 12:
+                            nova = new Carta("A", (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                        default:
+                            nova = new Carta(Integer.toString(numCarta + 1), (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                    }
+                    numCarta++;
                 }
-                numCarta++;
+                naipes.pop();
             }
-            naipes.pop();
         }
         return (Stack) cartas;
     }
 
     public void resetaBaralho() {
-        cartas = create();
+        cartas = create(quantidadeBaralho);
     }
 
     public void imprimeBaralho() {
         IStack temp = new Stack();
-        
-        while(!cartas.isEmpty()) {
-            System.out.println(((Carta)cartas.peek()).toString());
+
+        while (!cartas.isEmpty()) {
+            System.out.println(((Carta) cartas.peek()).toString());
             temp.push(cartas.pop());
         }
         cartas = temp;
@@ -79,9 +83,9 @@ public class Baralho {
     //Metodo embaralhar
     public void embaralhar() {
 
-        Carta[] cartasEmbara = new Carta[52];
-
-        for (int i = 0; i < 52; i++) {
+        Carta[] cartasEmbara = new Carta[cartas.size()];
+        int tamanho = cartas.size();
+        for (int i = 0; i < tamanho; i++) {
             cartasEmbara[i] = (Carta) cartas.pop();
 
         }
@@ -102,58 +106,6 @@ public class Baralho {
 
     }
 
-    public class Carta {
-
-        private String value;
-        private String naipe;
-
-        public Carta(String value, String naipe) {
-            this.value = value;
-            this.naipe = naipe;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public String getNaipe() {
-            return naipe;
-        }
-
-        public void setNaipe(String naipe) {
-            this.naipe = naipe;
-        }
-
-        @Override
-        public String toString() {
-            return ("[Naipe:" + naipe + " Valor:" + value+"]");
-        }
-
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final Carta other = (Carta) obj;
-            if (!Objects.equals(this.value, other.value)) {
-                return false;
-            }
-            return Objects.equals(this.naipe, other.naipe);
-        }
-        
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -168,7 +120,5 @@ public class Baralho {
         final Baralho other = (Baralho) obj;
         return Objects.equals(this.cartas, other.cartas);
     }
-
- 
 
 }
