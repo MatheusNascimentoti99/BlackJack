@@ -16,6 +16,11 @@ public class Jogador {
     private int partidaVencidas;
     private MaoDeCarta mao;
 
+    public Jogador(String user, String passeword) {
+        this.user = user;
+        this.passeword = passeword;
+    }
+       
     public MaoDeCarta getMao() {
         return mao;
     }
@@ -37,11 +42,6 @@ public class Jogador {
 
     public void setPartidaVencidas(int partidaVencidas) {
         this.partidaVencidas = partidaVencidas;
-    }
-    
-    public Jogador(String user, String passeword) {
-        this.user = user;
-        this.passeword = passeword;
     }
 
     public String getUser() {
