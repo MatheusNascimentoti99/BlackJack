@@ -6,9 +6,17 @@
 package model;
 
 public class Croupier extends Jogador {
+    Baralho baralho;
+    public Croupier() {
+        super("crouper", "");
+    }
 
-    public Croupier(String user, String passeword) {
-        super(user, passeword);
+    public Baralho getBaralho() {
+        return baralho;
+    }
+
+    public void setBaralho(Baralho baralho) {
+        this.baralho = baralho;
     }
 
 }
