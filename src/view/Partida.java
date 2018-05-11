@@ -17,9 +17,13 @@ public class Partida {
         Controller control = new Controller();
         int escolha;
         System.out.println(" Jogo BlackJack \n");
+        
+        //for só pra testar mano se aparecia que se tava cadastrado.
+        for (int i = 0; i <2;i++){
         System.out.println("Deseja fazer login ou se cadastrar no jogo ? Tecle 1 para login e 2 para cadastro \n");
         escolha = lerescolha.nextInt();
-
+        
+        
         if (escolha == 1) {
             System.out.println("Vamos verificar se tu ta cadastrado \n");
             System.out.println("Digite seu usuario e sua senha \n");
@@ -53,6 +57,7 @@ public class Partida {
         novo.embaralhar();
         System.out.println("\n");
         novo.imprimeBaralho();
+        }
     }
 
 }
