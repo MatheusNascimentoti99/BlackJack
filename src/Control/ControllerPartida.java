@@ -49,10 +49,15 @@ public class ControllerPartida {
         return 0;
     }
 
+    //imcompleto//////////////
     private int partidaPersonalizada() {
+        System.out.println("Digite a quantidade desejada de cartas[1 a 8]:");
         Scanner input = new Scanner(System.in);
-        String partidaEscolha = input.next();
-        int escolha = Integer.parseInt(partidaEscolha);
-        return escolha;
+        int partidaEscolha = input.nextInt();
+        if(partidaEscolha >=1 && partidaEscolha <= 8)
+            return partidaEscolha;
+        else
+            return partidaPersonalizada();
+                    
     }
 }
