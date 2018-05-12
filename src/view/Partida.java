@@ -13,7 +13,6 @@ import util.Stack;
 public class Partida {
 
     public static void main(String args[]) {
-        LinkedList jogadores;
         Croupier croupier = new Croupier();
         ControllerUser controleUser = new ControllerUser();
         ControllerPartida controlePartida = new ControllerPartida();
