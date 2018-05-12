@@ -12,16 +12,26 @@ import util.Stack;
 
 public class Partida {
 
-    public static void main(String args[]) {
+    private Baralho baralho;
+
+    public Partida(Baralho baralho) {
+        this.baralho = baralho;
+    }
+
+    public void novaPartida(){
         Croupier croupier = new Croupier();
         ControllerUser controleUser = new ControllerUser();
-        ControllerPartida controlePartida = new ControllerPartida();
         System.out.println(" Jogo BlackJack \n");
-        croupier.setBaralho(controlePartida.escolherPartida());
-        controleUser.cadastro();
-        controleUser.cadastro();
-        controleUser.mostrarJogadores();
-        System.out.println(((Carta)croupier.getBaralho().getCartas().peek()).toString());
+        controleUser.loginJogador();
+
+    }
+
+    public Baralho getBaralho() {
+        return baralho;
+    }
+
+    public void setBaralho(Baralho baralho) {
+        this.baralho = baralho;
     }
 
 }

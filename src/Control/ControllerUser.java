@@ -17,7 +17,7 @@ import model.Jogador;
 public class ControllerUser {
 
     LinkedList listaJogadores = new LinkedList();
-
+    LinkedList jogadoresNaPartida = new LinkedList();
     public ControllerUser() {
 
     }
@@ -54,8 +54,21 @@ public class ControllerUser {
             Jogador novoJogador = new Jogador(nome, senha);
             listaJogadores.add(novoJogador);
             return novoJogador;
-            
+
         }
+
+    }
+
+    public void loginJogador() {
+        String user;
+        String senha;
+        System.out.println("Bora se cadastrar \n");
+        System.out.println("Digita seu nome \n");
+        Scanner lerNome = new Scanner(System.in);
+        user = lerNome.next();
+        System.out.println("Escolha uma senha\n");
+        Scanner leitura = new Scanner(System.in);
+        senha = leitura.nextLine();
 
     }
 
