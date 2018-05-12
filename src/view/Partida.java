@@ -19,9 +19,10 @@ public class Partida {
     }
 
     public void novaPartida(){
+        System.out.println(" Jogo BlackJack \n");
         Croupier croupier = new Croupier();
         ControllerUser controleUser = new ControllerUser();
-        System.out.println(" Jogo BlackJack \n");
+        
         controleUser.loginJogador();
 
     }

@@ -37,6 +37,7 @@ public class ControllerUser {
         return false;
     }
 
+      //imcompleto//////////////
     public Jogador cadastro() {
         String nome;
         System.out.println("Bora se cadastrar \n");
@@ -58,11 +59,11 @@ public class ControllerUser {
         }
 
     }
-
+      //imcompleto//////////////
     public void loginJogador() {
         String user;
         String senha;
-        System.out.println("Bora se cadastrar \n");
+        System.out.println("Bora fazer login \n");
         System.out.println("Digita seu nome \n");
         Scanner lerNome = new Scanner(System.in);
         user = lerNome.next();
