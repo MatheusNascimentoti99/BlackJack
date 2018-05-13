@@ -18,7 +18,7 @@ public class ControllerPartida {
 
     public Partida escolherPartida() {
         String partidaEscolha;
-        System.out.println("Partida rápida - Partida com 2 Baralho");
+        System.out.println("Partida simples - Partida com 2 Baralho");
         System.out.println("Partida regular - Partida com 4 Baralho");
         System.out.println("Partida longa - Partida com 8 Baralho");
         System.out.println("Partida personalizada - Personalize a quantidade de cartas da partida \n");
@@ -61,7 +61,7 @@ public class ControllerPartida {
                 return partidaEscolha;
             }
 
-        } catch (Exception exception) {
+        } catch (Exception exe) {
             System.out.println("Valor invalido");
             return partidaPersonalizada();
         }

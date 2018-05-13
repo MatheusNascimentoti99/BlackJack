@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Matheus Nascimento
  */
-public class Jogador {
+public class Jogador implements Serializable {
     private String user;
     private String passeword;
     private int pontuacao;

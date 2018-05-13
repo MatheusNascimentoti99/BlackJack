@@ -5,8 +5,10 @@
  */
 package view;
 
+import Control.ControllerFileJogadores;
 import Control.ControllerPartida;
 import Control.ControllerUser;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -15,7 +17,7 @@ import java.util.Scanner;
  */
 public class App {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException, Exception {
         ControllerPartida controlePartida = new ControllerPartida();
         ControllerUser controleUser = new ControllerUser();
         String escolha;
@@ -28,13 +30,13 @@ public class App {
         escolha = input.next();
          
             if (escolha.equals("1")) {
-                controleUser.cadastro();
+                controleUser.cadastrar();
             } else if (escolha.equals("2")) {
                 partida = controlePartida.escolherPartida();
-                partida.novaPartida();
-                partida.getBaralho().imprimeBaralho();
+                partida.partida();
             }
             
         }while (!escolha.equals("3"));
+        
     }
 }

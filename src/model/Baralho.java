@@ -18,8 +18,33 @@ public class Baralho {
     }
 
     public Baralho(int quantidadeBaralho) {
+
         this.quantidaDeBaralho = quantidadeBaralho;
         cartas = create(quantidadeBaralho);
+    }
+
+    private enum Value {
+
+        A("A", 1),
+        J("J", 10),
+        Q("Q", 10),
+        K("K", 10),
+        Dez("Dez", 10);
+        private int valor;
+        private String tipo;
+
+        Value(String tipo, int valor) {
+            this.valor = valor;
+            this.tipo = tipo;
+        }
+
+        public String getTipo() {
+            return this.tipo;
+        }
+
+        public int getValor() {
+            return this.valor;
+        }
     }
 
     private Stack create(int quantidadeBaralho) {
@@ -33,28 +58,32 @@ public class Baralho {
             int numNaipes = 0;
             Carta nova;
             while (!naipes.isEmpty()) {
-                int numCarta = 0;
-                while (numCarta < 13) {
+                int numCarta = 1;
+                while (numCarta <= 12) {
 
                     switch (numCarta) {
-                        case 9:
-                            nova = new Carta("J", (String) naipes.peek());
-                            cartas.push(nova);
-                            break;
                         case 10:
-                            nova = new Carta("Q", (String) naipes.peek());
+                            nova = new Carta(Value.Dez.getTipo(), (String) naipes.peek());
                             cartas.push(nova);
                             break;
                         case 11:
-                            nova = new Carta("K", (String) naipes.peek());
+                            nova = new Carta(Value.J.getTipo(), (String) naipes.peek());
                             cartas.push(nova);
                             break;
                         case 12:
-                            nova = new Carta("A", (String) naipes.peek());
+                            nova = new Carta(Value.Q.getTipo(), (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                        case 13:
+                            nova = new Carta(Value.K.getTipo(), (String) naipes.peek());
+                            cartas.push(nova);
+                            break;
+                        case 1:
+                            nova = new Carta(Value.A.getTipo(), (String) naipes.peek());
                             cartas.push(nova);
                             break;
                         default:
-                            nova = new Carta(Integer.toString(numCarta + 1), (String) naipes.peek());
+                            nova = new Carta(Integer.toString(numCarta), (String) naipes.peek());
                             cartas.push(nova);
                             break;
                     }
@@ -72,7 +101,7 @@ public class Baralho {
 
     public void imprimeBaralho() {
         IStack temp = new Stack();
-
+        
         while (!cartas.isEmpty()) {
             System.out.println(((Carta) cartas.peek()).toString());
             temp.push(cartas.pop());
@@ -80,7 +109,44 @@ public class Baralho {
         cartas = temp;
     }
 
+    public void ordenarCartas() {
+        selectSort(cartas);
+    }
+
+    public static void selectSort(IStack a) {
+        Carta[] cartasO = new Carta[a.size()];
+        for (int i = 0; !a.isEmpty(); i++) {
+            cartasO[i] = (Carta) a.pop();
+        }
+        for (int i = 1; i < cartasO.length; i++) {
+            int j = i;
+            while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) <= 0) {
+                Carta aux = cartasO[j - 1];
+                cartasO[j - 1] = cartasO[j];
+                cartasO[j] = aux;
+                j--;
+            }
+
+        }
+        for (int i = 1; i < cartasO.length; i++) {
+            int j = i;
+            while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) == 0) {
+                if (cartasO[j].getValue().compareTo(cartasO[j - 1].getValue()) < 0) {
+                    
+                    Carta aux = cartasO[j - 1];
+                    cartasO[j - 1] = cartasO[j];
+                    cartasO[j] = aux;
+                }
+                j--;
+            }
+
+        }
+        for (Carta aux : cartasO) {
+            a.push(aux);
+        }
+    }
     //Metodo embaralhar
+
     public void embaralhar() {
 
         Carta[] cartasEmbara = new Carta[cartas.size()];
