@@ -31,7 +31,12 @@ public class App {
                 controleUser.cadastro();
             } else if (escolha.equals("2")) {
                 partida = controlePartida.escolherPartida();
-                partida.novaPartida();
+                partida.partida();
+                partida.getBaralho().embaralhar();
+                System.out.println("Embaralhado");
+                partida.getBaralho().imprimeBaralho();
+                System.out.println("\n \n Ordenado");
+                partida.getBaralho().ordenarCartas();
                 partida.getBaralho().imprimeBaralho();
             }
             

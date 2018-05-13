@@ -13,16 +13,15 @@ import util.Stack;
 public class Partida {
 
     private Baralho baralho;
-
+    Croupier croupier;
     public Partida(Baralho baralho) {
         this.baralho = baralho;
+        croupier = new Croupier();
     }
 
-    public void novaPartida(){
+    public void partida(){
         System.out.println(" Jogo BlackJack \n");
-        Croupier croupier = new Croupier();
         ControllerUser controleUser = new ControllerUser();
-        
         controleUser.loginJogador();
 
     }
