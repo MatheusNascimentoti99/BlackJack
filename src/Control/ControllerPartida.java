@@ -5,6 +5,7 @@
  */
 package Control;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.Baralho;
 import view.Partida;
@@ -19,7 +20,7 @@ public class ControllerPartida {
         String partidaEscolha;
         System.out.println("Partida rápida - Partida com 2 Baralho");
         System.out.println("Partida regular - Partida com 4 Baralho");
-        System.out.println("Partida longa - Partida com 8 Baralho \n");
+        System.out.println("Partida longa - Partida com 8 Baralho");
         System.out.println("Partida personalizada - Personalize a quantidade de cartas da partida \n");
         System.out.println("Digita sua escolha:");
         Scanner input = new Scanner(System.in);
@@ -28,8 +29,8 @@ public class ControllerPartida {
         if (escolha > 0) {
             Baralho baralho = new Baralho(escolha);
             return new Partida(baralho);
-        } 
-        else{
+        } else {
+            System.out.println("Valor inválido!");
             return escolherPartida();
         }
     }
@@ -51,13 +52,22 @@ public class ControllerPartida {
 
     //imcompleto//////////////
     private int partidaPersonalizada() {
+
         System.out.println("Digite a quantidade desejada de cartas[1 a 8]:");
         Scanner input = new Scanner(System.in);
-        int partidaEscolha = input.nextInt();
-        if(partidaEscolha >=1 && partidaEscolha <= 8)
-            return partidaEscolha;
-        else
+        try {
+            int partidaEscolha = input.nextInt();
+            if (partidaEscolha >= 1 && partidaEscolha <= 8) {
+                return partidaEscolha;
+            }
+
+        } catch (InputMismatchException exception) {
+            System.out.println("Valor invalido");
             return partidaPersonalizada();
-                    
+        }
+        System.out.println("Valor invalido");
+
+        return partidaPersonalizada();
     }
+
 }

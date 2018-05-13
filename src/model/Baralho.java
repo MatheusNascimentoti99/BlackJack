@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Baralho {
 
-    private int quantidadeBaralho;
+    private final int quantidaDeBaralho;
     private IStack cartas = new Stack();
 
     public IStack getCartas() {
@@ -18,7 +18,7 @@ public class Baralho {
     }
 
     public Baralho(int quantidadeBaralho) {
-        this.quantidadeBaralho = quantidadeBaralho;
+        this.quantidaDeBaralho = quantidadeBaralho;
         cartas = create(quantidadeBaralho);
     }
 
@@ -67,7 +67,7 @@ public class Baralho {
     }
 
     public void resetaBaralho() {
-        cartas = create(quantidadeBaralho);
+        cartas = create(quantidaDeBaralho);
     }
 
     public void imprimeBaralho() {
