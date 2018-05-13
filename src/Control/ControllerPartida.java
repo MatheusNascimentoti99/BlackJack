@@ -61,7 +61,7 @@ public class ControllerPartida {
                 return partidaEscolha;
             }
 
-        } catch (InputMismatchException exception) {
+        } catch (Exception exception) {
             System.out.println("Valor invalido");
             return partidaPersonalizada();
         }
