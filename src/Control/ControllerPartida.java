@@ -5,6 +5,7 @@
  */
 package Control;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.Baralho;
 import view.Partida;
@@ -17,9 +18,9 @@ public class ControllerPartida {
 
     public Partida escolherPartida() {
         String partidaEscolha;
-        System.out.println("Partida rápida - Partida com 2 Baralho");
+        System.out.println("Partida simples - Partida com 2 Baralho");
         System.out.println("Partida regular - Partida com 4 Baralho");
-        System.out.println("Partida longa - Partida com 8 Baralho \n");
+        System.out.println("Partida longa - Partida com 8 Baralho");
         System.out.println("Partida personalizada - Personalize a quantidade de cartas da partida \n");
         System.out.println("Digita sua escolha:");
         Scanner input = new Scanner(System.in);
@@ -28,15 +29,15 @@ public class ControllerPartida {
         if (escolha > 0) {
             Baralho baralho = new Baralho(escolha);
             return new Partida(baralho);
-        } 
-        else{
+        } else {
+            System.out.println("Valor inválido!");
             return escolherPartida();
         }
     }
 
     private int partidaEscolhida(String nomePartida) {
         switch (nomePartida) {
-            case "rápida":
+            case "simples":
                 return 2;
             case "regular":
                 return 4;
@@ -49,10 +50,24 @@ public class ControllerPartida {
         return 0;
     }
 
+    //imcompleto//////////////
     private int partidaPersonalizada() {
+
+        System.out.println("Digite a quantidade desejada de cartas[1 a 8]:");
         Scanner input = new Scanner(System.in);
-        String partidaEscolha = input.next();
-        int escolha = Integer.parseInt(partidaEscolha);
-        return escolha;
+        try {
+            int partidaEscolha = input.nextInt();
+            if (partidaEscolha >= 1 && partidaEscolha <= 8) {
+                return partidaEscolha;
+            }
+
+        } catch (Exception exe) {
+            System.out.println("Valor invalido");
+            return partidaPersonalizada();
+        }
+        System.out.println("Valor invalido");
+
+        return partidaPersonalizada();
     }
+
 }

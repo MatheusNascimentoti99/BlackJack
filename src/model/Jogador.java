@@ -5,11 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author Matheus Nascimento
  */
-public class Jogador {
+public class Jogador implements Serializable {
     private String user;
     private String passeword;
     private int pontuacao;
@@ -61,11 +64,26 @@ public class Jogador {
     }
     public int compareTo(Jogador jogador) {
         if (pontuacao > jogador.getPontuacao()) {
-            return -1;
-        }
-        if (this.pontuacao < jogador.getPontuacao()) {
             return 1;
+        }
+        else if (pontuacao < jogador.getPontuacao()) {
+            return -1;
         }
         return 0;
     }
+
+   
+
+    @Override
+    public boolean equals(Object obj) {
+        final Jogador other = (Jogador) obj;
+        if (this.partidaVencidas != other.partidaVencidas) {
+            return false;
+        }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        return Objects.equals(this.passeword, other.passeword);
+    }
+    
 }

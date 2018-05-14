@@ -5,8 +5,10 @@
  */
 package view;
 
+import Control.ControllerFileJogadores;
 import Control.ControllerPartida;
 import Control.ControllerUser;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -15,21 +17,32 @@ import java.util.Scanner;
  */
 public class App {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException, Exception {
         ControllerPartida controlePartida = new ControllerPartida();
         ControllerUser controleUser = new ControllerUser();
+        String escolha;
+        do{
         System.out.println("Digite 1 para Cadastrar jogador ");
         System.out.println("Digite 2 para iniciar uma partida");
+        System.out.println("Digite 3 para sair do Jogo");
         Partida partida;
         Scanner input = new Scanner(System.in);
-        String escolha = input.next();
-        if(escolha.equals("1")){
-            controleUser.cadastro();
-        }
-        else if(escolha.equals("2")){
-            partida = controlePartida.escolherPartida();
-            partida.novaPartida();
-            partida.getBaralho().imprimeBaralho();
-        }
+        escolha = input.next();
+         
+            if (escolha.equals("1")) {
+                controleUser.cadastrar();
+            } else if (escolha.equals("2")) {
+                partida = controlePartida.escolherPartida();
+
+                partida.getBaralho().embaralhar();
+                System.out.println("Embaralhado");
+                partida.getBaralho().imprimeBaralho();
+                System.out.println("\n \n Ordenado");
+                partida.getBaralho().ordenarCartas();
+                partida.getBaralho().imprimeBaralho();
+            }
+            
+        }while (!escolha.equals("3"));
+        
     }
 }
