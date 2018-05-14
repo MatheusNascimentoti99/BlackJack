@@ -21,14 +21,14 @@ public class App {
         ControllerPartida controlePartida = new ControllerPartida();
         ControllerUser controleUser = new ControllerUser();
         String escolha;
-        do{
-        System.out.println("Digite 1 para Cadastrar jogador ");
-        System.out.println("Digite 2 para iniciar uma partida");
-        System.out.println("Digite 3 para sair do Jogo");
-        Partida partida;
-        Scanner input = new Scanner(System.in);
-        escolha = input.next();
-         
+        do {
+            System.out.println("Digite 1 para Cadastrar jogador ");
+            System.out.println("Digite 2 para iniciar uma partida");
+            System.out.println("Digite 3 para sair do Jogo");
+            Partida partida;
+            Scanner input = new Scanner(System.in);
+            escolha = input.next();
+
             if (escolha.equals("1")) {
                 controleUser.cadastrar();
             } else if (escolha.equals("2")) {
@@ -41,8 +41,8 @@ public class App {
                 partida.getBaralho().ordenarCartas();
                 partida.getBaralho().imprimeBaralho();
             }
-            
-        }while (!escolha.equals("3"));
-        
+
+        } while (!escolha.equals("3"));
+
     }
 }
