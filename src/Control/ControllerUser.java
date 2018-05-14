@@ -30,7 +30,9 @@ public class ControllerUser {
     }
 
     public boolean verificacao(String user, String senha) {
-
+        if(listaJogadores == null){
+            return false;
+        }
         Iterator iterador = listaJogadores.iterator();
 
         while (iterador.hasNext()) {
@@ -71,10 +73,10 @@ public class ControllerUser {
             return null;
         } else {
             Jogador novoJogador = new Jogador(nome, senha);
-            ControllerFileJogadores controleFile = new ControllerFileJogadores();
+            ControllerFileJogadores controleArq = new ControllerFileJogadores();
             listaJogadores.add(novoJogador);
-            controleFile.salvarJogador(listaJogadores);
-            listaJogadores = controleFile.lerJogadores();
+            controleArq.salvarJogador(listaJogadores);
+            listaJogadores = controleArq.lerJogadores();
             return novoJogador;
 
         }

@@ -5,7 +5,6 @@
  */
 package Control;
 
-
 import model.Jogador;
 import java.io.FileInputStream;
 
@@ -30,7 +29,6 @@ public class ControllerFileJogadores {
             try (ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav)) {
                 objGravar.writeObject(jogadores);
 
-                
                 objGravar.flush();
             } catch (Exception e) {
             }
@@ -41,22 +39,20 @@ public class ControllerFileJogadores {
     }
 
     public LinkedList lerJogadores() {
-        LinkedList jogador = null;
+        LinkedList jogadores = new LinkedList();
         try {
 
             try ( //Carrega o arquivo
                     FileInputStream arquivoLeitura = new FileInputStream("Resources/arq.txt"); ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura)) {
-                
-                jogador = (LinkedList) objLeitura.readObject();
+
+                jogadores = (LinkedList) objLeitura.readObject();
             }
 
         } catch (IOException | ClassNotFoundException e) {
         }
 
-        return jogador;
+        return jogadores; 
 
     }
 
 }
-
-

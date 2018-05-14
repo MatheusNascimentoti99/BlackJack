@@ -6,17 +6,25 @@
 package model;
 
 public class Croupier extends Jogador {
-    Baralho baralho;
+    MaoDeCarta maoDeCarta;
     public Croupier() {
         super("crouper", "");
+        maoDeCarta = new MaoDeCarta();
     }
 
-    public Baralho getBaralho() {
-        return baralho;
+    public MaoDeCarta getMaoDeCarta() {
+        return maoDeCarta;
     }
 
-    public void setBaralho(Baralho baralho) {
-        this.baralho = baralho;
+    public void setMaoDeCarta(MaoDeCarta maoDeCarta) {
+        this.maoDeCarta = maoDeCarta;
+    }
+
+   public Carta DarCarta(Carta carta){
+        return carta;
+    }
+    public boolean querCarta(){
+        return 21 >= this.getMaoDeCarta().getPontosEmMao();
     }
 
 }

@@ -22,11 +22,7 @@ public class Partida {
     public void partida() throws Exception{
         System.out.println(" Jogo BlackJack \n");
         ControllerUser controleUser = new ControllerUser();
-
-        controleUser.loginJogador();
-
-        controleUser.loginJogador();
-        
+        controleUser.loginJogador();        
     }
 
     public Baralho getBaralho() {
