@@ -33,7 +33,7 @@ public class App {
                 controleUser.cadastrar();
             } else if (escolha.equals("2")) {
                 partida = controlePartida.escolherPartida();
-
+                partida.partida();
                 partida.getBaralho().embaralhar();
                 System.out.println("Embaralhado");
                 partida.getBaralho().imprimeBaralho();
