@@ -24,6 +24,8 @@ public class Partida {
         ControllerUser controleUser = new ControllerUser();
 
         controleUser.loginJogador();
+
+        controleUser.loginJogador();
         
     }
 
