@@ -30,6 +30,7 @@ public class ControllerFileJogadores {
             try (ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav)) {
                 objGravar.writeObject(jogadores);
 
+                
                 objGravar.flush();
             } catch (Exception e) {
             }
