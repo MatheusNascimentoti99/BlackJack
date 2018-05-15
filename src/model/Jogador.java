@@ -71,8 +71,18 @@ public class Jogador implements Serializable {
         }
         return 0;
     }
-
-   
+    
+    public boolean pedirCarta(String escolha){
+       
+        switch (escolha){
+            
+            case "sim":
+                return true;
+            case "não":
+                return false;
+        }   
+        return false;
+    }
 
     @Override
     public boolean equals(Object obj) {

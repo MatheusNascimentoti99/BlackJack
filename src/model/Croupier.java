@@ -20,8 +20,8 @@ public class Croupier extends Jogador {
         this.maoDeCarta = maoDeCarta;
     }
 
-   public Carta DarCarta(Carta carta){
-        return carta;
+   public Carta DarCarta(Baralho baralho){
+        return (Carta) baralho.getCartas().pop();
     }
     public boolean querCarta(){
         return 21 >= this.getMaoDeCarta().getPontosEmMao();

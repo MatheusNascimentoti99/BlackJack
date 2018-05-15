@@ -125,10 +125,15 @@ public class ControllerUser {
         String opcao = scanf();
         switch (opcao) {
             case "sim":
-                loginJogador();
+                if (jogadoresNaPartida.size() == 5)
+                    System.out.println("Partida sem vagas");
+                else
+                    loginJogador();
                 break;
+            
             case "sair":
                 break;
+            
             default:
                 System.out.println("Opção inválida!");
                 tentarLogin();
@@ -143,4 +148,13 @@ public class ControllerUser {
             System.out.println(jogador.getUser());
         }
     }
+
+    public LinkedList getListaJogadores() {
+        return listaJogadores;
+    }    
+
+    public LinkedList getJogadoresNaPartida() {
+        return jogadoresNaPartida;
+    }
+    
 }

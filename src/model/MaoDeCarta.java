@@ -1,6 +1,7 @@
 
 package model;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class MaoDeCarta {
@@ -25,7 +26,16 @@ public class MaoDeCarta {
     public void setPontosEmMao(int pontosEmMao) {
         this.pontosEmMao = pontosEmMao;
     }
-
+    
+    
+    public void mostrarCartas(){
+        
+        Iterator iterador = cartasNaMao.iterator();
+        while(iterador.hasNext()){
+            Carta carta = (Carta) iterador.next();
+            System.out.println(""+carta.toString());
+        }
+    }
     /**
      *
      * @return  
