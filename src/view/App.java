@@ -65,29 +65,33 @@ public class App {
                 boolean flag;
                 Iterator iterador = controleUser.getJogadoresNaPartida().iterator();
                 while (iterador.hasNext()){
-                    Jogador jogador = (Jogador) iterador.next();                    
-                    do{
-                        System.out.println("Deseja carta jogador ? Digite sim ou não");
-                        System.out.println("Suas cartas");
-                        jogador.getMao().mostrarCartas();
-                        System.out.println("Pontos na mão: "+ jogador.getMao().getPontosEmMao());
-                        escolha2 = input.nextLine();
-                        flag = jogador.pedirCarta(escolha);
-                    
-                        if (flag == true){
-                            Carta carta = croupier.DarCarta(partida.getBaralho());
-                            jogador.getMao().getCartasNaMao().add(carta);
-                            
-                            if(jogador.getMao().getPontosEmMao() > 21){
-                                System.out.println("Você estourou os 21");
-                                flag = false;
+                    Jogador jogador = (Jogador) iterador.next();  
+                    if (jogador.getMao().getPontosEmMao() == 21){
+                        System.out.println("BlackJack !!");
+                    }else{
+                        do{
+                            System.out.println("Deseja carta jogador ? Digite sim ou não");
+                            System.out.println("Suas cartas");
+                            jogador.getMao().mostrarCartas();
+                            System.out.println("Pontos na mão: "+ jogador.getMao().getPontosEmMao());
+                            escolha2 = input.nextLine();
+                            flag = jogador.pedirCarta(escolha);
+
+                            if (flag == true){
+                                Carta carta = croupier.DarCarta(partida.getBaralho());
+                                jogador.getMao().getCartasNaMao().add(carta);
+
+                                if(jogador.getMao().getPontosEmMao() > 21){
+                                    System.out.println("Você estourou os 21");
+                                    flag = false;
+                                }
+                                if (jogador.getMao().getPontosEmMao() == 21){
+                                    System.out.println("BlackJack !! ");
+                                    flag = false;
+                                }
                             }
-                            if (jogador.getMao().getPontosEmMao() == 21){
-                                System.out.println("BlackJack !! ");
-                                flag = false;
-                            }
-                        }
-                    }while(flag == true);
+                        }while(flag == true);
+                    }
                 }
                   
                 System.out.println("\n \n Ordenado");

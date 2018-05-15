@@ -36,13 +36,10 @@ public class MaoDeCarta {
             System.out.println(""+carta.toString());
         }
     }
-    /**
-     *
-     * @return  
-     */
+    
     @Override
     public String toString(){
-        return "Cartas na mãe: " +cartasNaMao.size();
+        return "Cartas na mão: " +cartasNaMao.size();
     }
     
 }
