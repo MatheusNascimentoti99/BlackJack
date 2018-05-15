@@ -18,6 +18,7 @@ public class Jogador implements Serializable {
     private int pontuacao;
     private int partidaVencidas;
     private MaoDeCarta mao;
+    private boolean flagBlackJack;
 
     public Jogador(String user, String passeword) {
         this.user = user;
@@ -84,6 +85,18 @@ public class Jogador implements Serializable {
         return false;
     }
 
+    public boolean getFlagBlackJack() {
+        return flagBlackJack;
+    }
+
+    public void setFlagBlackJack(boolean flagBlackJack) {
+        this.flagBlackJack = flagBlackJack;
+    }
+    
+    public void pontuacao( int pontos){
+        pontuacao = pontuacao + pontos;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         final Jogador other = (Jogador) obj;

@@ -37,6 +37,34 @@ public class MaoDeCarta {
         }
     }
     
+    public void pontosNaMão(){
+        
+        Iterator iterador = cartasNaMao.iterator();
+        while(iterador.hasNext()){
+            
+           Carta carta = (Carta) iterador.next();
+            switch (carta.getValue()) {
+                case "K":
+                case "J":
+                case "Q":
+                    pontosEmMao = pontosEmMao + 10;
+                    break;
+                
+                case "Ás":
+                    if (pontosEmMao > 10)
+                        pontosEmMao = pontosEmMao + 1;
+                    
+                    else if (pontosEmMao <= 10)
+                        pontosEmMao = pontosEmMao + 11;
+                    break;
+                
+                default:
+                    pontosEmMao = pontosEmMao + Integer.parseInt(carta.getValue());
+                    break;
+            }      
+        }
+    }
+    
     @Override
     public String toString(){
         return "Cartas na mão: " +cartasNaMao.size();
