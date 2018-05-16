@@ -44,8 +44,8 @@ public class Jogador implements Serializable {
         return partidaVencidas;
     }
 
-    public void setPartidaVencidas(int partidaVencidas) {
-        this.partidaVencidas = partidaVencidas;
+    public void setPartidaVencidas(int partidaGanhas) {
+        this.partidaVencidas = partidaVencidas + partidaGanhas;
     }
 
     public String getUser() {
