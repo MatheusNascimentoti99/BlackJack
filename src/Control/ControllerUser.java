@@ -18,7 +18,9 @@ public class ControllerUser {
 
     LinkedList listaJogadores = new LinkedList();
     LinkedList jogadoresNaPartida = new LinkedList();
-    ControllerFileJogadores controleFile;
+    ControllerFileJogadores controleFile = new ControllerFileJogadores();
+
+    ;
 
     public ControllerUser() {
         controleFile = new ControllerFileJogadores();
@@ -30,7 +32,7 @@ public class ControllerUser {
     }
 
     public boolean verificacao(String user, String senha) {
-        if(listaJogadores == null){
+        if (listaJogadores == null) {
             return false;
         }
         Iterator iterador = listaJogadores.iterator();
@@ -73,10 +75,9 @@ public class ControllerUser {
             return null;
         } else {
             Jogador novoJogador = new Jogador(nome, senha);
-            ControllerFileJogadores controleArq = new ControllerFileJogadores();
             listaJogadores.add(novoJogador);
-            controleArq.salvarJogador(listaJogadores);
-            listaJogadores = controleArq.lerJogadores();
+            controleFile.salvarJogador(listaJogadores);
+            listaJogadores = controleFile.lerJogadores();
             return novoJogador;
 
         }
@@ -125,15 +126,16 @@ public class ControllerUser {
         String opcao = scanf();
         switch (opcao) {
             case "sim":
-                if (jogadoresNaPartida.size() == 5)
+                if (jogadoresNaPartida.size() == 5) {
                     System.out.println("Partida sem vagas");
-                else
+                } else {
                     loginJogador();
+                }
                 break;
-            
+
             case "sair":
                 break;
-            
+
             default:
                 System.out.println("Opção inválida!");
                 tentarLogin();
@@ -151,10 +153,10 @@ public class ControllerUser {
 
     public LinkedList getListaJogadores() {
         return listaJogadores;
-    }    
+    }
 
     public LinkedList getJogadoresNaPartida() {
         return jogadoresNaPartida;
     }
-    
+
 }

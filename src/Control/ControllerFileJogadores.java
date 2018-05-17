@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
+import model.MaoDeCarta;
 
 /**
  *
@@ -50,7 +51,9 @@ public class ControllerFileJogadores {
 
         } catch (IOException | ClassNotFoundException e) {
         }
-
+        for( Object aux: jogadores){
+            ((Jogador)aux).setMao(new MaoDeCarta());
+        }
         return jogadores; 
 
     }

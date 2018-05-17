@@ -23,7 +23,9 @@ public class Jogador implements Serializable {
     public Jogador(String user, String passeword) {
         this.user = user;
         this.passeword = passeword;
+        this.mao = new MaoDeCarta();
     }
+
        
     public MaoDeCarta getMao() {
         return mao;
