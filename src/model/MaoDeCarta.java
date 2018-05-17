@@ -26,7 +26,7 @@ public class MaoDeCarta implements Serializable{
         return pontosEmMao;
     }
 
-    private int pontosNaMão() {
+    public int pontosNaMão() {
         pontosEmMao = 0;
         Iterator iterador = cartasNaMao.iterator();
         while (iterador.hasNext()) {

@@ -25,7 +25,7 @@ public class Baralho {
 
     private enum Value {
 
-        A("A", 1),
+        A("Ás", 1),
         J("J", 10),
         Q("Q", 10),
         K("K", 10),
