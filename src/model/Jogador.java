@@ -79,20 +79,20 @@ public class Jogador implements Serializable, Comparable {
         return 0;
     }
 
-    public boolean pedirCarta(String escolha) {
-
+    public boolean pedirCarta() {
+        System.out.println("Deseja carta? Digite pedir ou parar");
+        Scanner input = new Scanner(System.in);
+        String escolha = input.nextLine();
         switch (escolha) {
 
-            case "sim":
+            case "pedir":
                 return true;
-            case "não":
+            case "parar":
                 return false;
 
         }
-        System.out.println("Digite \"sim\" ou \"não\"");
-        Scanner input = new Scanner(System.in);
-        escolha = input.nextLine();
-        return pedirCarta(escolha);
+        
+        return pedirCarta();
     }
 
     public boolean getFlagBlackJack() {

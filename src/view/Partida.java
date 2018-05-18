@@ -104,16 +104,13 @@ public class Partida {
 
                 do {
                     System.out.print(jogador.getUser());
-                    System.out.println(", deseja carta? Digite sim ou não");
-                    System.out.println("Suas cartas:");
+                    System.out.println(", suas cartas:");
                     jogador.getMao().mostrarCartas();
                     System.out.println("Pontos na mão: " + jogador.getMao().getPontosEmMao());
                     System.out.println("Carta vísivel do Croupier: ");
                     System.out.println(((Carta) croupier.getMao().getCartasNaMao().getLast()).toString());
-                    Scanner input = new Scanner(System.in);
-                    String escolha = input.next();
 
-                    if (jogador.pedirCarta(escolha) == true && jogador.getMao().getPontosEmMao() <= 21) {
+                    if (jogador.pedirCarta() == true && jogador.getMao().getPontosEmMao() <= 21) {
                         flag = true;
                         Carta carta = croupier.DarCarta(baralho);
                         jogador.getMao().getCartasNaMao().add(carta);
@@ -157,9 +154,6 @@ public class Partida {
             croupierEstourou = true;
             System.out.println("O croupier estourou, todos jogadores ganham pontos");
             Iterator iteradorPontos = controleUser.getJogadoresNaPartida().iterator();
-            System.out.println("Cartas do Crupier:");
-            croupier.getMao().mostrarCartas();
-            System.out.println("Pontos na mão: " + croupier.getMao().getPontosEmMao());
             while (iteradorPontos.hasNext()) {
                 Jogador jogador = (Jogador) iteradorPontos.next();
                 jogador.pontuacao(10);

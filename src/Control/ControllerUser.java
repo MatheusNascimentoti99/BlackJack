@@ -36,7 +36,7 @@ public class ControllerUser {
         ControllerFileJogadores bancoDados = new ControllerFileJogadores();
     }
 
-    public boolean verificacao(String user, String senha) {
+    public boolean verificacao(String user, String senha, LinkedList listaJogadores) {
         if (listaJogadores == null) {
             return false;
         }
@@ -75,7 +75,7 @@ public class ControllerUser {
         String nome = scanf();
         System.out.println("Escolha uma senha\n");
         String senha = scanf();
-        if (verificacao(nome, senha)) {
+        if (verificacao(nome, senha, listaJogadores)) {
             System.out.println("Você já está cadastrado");
             return null;
         } else {
@@ -99,8 +99,13 @@ public class ControllerUser {
         user = scanf();
         System.out.print("Senha:");
         senha = scanf();
-        flag = verificacao(user, senha);
-        if (flag) {
+        flag = verificacao(user, senha, listaJogadores);
+        Boolean flagPartida = verificacao(user, senha, jogadoresNaPartida);
+        if(flagPartida){
+            System.out.println("Tentativa invalida! "+user+" já está na partida.");
+            tentarLogin();
+        }
+        else if (flag && !flagPartida) {
             System.out.println("Login aceito!");
             Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
             jogadoresNaPartida.add(jogadorLogin);
