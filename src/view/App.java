@@ -24,8 +24,9 @@ public class App {
 
     public static void main(String args[]) throws IOException, Exception {
         String escolha;
-        Croupier croupier = new Croupier();
+        
         do {
+            Croupier croupier = new Croupier();
             ControllerPartida controlePartida = new ControllerPartida();
             ControllerUser controleUser = new ControllerUser();
             System.out.println("Digite 1 para Cadastrar jogador ");

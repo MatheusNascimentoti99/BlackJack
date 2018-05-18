@@ -21,7 +21,7 @@ public class Partida {
     }
 
     public void imprimirCartas() {
-        System.out.println("Imprmir cartas(desordenadas ou ordenadas):");
+        System.out.println("Deseja imprmir cartas(desordenadas ordenadas):");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
         switch (input) {

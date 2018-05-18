@@ -1,9 +1,9 @@
 Pontuação geral de jogadores:
 
  Nome: elvis
- Pontuação: 10
- Partidas vencida: 2
+ Pontuação: -10
+ Partidas vencida: 3
 
  Nome: matheus
  Pontuação: -30
- Partidas vencida: 2
+ Partidas vencida: 8

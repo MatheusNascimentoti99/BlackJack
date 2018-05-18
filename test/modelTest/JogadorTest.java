@@ -6,6 +6,7 @@
 package modelTest;
 
 import model.Baralho;
+import model.Carta;
 import model.Jogador;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -24,12 +25,13 @@ public class JogadorTest {
     @Before
     public void setUp() throws Exception {
         a = new Jogador("José", "1234abc");
+        
     }
 
     @Test
     public void testBasic() {
         Jogador b = new Jogador("Marcos", "123456");
-        
+        Carta cart1 = new Carta("teste", "teste");
         //Verificar a saida dos dados
         assertEquals("José",a.getUser());
         assertEquals("1234abc", a.getPasseword());
