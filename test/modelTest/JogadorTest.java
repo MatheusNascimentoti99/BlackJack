@@ -30,8 +30,7 @@ public class JogadorTest {
 
     @Test
     public void testBasic() {
-        Jogador b = new Jogador("Marcos", "123456");
-        Carta cart1 = new Carta("teste", "teste");
+        
         //Verificar a saida dos dados
         assertEquals("José",a.getUser());
         assertEquals("1234abc", a.getPasseword());
@@ -40,15 +39,25 @@ public class JogadorTest {
         
         
         //Verificar os requisitos para considerar um jogador diferente do outro
+        Jogador b = new Jogador("Marcos", "123456");
         assertFalse(a.equals(b));
         
         assertEquals(0, a.compareTo(b));
+        b.pontuacao(10);
         assertEquals(-1, a.compareTo(b));
-        
+        //Verificar os setters do jogador
         b.setUser("José");
         b.setPasseword("1234abc");
         assertTrue(a.equals(b));
+
+        //Verificar se jogador tem mão de carta e se as cartas estão sendo inseridas corretamente
+        Carta cart1 = new Carta("teste", "teste");
+        a.getMao().getCartasNaMao().add(cart1);
+        assertTrue(a.getMao().getCartasNaMao().getFirst().equals(cart1));
         
-        assertTrue(a.equals(b));
+        
+        assertEquals(false, a.getFlagBlackJack());
+        a.setFlagBlackJack(true);
+        assertEquals(true, a.getFlagBlackJack());
     }
 }

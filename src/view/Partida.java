@@ -118,10 +118,12 @@ public class Partida {
                         if (jogador.getMao().getPontosEmMao() == 21) {
 
                             System.out.println(" Você tem 21 pontos na mão");
+                            jogador.getMao().mostrarCartas();
                             flag = false;
 
                         } else if (jogador.getMao().getPontosEmMao() > 21) {
                             System.out.println("Você ultrapassou os 21 pontos na mão");
+                            
                             jogador.pontuacao(-10);
                             flag = false;
                             System.out.println("Cartas de " + jogador.getUser());

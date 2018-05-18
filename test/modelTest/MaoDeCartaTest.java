@@ -17,20 +17,17 @@ import org.junit.Before;
  */
 public class MaoDeCartaTest {
 
-    Jogador a;
     MaoDeCarta mao1;
-    Carta carta;
+   
 
     @Before
     public void setUp() throws Exception {
-        a = new Jogador("José", "1234abc");
         mao1 = new MaoDeCarta();
-        carta = new Carta("♣", "10");
     }
 
     public void testBasic() {
 
-        assertEquals(true, a.getMao().equals(mao1));
+        
 
     }
 }
