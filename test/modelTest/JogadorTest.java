@@ -41,14 +41,12 @@ public class JogadorTest {
         assertFalse(a.equals(b));
         
         assertEquals(0, a.compareTo(b));
-        b.setPontuacao(50);
         assertEquals(-1, a.compareTo(b));
         
         b.setUser("José");
         b.setPasseword("1234abc");
         assertTrue(a.equals(b));
         
-        a.setPontuacao(10);
         assertTrue(a.equals(b));
     }
 }

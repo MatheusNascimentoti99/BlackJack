@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Matheus Nascimento
  */
-public class Carta implements Comparable {
+public class Carta implements Comparable, Serializable {
 
     private String value;
     private String naipe;

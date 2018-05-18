@@ -22,37 +22,15 @@ public class MaoDeCarta implements Serializable{
         this.cartasNaMao = cartasNaMao;
     }
 
-    public int getPontosEmMao() {
-        return pontosEmMao;
-    }
 
-    public int pontosNaMão() {
+    public int getPontosEmMao() {
         pontosEmMao = 0;
         Iterator iterador = cartasNaMao.iterator();
+        pontosEmMao = calcPontosEmMao(iterador);
         while (iterador.hasNext()) {
-
-            Carta carta = (Carta) iterador.next();
-            switch (carta.getValue()) {
-                case "K":
-                case "J":
-                case "Q":
-                case "Dez":
-                    pontosEmMao = pontosEmMao + 10;
-                    break;
-
-                case "Ás":
-                    if (pontosEmMao > 10) {
-                        pontosEmMao = pontosEmMao + 1;
-                    } else if (pontosEmMao <= 10) {
-                        pontosEmMao = pontosEmMao + 11;
-                    }
-                    break;
-
-                default:
-                    pontosEmMao = pontosEmMao + Integer.parseInt(carta.getValue());
-
-                    break;
-            }
+            if(((Carta)iterador.next()).getValue().equals("Ás")){
+                pontosEmMao = pontosEmMao - 10;
+            } 
         }
         return pontosEmMao;
     }
@@ -69,7 +47,34 @@ public class MaoDeCarta implements Serializable{
             System.out.println("" + carta.toString());
         }
     }
+    private int calcPontosEmMao(Iterator iterador){
+        while (iterador.hasNext()) {
 
+            Carta carta = (Carta) iterador.next();
+            switch (carta.getValue()) {
+                case "K":
+                case "J":
+                case "Q":
+                case "Dez":
+                    pontosEmMao = pontosEmMao + 10;
+                    break;
+                    
+                case "Ás":
+                    if (pontosEmMao > 10) {
+                        pontosEmMao = pontosEmMao + 1;
+                    } else if (pontosEmMao <= 10) {
+                        pontosEmMao = pontosEmMao + 11;
+                    }
+                    break;
+
+                default:
+                    pontosEmMao = pontosEmMao + Integer.parseInt(carta.getValue());
+
+                    break;
+            }
+        }
+        return pontosEmMao;
+    }
     @Override
     public String toString() {
         return "Cartas na mão: " + cartasNaMao.size();

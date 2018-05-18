@@ -7,12 +7,14 @@ package model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  *
  * @author Matheus Nascimento
  */
-public class Jogador implements Serializable {
+public class Jogador implements Serializable, Comparable {
+
     private String user;
     private String passeword;
     private int pontuacao;
@@ -26,7 +28,12 @@ public class Jogador implements Serializable {
         this.mao = new MaoDeCarta();
     }
 
-       
+    @Override
+    public String toString() {
+        return "\n Nome: " + user + "\n Pontuação: " + pontuacao + "\n Partidas vencida: " + partidaVencidas;
+
+    }
+
     public MaoDeCarta getMao() {
         return mao;
     }
@@ -34,12 +41,9 @@ public class Jogador implements Serializable {
     public void setMao(MaoDeCarta mao) {
         this.mao = mao;
     }
+
     public int getPontuacao() {
         return pontuacao;
-    }
-
-    public void setPontuacao(int pontuacao) {
-        this.pontuacao = pontuacao;
     }
 
     public int getPartidaVencidas() {
@@ -65,26 +69,30 @@ public class Jogador implements Serializable {
     public void setPasseword(String passeword) {
         this.passeword = passeword;
     }
+
     public int compareTo(Jogador jogador) {
         if (pontuacao > jogador.getPontuacao()) {
             return 1;
-        }
-        else if (pontuacao < jogador.getPontuacao()) {
+        } else if (pontuacao < jogador.getPontuacao()) {
             return -1;
         }
         return 0;
     }
-    
-    public boolean pedirCarta(String escolha){
-       
-        switch (escolha){
-            
+
+    public boolean pedirCarta(String escolha) {
+
+        switch (escolha) {
+
             case "sim":
                 return true;
             case "não":
                 return false;
-        }   
-        return false;
+
+        }
+        System.out.println("Digite \"sim\" ou \"não\"");
+        Scanner input = new Scanner(System.in);
+        escolha = input.nextLine();
+        return pedirCarta(escolha);
     }
 
     public boolean getFlagBlackJack() {
@@ -94,11 +102,11 @@ public class Jogador implements Serializable {
     public void setFlagBlackJack(boolean flagBlackJack) {
         this.flagBlackJack = flagBlackJack;
     }
-    
-    public void pontuacao( int pontos){
+
+    public void pontuacao(int pontos) {
         pontuacao = pontuacao + pontos;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         final Jogador other = (Jogador) obj;
@@ -110,5 +118,18 @@ public class Jogador implements Serializable {
         }
         return Objects.equals(this.passeword, other.passeword);
     }
-    
+
+    @Override
+    public int compareTo(Object o) {
+        Jogador outro = (Jogador) o;
+        if (pontuacao < outro.getPontuacao()) {
+            return -1;
+
+        } else if (pontuacao > outro.getPontuacao()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 }

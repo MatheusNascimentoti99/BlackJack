@@ -23,18 +23,18 @@ import model.Jogador;
 public class App {
 
     public static void main(String args[]) throws IOException, Exception {
-        ControllerPartida controlePartida = new ControllerPartida();
-        ControllerUser controleUser = new ControllerUser();
         String escolha;
         Croupier croupier = new Croupier();
         do {
+            ControllerPartida controlePartida = new ControllerPartida();
+            ControllerUser controleUser = new ControllerUser();
             System.out.println("Digite 1 para Cadastrar jogador ");
             System.out.println("Digite 2 para iniciar uma partida");
             System.out.println("Digite 3 para sair do Jogo");
             Partida partida;
             Scanner input = new Scanner(System.in);
             escolha = input.next();
-
+            
             if (escolha.equals("1")) {
                 controleUser.cadastrar();
             } else if (escolha.equals("2")) {

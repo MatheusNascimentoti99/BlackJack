@@ -20,7 +20,12 @@ public class ControllerUser {
     LinkedList jogadoresNaPartida = new LinkedList();
     ControllerFileJogadores controleFile = new ControllerFileJogadores();
 
-    ;
+    public ControllerFileJogadores getControleFile() {
+        return controleFile;
+    }
+
+
+    
 
     public ControllerUser() {
         controleFile = new ControllerFileJogadores();
