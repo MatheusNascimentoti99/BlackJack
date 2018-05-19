@@ -41,7 +41,7 @@ public class Partida {
         System.out.println(" Jogo BlackJack \n");
         controleUser.loginJogador();
         baralho.embaralhar();
-        System.out.println("Embaralhado");
+        System.out.println("-------------------------Início----------------------------------");
 
         Iterator iteradorCarta1 = controleUser.getJogadoresNaPartida().iterator();
         while (iteradorCarta1.hasNext()) {
@@ -94,7 +94,7 @@ public class Partida {
                     jogador.getMao().mostrarCartas();
 
                 } else {
-                    System.out.println("Você ganhou, BlackJack !!");
+                    System.out.println("["+jogador.getUser()+"] Você tem um BlackJack !!");
                     jogador.pontuacao(3);
                     jogador.setPartidaVencidas(1);
                     System.out.println("Cartas de " + jogador.getUser());
@@ -107,8 +107,8 @@ public class Partida {
                     System.out.print(jogador.getUser());
                     System.out.println(", suas cartas:");
                     jogador.getMao().mostrarCartas();
-                    System.out.println("Pontos na mão: " + jogador.getMao().getPontosEmMao());
-                    System.out.println("Carta vísivel do Croupier: ");
+                    System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao()+"\t");
+                    System.out.print("Carta vísivel do Croupier: ");
                     System.out.println(((Carta) croupier.getMao().getCartasNaMao().getLast()).toString());
 
                     if (jogador.pedirCarta() == true && jogador.getMao().getPontosEmMao() <= 21) {
@@ -193,6 +193,7 @@ public class Partida {
 
                 }
             }
+            System.out.println("");
         }
         System.out.println("Cartas do Crupier:");
         croupier.getMao().mostrarCartas();
