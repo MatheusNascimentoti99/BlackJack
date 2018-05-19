@@ -84,17 +84,18 @@ public class Partida {
                 if (jogador.getFlagBlackJack() == true && croupier.getFlagBlackJack() == true) {
                     System.out.println("Você e o croupier tem um BlackJack, empataram");
                     System.out.println("Cartas de " + jogador.getUser());
+                    jogador.pontuacao(1);
                     jogador.getMao().mostrarCartas();
 
                 } else if (jogador.getFlagBlackJack() == false && croupier.getFlagBlackJack() == true) {
                     System.out.println("Você perdeu, o Croupier tem um BlackJack !!");
-                    jogador.pontuacao(-10);
+                    jogador.pontuacao(0);
                     System.out.println("Cartas de " + jogador.getUser());
                     jogador.getMao().mostrarCartas();
 
                 } else {
                     System.out.println("Você ganhou, BlackJack !!");
-                    jogador.pontuacao(10);
+                    jogador.pontuacao(3);
                     jogador.setPartidaVencidas(1);
                     System.out.println("Cartas de " + jogador.getUser());
                     jogador.getMao().mostrarCartas();
@@ -117,14 +118,13 @@ public class Partida {
 
                         if (jogador.getMao().getPontosEmMao() == 21) {
 
-                            System.out.println(" Você tem 21 pontos na mão");
+                            System.out.println("["+jogador.getUser()+"] Você tem 21 pontos na mão");
                             jogador.getMao().mostrarCartas();
                             flag = false;
 
                         } else if (jogador.getMao().getPontosEmMao() > 21) {
-                            System.out.println("Você ultrapassou os 21 pontos na mão");
-                            
-                            jogador.pontuacao(-10);
+                            System.out.println("["+jogador.getUser()+"Você ultrapassou os 21 pontos na mão");
+                            jogador.pontuacao(0);
                             flag = false;
                             System.out.println("Cartas de " + jogador.getUser());
                             jogador.getMao().mostrarCartas();
@@ -133,9 +133,10 @@ public class Partida {
                     } else {
                         flag = false;
                     }
-
+                    
                 } while (flag == true);
             }
+            System.out.println("\n");
         }
 
         if (croupier.getFlagBlackJack() == false) {
@@ -158,7 +159,7 @@ public class Partida {
             Iterator iteradorPontos = controleUser.getJogadoresNaPartida().iterator();
             while (iteradorPontos.hasNext()) {
                 Jogador jogador = (Jogador) iteradorPontos.next();
-                jogador.pontuacao(10);
+                jogador.pontuacao(3);
                 jogador.setPartidaVencidas(1);
             }
         }
@@ -173,7 +174,7 @@ public class Partida {
                     System.out.println(", Você ganhou !!");
                     System.out.println("Suas Cartas");
                     jogador.getMao().mostrarCartas();
-                    jogador.pontuacao(10);
+                    jogador.pontuacao(3);
                     jogador.setPartidaVencidas(1);
 
                 } else if (jogador.getMao().getPontosEmMao() < croupier.getMao().getPontosEmMao()) {
@@ -181,12 +182,13 @@ public class Partida {
                     System.out.println(", Você perdeu !!");
                     System.out.println("Suas cartas ");
                     jogador.getMao().mostrarCartas();
-                    jogador.pontuacao(-10);
+                    jogador.pontuacao(0);
 
                 } else {
                     System.out.print(jogador.getUser());
                     System.out.println(", Você empatou !!");
                     System.out.println("Suas cartas");
+                    jogador.pontuacao(1);
                     jogador.getMao().mostrarCartas();
 
                 }

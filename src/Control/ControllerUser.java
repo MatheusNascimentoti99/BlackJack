@@ -52,7 +52,23 @@ public class ControllerUser {
         }
         return false;
     }
+    public boolean verificacao(String user, LinkedList listaJogadores) {
+        if (listaJogadores == null) {
+            return false;
+        }
+        Iterator iterador = listaJogadores.iterator();
 
+        while (iterador.hasNext()) {
+
+            Jogador procurado = (Jogador) iterador.next();
+
+            if (!procurado.getUser().equals(user)) {
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
     public Object recuperarJogador(String user, String senha) {
 
         Iterator iterador = listaJogadores.iterator();
@@ -75,7 +91,7 @@ public class ControllerUser {
         String nome = scanf();
         System.out.println("Escolha uma senha\n");
         String senha = scanf();
-        if (verificacao(nome, senha, listaJogadores)) {
+        if (verificacao(nome, listaJogadores)) {
             System.out.println("Você já está cadastrado");
             return null;
         } else {

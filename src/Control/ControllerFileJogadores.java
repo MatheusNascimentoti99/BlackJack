@@ -28,7 +28,7 @@ public class ControllerFileJogadores {
     public void salvarJogador(LinkedList jogadores) throws Exception {
         try {
             FileOutputStream arquivoGrav;
-            arquivoGrav = new FileOutputStream("Resources/Dados.txt");
+            arquivoGrav = new FileOutputStream("Resources/Dados.data");
             try (ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav)) {
                 objGravar.writeObject(jogadores);
 
@@ -47,7 +47,7 @@ public class ControllerFileJogadores {
         try {
 
             try ( //Carrega o arquivo
-                    FileInputStream arquivoLeitura = new FileInputStream("Resources/Dados.txt"); ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura)) {
+                    FileInputStream arquivoLeitura = new FileInputStream("Resources/Dados.data"); ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura)) {
 
                 jogadores = (LinkedList) objLeitura.readObject();
             }
