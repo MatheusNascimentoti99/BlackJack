@@ -15,7 +15,7 @@ public class BaralhoTest {
 
     @Before
     public void setUp() throws Exception {
-        baralho = new Baralho(4);
+        baralho = new Baralho(1);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class BaralhoTest {
         
         //Verificar se manteu a mesma quantidade de cartas.
         baralho.embaralhar();
-        assertEquals(52, baralho.getCartas().size());
+        assertEquals(50, baralho.getCartas().size());
 
         assertFalse(baralho.getCartas().isEmpty());
         
@@ -42,6 +42,8 @@ public class BaralhoTest {
         assertEquals("TesteValor",c.getValue());
         c.setNaipe("TesteNaipe");
         assertEquals("TesteNaipe", c.getNaipe());
+        
+        
     }
     
 

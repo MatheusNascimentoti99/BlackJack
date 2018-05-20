@@ -5,16 +5,12 @@
  */
 package view;
 
-import Control.ControllerFileJogadores;
 import Control.ControllerPartida;
-import Control.ControllerUser;
+import Control.ControllerJogador;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Scanner;
-import model.Baralho;
-import model.Carta;
+
 import model.Croupier;
-import model.Jogador;
 
 /**
  *
@@ -28,7 +24,7 @@ public class App {
         do {
             Croupier croupier = new Croupier();
             ControllerPartida controlePartida = new ControllerPartida();
-            ControllerUser controleUser = new ControllerUser();
+            ControllerJogador controleUser = new ControllerJogador();
             System.out.println("Digite 1 para Cadastrar jogador ");
             System.out.println("Digite 2 para iniciar uma partida");
             System.out.println("Digite 3 para sair do Jogo");
@@ -36,12 +32,16 @@ public class App {
             Scanner input = new Scanner(System.in);
             escolha = input.next();
             
-            if (escolha.equals("1")) {
-                controleUser.cadastrar();
-            } else if (escolha.equals("2")) {
-                partida = controlePartida.escolherPartida();
-                partida.partida(controleUser);
-                
+            switch (escolha) {
+                case "1":
+                    controleUser.cadastrar();
+                    break;
+                case "2":
+                    partida = controlePartida.escolherPartida();
+                    partida.partida(controleUser);
+                    break;
+                default:
+                    break;
             }
 
         } while (!escolha.equals("3"));

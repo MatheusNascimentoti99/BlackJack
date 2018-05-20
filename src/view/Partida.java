@@ -1,6 +1,6 @@
 package view;
 
-import Control.ControllerUser;
+import Control.ControllerJogador;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ public class Partida {
 
     private Baralho baralho;
     Croupier croupier;
-    ControllerUser controleUser = new ControllerUser();
+    ControllerJogador controleUser = new ControllerJogador();
 
     public Partida(Baralho baralho) {
         this.baralho = baralho;
@@ -37,11 +37,12 @@ public class Partida {
         }
     }
 
-    public void partida(ControllerUser controleUser) throws Exception {
-        System.out.println(" Jogo BlackJack \n");
+    public void partida(ControllerJogador controleUser) throws Exception {
+        System.out.println("-------------------------Login----------------------------------  \n");
         controleUser.loginJogador();
+
         baralho.embaralhar();
-        System.out.println("-------------------------Início----------------------------------");
+        System.out.println("-------------------------Início da partida----------------------------------");
 
         Iterator iteradorCarta1 = controleUser.getJogadoresNaPartida().iterator();
         while (iteradorCarta1.hasNext()) {

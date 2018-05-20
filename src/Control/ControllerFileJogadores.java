@@ -28,7 +28,7 @@ public class ControllerFileJogadores {
     public void salvarJogador(LinkedList jogadores) throws Exception {
         try {
             FileOutputStream arquivoGrav;
-            arquivoGrav = new FileOutputStream("Resources/Dados.data");
+            arquivoGrav = new FileOutputStream("Resources/Dados.data");             //Arquivo onde será salvo todos os dados dos jogadores
             try (ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav)) {
                 objGravar.writeObject(jogadores);
 
@@ -49,12 +49,12 @@ public class ControllerFileJogadores {
             try ( //Carrega o arquivo
                     FileInputStream arquivoLeitura = new FileInputStream("Resources/Dados.data"); ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura)) {
 
-                jogadores = (LinkedList) objLeitura.readObject();
+                jogadores = (LinkedList) objLeitura.readObject();       //recebe a lista de jogadores gravada no disco e passa para memória
             }
 
         } catch (IOException | ClassNotFoundException e) {
         }
-        for (Object aux : jogadores) {
+        for (Object aux : jogadores) {                              //Percorre a lista de jogadores resetando a mão de carta.
             ((Jogador) aux).setMao(new MaoDeCarta());
             jogadoresAux.add(aux);
             
@@ -64,19 +64,19 @@ public class ControllerFileJogadores {
 
     }
 
-    public void imprimirPontuacao(LinkedList jogadores) throws IOException {
-        jogadores = selectionSort(jogadores);
-        FileWriter arqPontuacao = new FileWriter("Resources/Pontuação.txt");
+    public void imprimirPontuacao(LinkedList jogadores) throws IOException {        
+        jogadores = selectionSort(jogadores);                                       //Chama um algoritmo de ordenação para ordenar os jogadores por pontuação
+        FileWriter arqPontuacao = new FileWriter("Resources/Pontuação.txt");        //Arquivo que será salvo a pontuação
         try (PrintWriter gravarArq = new PrintWriter(arqPontuacao)) {
             gravarArq.println("Pontuação geral de jogadores:");
-            for(Object aux: jogadores){
+            for(Object aux: jogadores){                                             //Laço para imprimir todos os jogadores da lista
                 gravarArq.println(((Jogador)aux).toString());
             }
         }catch(Exception exe){
         }
     }
 
-    private LinkedList selectionSort(LinkedList jogadores) {
+    private LinkedList selectionSort(LinkedList jogadores) {                        
         Jogador[] jogadoresArray = new Jogador[jogadores.size()];
 
         for (int i = 0; !jogadores.isEmpty(); i++) {

@@ -59,7 +59,7 @@ public class Baralho {
             Carta nova;
             while (!naipes.isEmpty()) {
                 int numCarta = 1;
-                while (numCarta <= 12) {
+                while (numCarta <= 13) {
 
                     switch (numCarta) {
                         case 10:

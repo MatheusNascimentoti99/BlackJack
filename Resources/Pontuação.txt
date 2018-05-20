@@ -5,8 +5,8 @@ Pontuação geral de jogadores:
  Partidas vencida: 5
 
  Nome: matheus
- Pontuação: 8
- Partidas vencida: 2
+ Pontuação: 11
+ Partidas vencida: 3
 
  Nome: idelvando
  Pontuação: 5
