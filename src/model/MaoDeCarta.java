@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class MaoDeCarta implements Serializable{
+public class MaoDeCarta implements Serializable {
 
     private LinkedList cartasNaMao;
     private int pontosEmMao;
@@ -22,15 +22,14 @@ public class MaoDeCarta implements Serializable{
         this.cartasNaMao = cartasNaMao;
     }
 
-
     public int getPontosEmMao() {
         pontosEmMao = 0;
         Iterator iterador = cartasNaMao.iterator();
         pontosEmMao = calcPontosEmMao(iterador);
         while (iterador.hasNext()) {
-            if(((Carta)iterador.next()).getValue().equals("Ás")){
+            if (((Carta) iterador.next()).getValue().equals("Ás")) {
                 pontosEmMao = pontosEmMao - 10;
-            } 
+            }
         }
         return pontosEmMao;
     }
@@ -47,7 +46,9 @@ public class MaoDeCarta implements Serializable{
             System.out.println("" + carta.toString());
         }
     }
-    private int calcPontosEmMao(Iterator iterador){
+
+    private int calcPontosEmMao(Iterator iterador) {
+        Iterator aux = iterador;
         while (iterador.hasNext()) {
 
             Carta carta = (Carta) iterador.next();
@@ -58,7 +59,7 @@ public class MaoDeCarta implements Serializable{
                 case "Dez":
                     pontosEmMao = pontosEmMao + 10;
                     break;
-                    
+
                 case "Ás":
                     if (pontosEmMao > 10) {
                         pontosEmMao = pontosEmMao + 1;
@@ -73,8 +74,10 @@ public class MaoDeCarta implements Serializable{
                     break;
             }
         }
+
         return pontosEmMao;
     }
+
     @Override
     public String toString() {
         return "Cartas na mão: " + cartasNaMao.size();

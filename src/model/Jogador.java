@@ -30,7 +30,7 @@ public class Jogador implements Serializable, Comparable {
 
     @Override
     public String toString() {
-        return "\n Nome: " + user + "\n Pontuação: " + pontuacao + "\n Partidas vencida: " + partidaVencidas;
+        return "\nNome: " + user + " --- Pontuação: " + pontuacao + " -- Partidas vencida: " + partidaVencidas;
 
     }
 

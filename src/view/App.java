@@ -20,18 +20,19 @@ public class App {
 
     public static void main(String args[]) throws IOException, Exception {
         String escolha;
-        
+
         do {
             Croupier croupier = new Croupier();
             ControllerPartida controlePartida = new ControllerPartida();
             ControllerJogador controleUser = new ControllerJogador();
             System.out.println("Digite 1 para Cadastrar jogador ");
             System.out.println("Digite 2 para iniciar uma partida");
-            System.out.println("Digite 3 para sair do Jogo");
+            System.out.println("Digite 3 para mostrar placar");
+            System.out.println("Digite 4 para sair do jogo");
             Partida partida;
             Scanner input = new Scanner(System.in);
             escolha = input.next();
-            
+
             switch (escolha) {
                 case "1":
                     controleUser.cadastrar();
@@ -40,11 +41,15 @@ public class App {
                     partida = controlePartida.escolherPartida();
                     partida.partida(controleUser);
                     break;
+                case "3":
+                    controleUser.mostrarJogadores();
                 default:
                     break;
             }
-
-        } while (!escolha.equals("3"));
+            System.out.println("");
+            controleUser.getControleFile().imprimirPontuacao(controleUser.getListaJogadores());
+            controleUser.getControleFile().salvarJogador(controleUser.getListaJogadores());
+        } while (!escolha.equals("4"));
 
     }
 }

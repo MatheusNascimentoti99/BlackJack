@@ -18,15 +18,15 @@ public class ControllerPartida {
 
     public Partida escolherPartida() {
         String partidaEscolha;
-        System.out.println("Partida simples - Partida com 2 Baralho");
-        System.out.println("Partida regular - Partida com 4 Baralho");
-        System.out.println("Partida longa - Partida com 8 Baralho");
-        System.out.println("Partida personalizada - Personalize a quantidade de cartas da partida \n");
-        System.out.println("Digita sua escolha:");
+        System.out.println(" simples - Partida com 2 Baralho");
+        System.out.println(" regular - Partida com 4 Baralho");
+        System.out.println(" longa - Partida com 8 Baralho");
+        System.out.println(" personalizada - Personalize a quantidade de baralhos da partida \n");
+        System.out.println(" sua escolha:");
         Scanner input = new Scanner(System.in);
-        partidaEscolha = input.next();
-        int escolha = partidaEscolhida(partidaEscolha);
-        if (escolha > 0) {
+        partidaEscolha = input.next();                              //Entrada do usuário
+        int escolha = partidaEscolhida(partidaEscolha);             //Retorna um inteiro que conrresponde a escolha do usuário
+        if (escolha > 0) {                                          //Verifica se a escolha é um número real
             Baralho baralho = new Baralho(escolha);
             return new Partida(baralho);
         } else {
@@ -44,30 +44,29 @@ public class ControllerPartida {
             case "longa":
                 return 8;
             case "personalizada":
-                return this.partidaPersonalizada();
+                return this.partidaPersonalizada();             //Chama o método que o usuário pode digitar a quantidade de baralhos
 
         }
         return 0;
     }
 
-    //imcompleto//////////////
     private int partidaPersonalizada() {
 
         System.out.println("Digite a quantidade desejada de cartas[1 a 8]:");
         Scanner input = new Scanner(System.in);
         try {
             int partidaEscolha = input.nextInt();
-            if (partidaEscolha >= 1 && partidaEscolha <= 8) {
+            if (partidaEscolha >= 1 && partidaEscolha <= 8) {                   //Controla o mínimo e máximo de baralhos que uma partida pode ter 
                 return partidaEscolha;
             }
 
-        } catch (Exception exe) {
+        } catch (Exception exe) {                                               //Caso o usuário digite letras
             System.out.println("Valor invalido");
-            return partidaPersonalizada();
+            return partidaPersonalizada();                                      //repete o método novamente, caso algo esteja errado
         }
         System.out.println("Valor invalido");
 
-        return partidaPersonalizada();
+        return partidaPersonalizada();                          
     }
 
 }

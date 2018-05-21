@@ -103,7 +103,6 @@ public class ControllerJogador {
         String user;
         String senha;
         boolean flagJogadorCadastr = false;
-        System.out.println("Bora fazer login \n");
         System.out.print("Digita seu nome:");
         user = input();
         System.out.print("Senha:");
@@ -112,31 +111,31 @@ public class ControllerJogador {
         Boolean flagJogadorPartida = verificacao(user, senha, jogadoresNaPartida);     //Verifica se o jogador já faz o login na partida
         if (flagJogadorPartida) {
             System.out.println("Tentativa invalida! " + user + " já está na partida.");
-            tentarLogin();
         } else if (flagJogadorCadastr && !flagJogadorPartida) {                          //Se jogador estiver cadastrado e não estiver na partida, então o login será aceito
             System.out.println("Login aceito!");
             Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
             jogadoresNaPartida.add(jogadorLogin);
-            tentarLogin();
+
         } else {
             System.out.println("Login invalido! \n Digite 1 para tentar novamente \n Digite 2 para novo cadastro");
             String opcaoS = input();
             switch (opcaoS) {
                 case "2":
                     cadastrar();
-
+                    loginJogador();
                     break;
-                case "1":
+                case "1":                       //
                     loginJogador();
                     break;
                 default:
-                    loginJogador();
-            }
-        }
 
+            }
+
+        }
+        tentarLogin();
     }
 
-    private String input() {
+    private String input() {                //Para resumir as entradas do teclado;
         Scanner opcao = new Scanner(System.in);
         return opcao.nextLine();
     }
@@ -165,9 +164,9 @@ public class ControllerJogador {
 
     public void mostrarJogadores() {
         Iterator itera = listaJogadores.iterator();
-        while (itera.hasNext()) {
+        while (itera.hasNext()) {                                               //Percorre a lista de jogadores imprimendo sua respectivas informações         
             Jogador jogador = (Jogador) itera.next();
-            System.out.println(jogador.getUser());
+            System.out.println(jogador.toString());
         }
     }
 

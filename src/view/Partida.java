@@ -94,11 +94,12 @@ public class Partida {
                     System.out.println("Cartas de " + jogador.getUser());
                     jogador.getMao().mostrarCartas();
 
-                } else {
-                    System.out.println("["+jogador.getUser()+"] Você tem um BlackJack !!");
+                } else if (jogador.getFlagBlackJack() == true) {
+                    System.out.println("[" + jogador.getUser() + "] Você tem um BlackJack !!");
                     jogador.pontuacao(3);
                     jogador.setPartidaVencidas(1);
                     System.out.println("Cartas de " + jogador.getUser());
+                    System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao());
                     jogador.getMao().mostrarCartas();
 
                 }
@@ -108,7 +109,7 @@ public class Partida {
                     System.out.print(jogador.getUser());
                     System.out.println(", suas cartas:");
                     jogador.getMao().mostrarCartas();
-                    System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao()+"\t");
+                    System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao() + "\t");
                     System.out.print("Carta vísivel do Croupier: ");
                     System.out.println(((Carta) croupier.getMao().getCartasNaMao().getLast()).toString());
 
@@ -119,27 +120,28 @@ public class Partida {
 
                         if (jogador.getMao().getPontosEmMao() == 21) {
 
-                            System.out.println("["+jogador.getUser()+"] Você tem 21 pontos na mão");
+                            System.out.println("[" + jogador.getUser() + "] Você tem 21 pontos na mão");
                             jogador.getMao().mostrarCartas();
                             flag = false;
 
                         } else if (jogador.getMao().getPontosEmMao() > 21) {
-                            System.out.println("["+jogador.getUser()+"Você ultrapassou os 21 pontos na mão");
+                            System.out.println("[" + jogador.getUser() + "] Você ultrapassou os 21 pontos na mão");
                             jogador.pontuacao(0);
                             flag = false;
                             System.out.println("Cartas de " + jogador.getUser());
+                            System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao() + "\t");
                             jogador.getMao().mostrarCartas();
 
                         }
                     } else {
                         flag = false;
                     }
-                    
-                } while (flag == true);
-            }
-            System.out.println("\n");
-        }
 
+                } while (flag == true);
+                System.out.println("\n");
+            }
+        }
+        
         if (croupier.getFlagBlackJack() == false) {
             LinkedList softCarta = croupier.getMao().getCartasNaMao();
             while (!softCarta.isEmpty()) {
@@ -193,13 +195,13 @@ public class Partida {
                     jogador.getMao().mostrarCartas();
 
                 }
+                System.out.println("");
             }
-            System.out.println("");
+            
         }
         System.out.println("Cartas do Crupier:");
         croupier.getMao().mostrarCartas();
-        controleUser.getControleFile().imprimirPontuacao(controleUser.getListaJogadores());
-        controleUser.getControleFile().salvarJogador(controleUser.getListaJogadores());
+
         imprimirCartas();
     }
 

@@ -23,41 +23,17 @@ public class Baralho {
         cartas = create(quantidadeBaralho);
     }
 
-    private enum Value {
-
-        A("Ás", 1),
-        J("J", 10),
-        Q("Q", 10),
-        K("K", 10),
-        Dez("Dez", 10);
-        private int valor;
-        private String tipo;
-
-        Value(String tipo, int valor) {
-            this.valor = valor;
-            this.tipo = tipo;
-        }
-
-        public String getTipo() {
-            return this.tipo;
-        }
-
-        public int getValor() {
-            return this.valor;
-        }
-    }
-
-    private Stack create(int quantidadeBaralho) {
+    private Stack create(int quantidadeBaralho) {           //Método para criar o(s) baralho(s)
         String naipe;
-        IStack naipes = new Stack();
-        for (int i = 0; i < quantidadeBaralho; i++) {
+        IStack naipes = new Stack();                        //Pilha para adicionar os naipes das cartas
+        for (int i = 0; i < quantidadeBaralho; i++) {       //Controla a quantidade de baralhos a ser criado
             naipes.push("♠");
             naipes.push("♥");
             naipes.push("♦");
             naipes.push("♣");
             int numNaipes = 0;
             Carta nova;
-            while (!naipes.isEmpty()) {
+            while (!naipes.isEmpty()) {                     //Enquanto houver naipes
                 int numCarta = 1;
                 while (numCarta <= 13) {
 
@@ -101,7 +77,7 @@ public class Baralho {
 
     public void imprimeBaralho() {
         IStack temp = new Stack();
-        
+
         while (!cartas.isEmpty()) {
             System.out.println(((Carta) cartas.peek()).toString());
             temp.push(cartas.pop());
@@ -132,7 +108,7 @@ public class Baralho {
             int j = i;
             while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) == 0) {
                 if (cartasO[j].getValue().compareTo(cartasO[j - 1].getValue()) < 0) {
-                    
+
                     Carta aux = cartasO[j - 1];
                     cartasO[j - 1] = cartasO[j];
                     cartasO[j] = aux;
@@ -185,6 +161,30 @@ public class Baralho {
         }
         final Baralho other = (Baralho) obj;
         return Objects.equals(this.cartas, other.cartas);
+    }
+
+    private enum Value {
+
+        A("Ás", 1),
+        J("J", 10),
+        Q("Q", 10),
+        K("K", 10),
+        Dez("Dez", 10);
+        private int valor;
+        private String tipo;
+
+        Value(String tipo, int valor) {
+            this.valor = valor;
+            this.tipo = tipo;
+        }
+
+        public String getTipo() {
+            return this.tipo;
+        }
+
+        public int getValor() {
+            return this.valor;
+        }
     }
 
 }
