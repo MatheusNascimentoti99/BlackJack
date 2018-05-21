@@ -37,7 +37,7 @@ public class Baralho {
                 int numCarta = 1;
                 while (numCarta <= 13) {
 
-                    switch (numCarta) {
+                    switch (numCarta) {                     //Adiciona o valor da carta
                         case 10:
                             nova = new Carta(Value.Dez.getTipo(), (String) naipes.peek());
                             cartas.push(nova);
@@ -68,21 +68,21 @@ public class Baralho {
                 naipes.pop();
             }
         }
-        return (Stack) cartas;
+        return (Stack) cartas;                              //retorna uma pilha de cartas
     }
 
-    public void resetaBaralho() {
+    public void resetaBaralho() {                           //Método não utilizado no projeto, mas que pode ser aproveitado futuramente. Método para criar novo baralho
         cartas = create(quantidaDeBaralho);
     }
 
-    public void imprimeBaralho() {
+    public void imprimeBaralho() {                          //Imprime todas as cartas
         IStack temp = new Stack();
 
-        while (!cartas.isEmpty()) {
+        while (!cartas.isEmpty()) {                         //enquanto houver cartas o loop ira imprimir as informações de cada carta                   
             System.out.println(((Carta) cartas.peek()).toString());
-            temp.push(cartas.pop());
+            temp.push(cartas.pop());                        //Pega a carta removida de cima e coloca em uma pilha auxiliar
         }
-        cartas = temp;
+        cartas = temp;                                      //A pilha original recupera todas as cartas removidas
     }
 
     public void ordenarCartas() {
@@ -91,10 +91,10 @@ public class Baralho {
 
     public static void selectSort(IStack a) {
         Carta[] cartasO = new Carta[a.size()];
-        for (int i = 0; !a.isEmpty(); i++) {
+        for (int i = 0; !a.isEmpty(); i++) {                //Passa as informações da pilha para um array, para que se possa implementar um algoritmos mais simples de ordenação
             cartasO[i] = (Carta) a.pop();
         }
-        for (int i = 1; i < cartasO.length; i++) {
+        for (int i = 1; i < cartasO.length; i++) {          //Utilizando o método SelectionSort para ordenar de acordo com o naipe
             int j = i;
             while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) <= 0) {
                 Carta aux = cartasO[j - 1];
@@ -104,7 +104,7 @@ public class Baralho {
             }
 
         }
-        for (int i = 1; i < cartasO.length; i++) {
+        for (int i = 1; i < cartasO.length; i++) {          //Segunda critério de ordenação, utilizando o SelectionSort para ordenar de acordo com o valor da carta
             int j = i;
             while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) == 0) {
                 if (cartasO[j].getValue().compareTo(cartasO[j - 1].getValue()) < 0) {
@@ -117,7 +117,7 @@ public class Baralho {
             }
 
         }
-        for (Carta aux : cartasO) {
+        for (Carta aux : cartasO) {                         //Repassa todas as cartas para a pilha
             a.push(aux);
         }
     }
@@ -127,7 +127,7 @@ public class Baralho {
 
         Carta[] cartasEmbara = new Carta[cartas.size()];
         int tamanho = cartas.size();
-        for (int i = 0; i < tamanho; i++) {
+        for (int i = 0; i < tamanho; i++) {                 //Passa a pilha para um vetor, para poder utilizar de forma mais facíl o objeto Random e assim misturar as cartas
             cartasEmbara[i] = (Carta) cartas.pop();
 
         }
