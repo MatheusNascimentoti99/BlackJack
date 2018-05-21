@@ -51,5 +51,6 @@ public class MaoDeCartaTest {
         mao.getCartasNaMao().add(c1);
         assertEquals(198, mao.getPontosEmMao());
         
+        
     }
 }

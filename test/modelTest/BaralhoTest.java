@@ -12,10 +12,11 @@ import util.Stack;
 public class BaralhoTest {
 
     private Baralho baralho;
-
+    private IStack b;
     @Before
     public void setUp() throws Exception {
         baralho = new Baralho(1);
+        b = new Stack();
     }
 
     @Test
@@ -34,7 +35,7 @@ public class BaralhoTest {
 
         assertFalse(baralho.getCartas().isEmpty());
         
-        IStack b = new Stack();
+        
         baralho.setCartas(b);
         assertFalse(baralho.getCartas().equals(c));
         //Verificar os getters e setters das cartas.
