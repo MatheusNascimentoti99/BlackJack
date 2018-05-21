@@ -129,7 +129,7 @@ public class Partida {
                             jogador.pontuacao(0);
                             flag = false;
                             System.out.println("Cartas de " + jogador.getUser());
-                            System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao() + "\t");
+                            System.out.println("Pontos na mão: " + jogador.getMao().getPontosEmMao() + "\t");
                             jogador.getMao().mostrarCartas();
 
                         }

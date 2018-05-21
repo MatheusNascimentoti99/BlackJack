@@ -1,7 +1,7 @@
 Pontuação geral de jogadores:
 
-Nome: matheus --- Pontuação: 19 -- Partidas vencida: 6
+Nome: matheus --- Pontuação: 28 -- Partidas vencida: 9
 
-Nome: elvis --- Pontuação: 16 -- Partidas vencida: 5
+Nome: elvis --- Pontuação: 20 -- Partidas vencida: 6
 
 Nome: idelvando --- Pontuação: 4 -- Partidas vencida: 1
