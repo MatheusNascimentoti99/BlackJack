@@ -42,6 +42,12 @@ public class StackTest {
       pilha.push(dado3);
       assertFalse(pilha.isEmpty());
       assertSame(dado3, pilha.peek());
+      
+      pilha.pop();
+      pilha.pop();
+      pilha.pop();
+        
+      assertTrue(pilha.isEmpty());
         
     }
 
@@ -63,12 +69,7 @@ public class StackTest {
         
         assertSame(dado1, pilha.pop());
         assertTrue(pilha.isEmpty());
-        
-        pilha.pop();
-        pilha.pop();
-        pilha.pop();
-        
-        assertTrue(pilha.isEmpty());
+      
         
     }
 
