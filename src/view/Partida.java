@@ -12,8 +12,8 @@ import model.Jogador;
 public class Partida {
 
     private Baralho baralho;
-    Croupier croupier;
-    ControllerJogador controleUser;
+    private Croupier croupier;
+    private ControllerJogador controleUser;
 
     public Partida(Baralho baralho) {
         this.baralho = baralho;
