@@ -56,6 +56,7 @@ public class ControllerFileJogadores {
         }
         for (Object aux : jogadores) {                              //Percorre a lista de jogadores resetando a mão de carta.
             ((Jogador) aux).setMao(new MaoDeCarta());
+            ((Jogador) aux).setFlagBlackJack(false);
             jogadoresAux.add(aux);
             
         }
