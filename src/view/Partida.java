@@ -13,7 +13,7 @@ public class Partida {
 
     private Baralho baralho;
     Croupier croupier;
-    ControllerJogador controleUser = new ControllerJogador();
+    ControllerJogador controleUser;
 
     public Partida(Baralho baralho) {
         this.baralho = baralho;

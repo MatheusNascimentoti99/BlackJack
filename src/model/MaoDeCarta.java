@@ -27,8 +27,8 @@ public class MaoDeCarta implements Serializable {
         Iterator iterador = cartasNaMao.iterator();
         pontosEmMao = calcPontosEmMao(iterador);
         if (pontosEmMao > 10) {
-            while (iterador.hasNext()) {
-                if (((Carta) iterador.next()).getValue().equals("Ás")) {
+            while (cartasNaMao.iterator().hasNext()) {
+                if (((Carta) cartasNaMao.iterator().next()).getValue().equals("Ás")) {
                     pontosEmMao = pontosEmMao - 10;
                 }
             }
