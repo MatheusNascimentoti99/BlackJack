@@ -10,7 +10,7 @@ public class Croupier extends Jogador {
         super("crouper", "");
     }
 
-   public Carta DarCarta(Baralho baralho){
+   public Carta DarCarta(Baralho baralho){                  //Método para retirar e retornar a ultima carta do baralho que o Croupier receber
         return (Carta) baralho.getCartas().pop();
     }
 
