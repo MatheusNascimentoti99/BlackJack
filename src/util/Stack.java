@@ -9,7 +9,7 @@ public class Stack implements IStack{
     private Celula head;
     private int size;
     @Override
-    public void push(Object data) {
+    public void push(Object data) {                             //Adiciona um node na pilha
         Celula novo = new Celula(data);
         novo.next = head;
         head = novo;
@@ -17,7 +17,7 @@ public class Stack implements IStack{
     }
 
     @Override
-    public Object pop() {
+    public Object pop() {                                       //Remove um node da pilha e retorna o objeto que estava dentro desse node removido
         if(!isEmpty()){
             
             Celula temp = head;
@@ -30,21 +30,21 @@ public class Stack implements IStack{
     }
 
     @Override
-    public Object peek() {
+    public Object peek() {                                      //Pega o primeiro objeto da pilha
         return head.data;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty() {                                      //Verifica se a pilha está vazia
         return head== null;
     }
 
     @Override
-    public int size() {
+    public int size() {                                             //Retorna o tamanho da pilha
         return size;
     }
     
-    private class Celula{
+    private class Celula{                                           //Subclasse para o funcionamento da pilha
         Object data;
         Celula next;
         private Celula(Object data){
