@@ -95,11 +95,11 @@ public class Partida {
                     jogador.getMao().mostrarCartas();
 
                 } else if (jogador.getFlagBlackJack() == true) {
-                    System.out.println("[" + jogador.getUser() + "] Você tem um BlackJack !!");
+                    System.out.println("[" + jogador.getUser() + "] Você tem um BlackJack !");
                     jogador.pontuacao(3);
                     jogador.setPartidaVencidas(1);
                     System.out.println("Cartas de " + jogador.getUser());
-                    System.out.print("Pontos na mão: " + jogador.getMao().getPontosEmMao());
+                    System.out.println("Pontos na mão: " + jogador.getMao().getPontosEmMao());
                     jogador.getMao().mostrarCartas();
 
                 }
