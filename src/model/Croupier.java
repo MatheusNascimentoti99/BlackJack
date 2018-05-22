@@ -14,5 +14,14 @@ public class Croupier extends Jogador {
         return (Carta) baralho.getCartas().pop();
     }
 
+  
+
+    @Override
+    public String getUser() {
+        return "croupier";
+    }
+
+   
+
 
 }

@@ -4,21 +4,22 @@
  * and open the template in the editor.
  */
 package modelTest;
- 
-import model.Baralho;
+
 import model.Croupier;
-import org.junit.Before;
-import model.Baralho;
-import model.Carta;
+import model.Jogador;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
 import org.junit.Test;
 
+/**
+ *
+ * @author Matheus Nascimento
+ */
 public class CroupierTest {
-    
     Croupier b;
-
+    @Before
     public void setUp() throws Exception {
         b = new Croupier();     
     }
