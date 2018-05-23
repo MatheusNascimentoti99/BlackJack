@@ -37,5 +37,10 @@ public class CartaTest {
         c2.setValue("10");
         
         assertTrue(c1.equals(c2));
+        
+        assertTrue(c1.compareTo(c2) == 0);
+        c2.setNaipe("♦");
+        assertFalse(c1.compareTo(c2) == 0);
+       
     }
 }
