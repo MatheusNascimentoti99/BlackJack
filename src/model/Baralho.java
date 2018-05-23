@@ -163,6 +163,7 @@ public class Baralho {
         return Objects.equals(this.cartas, other.cartas);
     }
 
+    // Método que predefineo valor das cartas.
     private enum Value {
 
         A("Ás", 1),

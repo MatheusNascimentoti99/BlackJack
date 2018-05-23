@@ -79,7 +79,6 @@ public class Partida {
         while (iterador.hasNext()) {
             Jogador jogador = (Jogador) iterador.next();
             if (jogador.getMao().getPontosEmMao() == 21) {
-                System.out.println("Você tem um BlackJack");
                 jogador.setFlagBlackJack(true);
             }
         }
@@ -191,8 +190,10 @@ public class Partida {
             Iterator iteradorPontos = controleUser.getJogadoresNaPartida().iterator();
             while (iteradorPontos.hasNext()) {
                 Jogador jogador = (Jogador) iteradorPontos.next();
-                jogador.pontuacao(3);
-                jogador.setPartidaVencidas(1);
+                if (jogador.getMao().getPontosEmMao() <= 21){
+                    jogador.pontuacao(3);
+                    jogador.setPartidaVencidas(1);
+                }
             }
         }
         

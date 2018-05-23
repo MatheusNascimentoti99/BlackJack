@@ -20,7 +20,7 @@ public class Jogador implements Serializable, Comparable {
     private int pontuacao;
     private int partidaVencidas;
     private MaoDeCarta mao;
-    private boolean flagBlackJack;
+    private boolean flagBlackJack;// Atributo para verificar se o jogador tem um blackJack ou não.
 
     public Jogador(String user, String passeword) {
         this.user = user;
@@ -78,7 +78,8 @@ public class Jogador implements Serializable, Comparable {
         }
         return 0;
     }
-
+    
+    // Método que retorna true se o jogador desejar mais carta e false caso não.
     public boolean pedirCarta() {
         System.out.println("Deseja carta? Digite pedir ou parar");
         Scanner input = new Scanner(System.in);

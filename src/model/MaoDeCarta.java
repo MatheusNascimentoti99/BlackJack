@@ -26,14 +26,6 @@ public class MaoDeCarta implements Serializable {
         pontosEmMao = 0;
         Iterator iterador = cartasNaMao.iterator();
         pontosEmMao = calcPontosEmMao(iterador);
-        if (pontosEmMao > 10) {
-            while (iterador.hasNext()) {
-                if (((Carta) iterador.next()).getValue().equals("Ás")) {
-                    pontosEmMao = pontosEmMao - 10;
-                }
-            }
-
-        }
         return pontosEmMao;
     }
 
@@ -50,8 +42,11 @@ public class MaoDeCarta implements Serializable {
         }
     }
 
+    
+    // Método que calcula a pontuação da mão de cartas.
     private int calcPontosEmMao(Iterator iterador) {
-        Iterator aux = iterador;
+        int aces = 0;
+        int total = 0;
         while (iterador.hasNext()) {
 
             Carta carta = (Carta) iterador.next();
@@ -60,25 +55,34 @@ public class MaoDeCarta implements Serializable {
                 case "J":
                 case "Q":
                 case "Dez":
-                    pontosEmMao = pontosEmMao + 10;
+                    total = total + 10;
                     break;
 
                 case "Ás":
-                    if (pontosEmMao > 10) {
-                        pontosEmMao = pontosEmMao + 1;
-                    } else if (pontosEmMao <= 10) {
-                        pontosEmMao = pontosEmMao + 11;
-                    }
+                    aces++;
                     break;
 
                 default:
-                    pontosEmMao = pontosEmMao + Integer.parseInt(carta.getValue());
+                    total = total + Integer.parseInt(carta.getValue());
 
                     break;
             }
+            
         }
+        
+            if (aces != 0){
+                for (int i = 0; i < aces; i++){
 
-        return pontosEmMao;
+                    if (total > 10){
+                        total += 1;
+                    }
+                    else{
+                        total += 11;
+                    }
+                }
+            }
+
+        return total;
     }
 
     @Override
