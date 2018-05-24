@@ -4,6 +4,10 @@ import java.util.Objects;
 import util.*;
 import java.util.Random;
 
+/**
+ *
+ * @author Matheus Nascimento
+ */
 public class Baralho {
 
     private final int quantidaDeBaralho;

@@ -20,11 +20,18 @@ import java.util.LinkedList;
 import model.MaoDeCarta;
 
 /**
- *
+ *A classe <b>ControllerFileJogadores</b> faz o gerenciamento dos arquivos utilizados no programa
  * @author Matheus Nascimento
+ * @since May 2018
+ * @version 1.0
  */
 public class ControllerFileJogadores {
 
+    /**
+     *
+     * @param jogadores Parâmetro utilizado para obter a lista de jogadores cadastrados 
+     * @throws Exception Exceções ao abrir/ler o arquivo.
+     */
     public void salvarJogador(LinkedList jogadores) throws Exception {
         try {
             FileOutputStream arquivoGrav;

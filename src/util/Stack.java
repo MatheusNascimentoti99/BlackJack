@@ -5,6 +5,10 @@
  */
 package util;
 
+/**
+ *
+ * @author Matheus Nascimento
+ */
 public class Stack implements IStack{
     private Celula head;
     private int size;

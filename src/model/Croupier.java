@@ -5,6 +5,10 @@
  */
 package model;
 
+/**
+ *
+ * @author Matheus Nascimento
+ */
 public class Croupier extends Jogador {
     public Croupier() {
         super("crouper", "");

@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ *
+ * @author Matheus Nascimento
+ */
 public class MaoDeCarta implements Serializable {
 
     private LinkedList cartasNaMao;

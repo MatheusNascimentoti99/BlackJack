@@ -9,6 +9,10 @@ import model.Carta;
 import model.Croupier;
 import model.Jogador;
 
+/**
+ *
+ * @author Matheus Nascimento
+ */
 public class Partida {
 
     private Baralho baralho;
