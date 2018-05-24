@@ -172,10 +172,9 @@ public class Partida {
         
         // Se o croupier tem um soft, ou seja um Ás e uma carta entre 2 e 9 na mão, é adicionado mais uma carta a sua mão.
         if (croupier.getFlagBlackJack() == false) {
-            LinkedList softCarta = croupier.getMao().getCartasNaMao();
-            while (!softCarta.isEmpty()) {
-                Carta carta = (Carta) softCarta.remove();
-                if (carta.getValue().equals("Ás")) {
+            Iterator softCarta = croupier.getMao().getCartasNaMao().iterator();
+            while (!softCarta.hasNext()) {
+                if (softCarta.next().equals("Ás")) {
                     croupier.getMao().getCartasNaMao().add(croupier.DarCarta(baralho));
                 }
             }

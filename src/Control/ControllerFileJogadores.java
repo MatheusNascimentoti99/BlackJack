@@ -28,9 +28,11 @@ import model.MaoDeCarta;
 public class ControllerFileJogadores {
 
     /**
-     *
+     * <b>salvarJogador</b> é utilidado para gravar as informações da lista de jogadores no arquivo binário <i>Dados.data</i>.<p>
+     *<b>Exemple:</b> salvarJogador(listaDeJogadores);
      * @param jogadores Parâmetro utilizado para obter a lista de jogadores cadastrados 
      * @throws Exception Exceções ao abrir/ler o arquivo.
+     * 
      */
     public void salvarJogador(LinkedList jogadores) throws Exception {
         try {
