@@ -18,15 +18,15 @@ public class ControllerJogador {
 
     LinkedList listaJogadores = new LinkedList();                       //Lista de todos os jogadores cadastrados no jogo
     LinkedList jogadoresNaPartida = new LinkedList();                   //Lista com jogadores apenas que estão em uma partida
-    ControllerFileJogadores controleFile = new ControllerFileJogadores();       //Para poder ter recuperação de dados dos arquivos
+    ControllerFile controleFile = new ControllerFile();       //Para poder ter recuperação de dados dos arquivos
 
-    public ControllerFileJogadores getControleFile() {
+    public ControllerFile getControleFile() {
         return controleFile;
     }
 
     public ControllerJogador() {
-        controleFile = new ControllerFileJogadores();
-        listaJogadores = controleFile.lerJogadores();
+        controleFile = new ControllerFile();
+        listaJogadores = controleFile.recuperarJogadores();
     }
 
     public boolean verificacao(String user, String senha, LinkedList listaJogadores) {
@@ -91,8 +91,8 @@ public class ControllerJogador {
         } else {                                        //Se não estiver, então o usuário é adicionado na lista
             Jogador novoJogador = new Jogador(nome, senha);
             listaJogadores.add(novoJogador);
-            controleFile.salvarJogador(listaJogadores);     //Grava a lista de jogadores atualizada no arquivo binário
-            listaJogadores = controleFile.lerJogadores();
+            controleFile.salvarArquivo(listaJogadores,"Resources/Dados.data");     //Grava a lista de jogadores atualizada no arquivo binário
+            listaJogadores = controleFile.recuperarJogadores();
             return novoJogador;
 
         }
@@ -122,7 +122,6 @@ public class ControllerJogador {
             switch (opcaoS) {
                 case "2":
                     cadastrar();
-                    loginJogador();
                     break;
                 case "1":                       //
                     loginJogador();

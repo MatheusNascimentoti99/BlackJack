@@ -32,23 +32,7 @@ public class Partida {
         this.baralho = baralho;
     }
 
-    // Método que imprime as cartas, ordenadas ou desordenadas, ao final da partida.
-    public void imprimirCartas() {
-        System.out.println("Deseja imprmir cartas(desordenadas ordenadas):");
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
-        switch (input) {
-            case "desordenadas":
-                System.out.println("\n \n Restante das cartas: ");
-                baralho.imprimeBaralho();
-                break;
-            case "ordenadas":
-                System.out.println("\n \n Ordenado:");
-                baralho.ordenarCartas();
-                baralho.imprimeBaralho();
-
-        }
-    }
+    
 
     // Inicio da partida.
     public void partida(ControllerJogador controleUser) throws Exception {
@@ -172,10 +156,9 @@ public class Partida {
         
         // Se o croupier tem um soft, ou seja um Ás e uma carta entre 2 e 9 na mão, é adicionado mais uma carta a sua mão.
         if (croupier.getFlagBlackJack() == false) {
-            LinkedList softCarta = croupier.getMao().getCartasNaMao();
-            while (!softCarta.isEmpty()) {
-                Carta carta = (Carta) softCarta.remove();
-                if (carta.getValue().equals("Ás")) {
+            Iterator softCarta = croupier.getMao().getCartasNaMao().iterator();
+            while (!softCarta.hasNext()) {
+                if (softCarta.next().equals("Ás")) {
                     croupier.getMao().getCartasNaMao().add(croupier.DarCarta(baralho));
                 }
             }
@@ -190,7 +173,7 @@ public class Partida {
         // Se o croupier ultrapassou os 21 pontos, estourou, todos jogadores vencem a partida e ganham 3 pontos.
         if (croupier.getMao().getPontosEmMao() > 21) {
             croupierEstourou = true;
-            System.out.println("O croupier estourou, todos jogadores ganham pontos");
+            System.out.println("O croupier estourou, todos jogadores que não estouraram ganham pontos");
             Iterator iteradorPontos = controleUser.getJogadoresNaPartida().iterator();
             while (iteradorPontos.hasNext()) {
                 Jogador jogador = (Jogador) iteradorPontos.next();
@@ -246,7 +229,7 @@ public class Partida {
         croupier.getMao().mostrarCartas();
         
         // Chamada do método onde serão imprimidas as cartas ao final do jogo, ordenadas ou na ordem que iam sair do baralho.
-        imprimirCartas();
+        controleUser.getControleFile().salvarArquivo(baralho.getCartas(), "Resources/baralho.txt");
     }
 
 }

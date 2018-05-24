@@ -5,11 +5,13 @@
  */
 package util;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Matheus Nascimento
  */
-public class Stack implements IStack{
+public class Stack implements IStack, Serializable{
     private Celula head;
     private int size;
     @Override
@@ -48,7 +50,7 @@ public class Stack implements IStack{
         return size;
     }
     
-    private class Celula{                                           //Subclasse para o funcionamento da pilha
+    private class Celula implements Serializable{                                           //Subclasse para o funcionamento da pilha
         Object data;
         Celula next;
         private Celula(Object data){

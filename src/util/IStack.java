@@ -1,7 +1,7 @@
 
 package util;
 
-public interface IStack{
+public interface IStack {
 
     public void push(Object data);
 

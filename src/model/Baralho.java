@@ -1,17 +1,23 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import util.*;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
  * @author Matheus Nascimento
  */
-public class Baralho {
+public class Baralho implements Serializable {
 
-    private final int quantidaDeBaralho;
+    private int quantidaDeBaralho;
     private IStack cartas = new Stack();
+
+    public Baralho() {
+        
+    }
 
     public IStack getCartas() {
         return cartas;
@@ -79,7 +85,7 @@ public class Baralho {
         cartas = create(quantidaDeBaralho);
     }
 
-    public void imprimeBaralho() {                          //Imprime todas as cartas
+    private void imprimeBaralho() {                          //Imprime todas as cartas
         IStack temp = new Stack();
 
         while (!cartas.isEmpty()) {                         //enquanto houver cartas o loop ira imprimir as informações de cada carta                   
@@ -88,15 +94,29 @@ public class Baralho {
         }
         cartas = temp;                                      //A pilha original recupera todas as cartas removidas
     }
+    // Método que imprime as cartas, ordenadas ou desordenadas, ao final da partida.
+    public void imprimirCartas() {
+        System.out.println("Imprimir cartas[1 para desordenadas e 2 para ordenadas]:");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        switch (input) {
+            case "1":
+                System.out.println("\n \n Restante das cartas: ");
+                imprimeBaralho();
+                break;
+            case "2":
+                System.out.println("\n \n Ordenado:");
+                ordenarCartas();
+                imprimeBaralho();
+
+        }
+    }
+ 
 
     public void ordenarCartas() {
-        selectSort(cartas);
-    }
-
-    public static void selectSort(IStack a) {
-        Carta[] cartasO = new Carta[a.size()];
-        for (int i = 0; !a.isEmpty(); i++) {                //Passa as informações da pilha para um array, para que se possa implementar um algoritmos mais simples de ordenação
-            cartasO[i] = (Carta) a.pop();
+        Carta[] cartasO = new Carta[cartas.size()];
+        for (int i = 0; !cartas.isEmpty(); i++) {                //Passa as informações da pilha para um array, para que se possa implementar um algoritmos mais simples de ordenação
+            cartasO[i] = (Carta) cartas.pop();
         }
         for (int i = 1; i < cartasO.length; i++) {          //Utilizando o método SelectionSort para ordenar de acordo com o naipe
             int j = i;
@@ -107,7 +127,7 @@ public class Baralho {
                 j--;
             }
 
-        }
+        }     
         for (int i = 1; i < cartasO.length; i++) {          //Segunda critério de ordenação, utilizando o SelectionSort para ordenar de acordo com o valor da carta
             int j = i;
             while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) == 0) {
@@ -122,7 +142,7 @@ public class Baralho {
 
         }
         for (Carta aux : cartasO) {                         //Repassa todas as cartas para a pilha
-            a.push(aux);
+            cartas.push(aux);
         }
     }
     //Metodo embaralhar
