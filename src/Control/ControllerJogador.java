@@ -11,24 +11,34 @@ import java.util.Scanner;
 import model.Jogador;
 
 /**
- *
- * @author Usuário 01
+ * A classe <b>ControllerJogador</b> faz o gerenciamento de jogadores.
+ * @author Matheus Nascimento e Elvis Serafim
+ * @since May 2018
+ * @version 1.0
  */
 public class ControllerJogador {
 
     LinkedList listaJogadores = new LinkedList();                       //Lista de todos os jogadores cadastrados no jogo
     LinkedList jogadoresNaPartida = new LinkedList();                   //Lista com jogadores apenas que estão em uma partida
-    ControllerFile controleFile = new ControllerFile();       //Para poder ter recuperação de dados dos arquivos
+    ControllerFile controleFile = new ControllerFile();                 //Para poder ter recuperação de dados dos arquivos
 
-    public ControllerFile getControleFile() {
-        return controleFile;
-    }
+    
 
+    /**
+     *O construtor de <b>ControllerJo</b> cria um novo genrenciador de arquivo e recupera a lista de jogadores que está no arquivo binário.
+     */
     public ControllerJogador() {
         controleFile = new ControllerFile();
         listaJogadores = controleFile.recuperarJogadores();
     }
-
+    
+    /**
+     *O método <b>verificacao</b> procura um jogador na lista de jogadores que tenha o mesmo usuário e senha.
+     * @param user Parâmetro utilizado para identificar o nome do usuário.
+     * @param senha Parâmetro utilizado para identificar a senha do usuário.
+     * @param listaJogadores Parâmetro utilizado para fazer a busca das informações do usuário.
+     * @return Retorna um valor booleano, se o usuário existir na lista é retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
+     */
     public boolean verificacao(String user, String senha, LinkedList listaJogadores) {
         if (listaJogadores == null) {       //Verifica se há lista de jogadores
             return false;
@@ -46,6 +56,12 @@ public class ControllerJogador {
         return false;
     }
 
+    /**
+     *O método <b>verificacao</b> procura um jogador na lista de jogadores que tenha o mesmo usuário. Método utilizado para não ter usuários com o mesmo nome.
+     * @param user Parâmetro utilizado para identificar o nome do usuário.
+     * @param listaJogadores Parâmetro utilizado para fazer a busca das informações do usuário.
+     * @return Retorna um valor booleano, se o usuário existir na lista é retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
+     */
     public boolean verificacao(String user, LinkedList listaJogadores) {        //Para verificar se o usuário já está cadastrado, essa verificação é feita procurando pelo nome
         if (listaJogadores == null) {
             return false;
@@ -64,7 +80,7 @@ public class ControllerJogador {
         return false;
     }
 
-    public Object recuperarJogador(String user, String senha) {                 //Retorna o jogador que tever o mesmo nome e senha que foi passado por parâmetro.
+    public Object recuperarJogador(String user, String senha) {                 
 
         Iterator iterador = listaJogadores.iterator();
 
@@ -72,7 +88,7 @@ public class ControllerJogador {
 
             Jogador procurado = (Jogador) iterador.next();
 
-            if (procurado.getUser().equals(user) && procurado.getPasseword().equals(senha)) {   //Verifica a senha e o nome do usuário
+            if (procurado.getUser().equals(user) && procurado.getPasseword().equals(senha)) {   
                 return procurado;
             }
         }
@@ -158,5 +174,7 @@ public class ControllerJogador {
     public LinkedList getJogadoresNaPartida() {
         return jogadoresNaPartida;
     }
-
+    public ControllerFile getControleFile() {
+        return controleFile;
+    }
 }
