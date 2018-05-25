@@ -17,17 +17,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.LinkedList;
-import model.Baralho;
 import model.MaoDeCarta;
 import util.IStack;
 import util.SelectionSort;
-import util.Stack;
 
 /**
  * A classe <b>ControllerFileJogadores</b> faz o gerenciamento dos arquivos
- * utilizados no programa
+ * utilizados no programa.
  *
- * @author Matheus Nascimento
+ * @author Matheus Nascimento e Elvis Serafim
  * @since May 2018
  * @version 1.0
  */
@@ -38,15 +36,15 @@ public class ControllerFile {
      * jogadores no arquivo binário <i>Dados.data</i>.<p>
      * <b>Exemple:</b> salvarJogador(listaDeJogadores);
      *
-     * @param dados Parâmetro utilizado para obter a lista de jogadores
-     * cadastrados
-     * @throws Exception Exceções ao abrir/ler o arquivo.
+     * @param dados Parâmetro utilizado para obter a lista de jogadores cadastrados.
+     * @param local Parâmetro utilizado para informar o diretório do arquivo.
+     * @throws Exception Exceções ao abrir/gravar o arquivo.
      *
      */
     public void salvarArquivo(Object dados, String local) throws Exception {
         try {
             FileOutputStream arquivoGrav;
-            arquivoGrav = new FileOutputStream(local);             //Arquivo onde será salvo todos os dados dos jogadores
+            arquivoGrav = new FileOutputStream(local);             
             try (ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav)) {
                 objGravar.writeObject(dados);
 
@@ -59,11 +57,16 @@ public class ControllerFile {
         }
     }
 
+    /**
+     * <b>recuperarJogadores</b> é utilidado para recuperar as informações da lista de jogadores no arquivo binário <i>Dados.data</i>.<p>     
+     *
+     * @return  Retorna a lista de jogadores que está no arquivo binário.
+     */
     public LinkedList recuperarJogadores() {
         LinkedList jogadores;
         LinkedList jogadoresAux = new LinkedList();
         jogadores = (LinkedList) lerArquivo("Resources/Dados.data");
-        for (Object aux : jogadores) {                              //Percorre a lista de jogadores resetando a mão de carta.
+        for (Object aux : jogadores) {                              
             ((Jogador) aux).setMao(new MaoDeCarta());
             ((Jogador) aux).setFlagBlackJack(false);
             jogadoresAux.add(aux);
@@ -74,6 +77,11 @@ public class ControllerFile {
 
     }
 
+    /**
+     * <b>recuperarBaralho</b> É utilidado para recuperar as informações da pilha de baralhos no arquivo binário <i>baralho.data</i>.<p>     
+     *
+     * @return  Retorna uma pilha de cartas.
+     */
     public IStack recuperarBaralho() {
         IStack cartas;
         try {
@@ -89,10 +97,10 @@ public class ControllerFile {
         Object dado = new Object();
         try {
 
-            try ( //Carrega o arquivo
+            try ( 
                     FileInputStream arquivoLeitura = new FileInputStream(local); ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura)) {
 
-                dado = objLeitura.readObject();       //recebe os dados gravados no disco e passa para memória
+                dado = objLeitura.readObject();       
             }
 
         } catch (IOException | ClassNotFoundException e) {
@@ -100,12 +108,17 @@ public class ControllerFile {
         return dado;
     }
 
+    /**
+     *<b>imprimirPontuacao</b> é utilidado para imprimir as informações de todos os jogadores no arquivo de texto <i>pontuação.txt</i>.<p>     
+     * @param jogadores É a lista atualizada com todos os jogadores cadastrados no sistema.
+     * @throws IOException Exceções ao abrir/gravar o arquivo.
+     */
     public void imprimirPontuacao(LinkedList jogadores) throws IOException {
-        jogadores = ordenar(jogadores);                                       //Chama um algoritmo de ordenação para ordenar os jogadores por pontuação
-        FileWriter arqPontuacao = new FileWriter("Resources/Pontuação.txt");        //Arquivo que será salvo a pontuação
+        jogadores = ordenar(jogadores);                                       
+        FileWriter arqPontuacao = new FileWriter("Resources/Pontuação.txt");        
         try (PrintWriter gravarArq = new PrintWriter(arqPontuacao)) {
             gravarArq.println("Pontuação geral de jogadores:");
-            for (Object aux : jogadores) {                                             //Laço para imprimir todos os jogadores da lista
+            for (Object aux : jogadores) {                                             
                 gravarArq.println(((Jogador) aux).toString());
             }
         } catch (Exception exe) {
