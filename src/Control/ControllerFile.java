@@ -15,7 +15,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
+import java.io.PrintWriter;/**
+ * A classe <b>ControllerFileJogadores</b> faz o gerenciamento dos arquivos
+ * utilizados no programa.
+ *
+ * @author Matheus Nascimento e Elvis Serafim
+ * @since May 2018
+ * @version 1.0
+ */
 import java.util.LinkedList;
 import model.MaoDeCarta;
 import util.IStack;
