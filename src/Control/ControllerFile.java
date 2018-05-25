@@ -21,6 +21,7 @@ import model.Baralho;
 import model.MaoDeCarta;
 import util.IStack;
 import util.SelectionSort;
+import util.Stack;
 
 /**
  * A classe <b>ControllerFileJogadores</b> faz o gerenciamento dos arquivos
@@ -74,7 +75,14 @@ public class ControllerFile {
     }
 
     public IStack recuperarBaralho() {
-        return (IStack) lerArquivo("Resources/baralho.txt");
+        IStack cartas;
+        try {
+            cartas = (IStack) lerArquivo("Resources/baralho.data");
+        } catch (ClassCastException exe) {
+            return  null;
+        }
+
+        return cartas;
     }
 
     private Object lerArquivo(String local) {

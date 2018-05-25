@@ -91,8 +91,9 @@ public class ControllerJogador {
         } else {                                        //Se não estiver, então o usuário é adicionado na lista
             Jogador novoJogador = new Jogador(nome, senha);
             listaJogadores.add(novoJogador);
-            controleFile.salvarArquivo(listaJogadores,"Resources/Dados.data");     //Grava a lista de jogadores atualizada no arquivo binário
+            controleFile.salvarArquivo(listaJogadores, "Resources/Dados.data");     //Grava a lista de jogadores atualizada no arquivo binário
             listaJogadores = controleFile.recuperarJogadores();
+            System.out.println("Cadastro efetuado com sucesso!");
             return novoJogador;
 
         }
@@ -103,62 +104,43 @@ public class ControllerJogador {
         String user;
         String senha;
         boolean flagJogadorCadastr = false;
-        System.out.print("Digita seu nome:");
-        user = input();
-        System.out.print("Senha:");
-        senha = input();
-        flagJogadorCadastr = verificacao(user, senha, listaJogadores);
-        Boolean flagJogadorPartida = verificacao(user, senha, jogadoresNaPartida);     //Verifica se o jogador já faz o login na partida
-        if (flagJogadorPartida) {
-            System.out.println("Tentativa invalida! " + user + " já está na partida.");
-        } else if (flagJogadorCadastr && !flagJogadorPartida) {                          //Se jogador estiver cadastrado e não estiver na partida, então o login será aceito
-            System.out.println("Login aceito!");
-            Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
-            jogadoresNaPartida.add(jogadorLogin);
+        System.out.println("Insira a quantidade de jogadores na partida:");
+        int quantidade = Integer.parseInt(input());
+        for (int i = 0; i < quantidade; i++) {
+            System.out.print("Jogador "+ (i+1) +" digite seu nome:");
+            user = input();
+            System.out.print("Senha:");
+            senha = input();
+            flagJogadorCadastr = verificacao(user, senha, listaJogadores);
+            Boolean flagJogadorPartida = verificacao(user, senha, jogadoresNaPartida);     //Verifica se o jogador já faz o login na partida
+            if (flagJogadorPartida) {
+                System.out.println("Tentativa invalida! " + user + " já está na partida.");
+            } else if (flagJogadorCadastr && !flagJogadorPartida) {                          //Se jogador estiver cadastrado e não estiver na partida, então o login será aceito
+                System.out.println("Login aceito!");
+                Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
+                jogadoresNaPartida.add(jogadorLogin);
 
-        } else {
-            System.out.println("Login invalido! \n Digite 1 para tentar novamente \n Digite 2 para novo cadastro");
-            String opcaoS = input();
-            switch (opcaoS) {
-                case "2":
-                    cadastrar();
-                    break;
-                case "1":                       //
-                    loginJogador();
-                    break;
-                default:
+            } else {
+                System.out.println("Login invalido! \n Digite 1 para tentar novamente \n Digite 2 para novo cadastro");
+                String opcaoS = input();
+                switch (opcaoS) {
+                    case "2":
+                        cadastrar();
+                        break;
+                    case "1":                       //
+                        loginJogador();
+                        break;
+                    default:
+
+                }
 
             }
-
         }
-        tentarLogin();
     }
 
     private String input() {                //Para resumir as entradas do teclado;
         Scanner opcao = new Scanner(System.in);
         return opcao.nextLine();
-    }
-
-    private void tentarLogin() throws Exception {
-        System.out.println("Dejese adicionar mais um jogador? sim ou sair:");
-        String opcao = input();
-        switch (opcao) {
-            case "sim":
-                if (jogadoresNaPartida.size() == 5) {
-                    System.out.println("Partida sem vagas");
-                } else {
-                    loginJogador();
-                }
-                break;
-
-            case "sair":
-                break;
-
-            default:
-                System.out.println("Opção inválida!");
-                tentarLogin();
-                break;
-        }
     }
 
     public void mostrarJogadores() {
