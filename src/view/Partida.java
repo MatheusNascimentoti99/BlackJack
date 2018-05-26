@@ -34,11 +34,6 @@ public class Partida {
 
     // Inicio da partida.
     public void partida(ControllerJogador controleUser) throws Exception {
-        System.out.println("-------------------------Login----------------------------------  \n");
-        controleUser.loginJogador();
-
-        baralho.embaralhar();
-        System.out.println("-------------------------Início da partida----------------------------------");
 
         //Distribuindo a 1° carta aos jogadores e ao croupier.
         Iterator iteradorCarta1 = controleUser.getJogadoresNaPartida().iterator();

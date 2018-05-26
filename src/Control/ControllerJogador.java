@@ -7,11 +7,11 @@ package Control;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Scanner;
 import model.Jogador;
 
 /**
  * A classe <b>ControllerJogador</b> faz o gerenciamento de jogadores.
+ *
  * @author Matheus Nascimento e Elvis Serafim
  * @since May 2018
  * @version 1.0
@@ -22,22 +22,25 @@ public class ControllerJogador {
     LinkedList jogadoresNaPartida = new LinkedList();                   //Lista com jogadores apenas que estão em uma partida
     ControllerFile controleFile = new ControllerFile();                 //Para poder ter recuperação de dados dos arquivos
 
-    
-
     /**
-     *O construtor de <b>ControllerJo</b> cria um novo genrenciador de arquivo e recupera a lista de jogadores que está no arquivo binário.
+     * O construtor de <b>ControllerJo</b> cria um novo genrenciador de arquivo
+     * e recupera a lista de jogadores que está no arquivo binário.
      */
     public ControllerJogador() {
         controleFile = new ControllerFile();
         listaJogadores = controleFile.recuperarJogadores();
     }
-    
+
     /**
-     *O método <b>verificacao</b> procura um jogador na lista de jogadores que tenha o mesmo usuário e senha.
+     * O método <b>verificacao</b> procura um jogador na lista de jogadores que
+     * tenha o mesmo usuário e senha.
+     *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
      * @param senha Parâmetro utilizado para identificar a senha do usuário.
-     * @param listaJogadores Parâmetro utilizado para fazer a busca das informações do usuário.
-     * @return Retorna um valor booleano, se o usuário existir na lista é retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
+     * @param listaJogadores Parâmetro utilizado para fazer a busca das
+     * informações do usuário.
+     * @return Retorna um valor booleano, se o usuário existir na lista é
+     * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
     public boolean verificacao(String user, String senha, LinkedList listaJogadores) {
         if (listaJogadores == null) {       //Verifica se há lista de jogadores
@@ -57,10 +60,15 @@ public class ControllerJogador {
     }
 
     /**
-     *O método <b>verificacao</b> procura um jogador na lista de jogadores que tenha o mesmo usuário. Método utilizado para não ter usuários com o mesmo nome.
+     * O método <b>verificacao</b> procura um jogador na lista de jogadores que
+     * tenha o mesmo usuário. Método utilizado para não ter usuários com o mesmo
+     * nome.
+     *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
-     * @param listaJogadores Parâmetro utilizado para fazer a busca das informações do usuário.
-     * @return Retorna um valor booleano, se o usuário existir na lista é retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
+     * @param listaJogadores Parâmetro utilizado para fazer a busca das
+     * informações do usuário.
+     * @return Retorna um valor booleano, se o usuário existir na lista é
+     * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
     public boolean verificacao(String user, LinkedList listaJogadores) {        //Para verificar se o usuário já está cadastrado, essa verificação é feita procurando pelo nome
         if (listaJogadores == null) {
@@ -80,7 +88,7 @@ public class ControllerJogador {
         return false;
     }
 
-    public Object recuperarJogador(String user, String senha) {                 
+    public Object recuperarJogador(String user, String senha) {
 
         Iterator iterador = listaJogadores.iterator();
 
@@ -88,83 +96,44 @@ public class ControllerJogador {
 
             Jogador procurado = (Jogador) iterador.next();
 
-            if (procurado.getUser().equals(user) && procurado.getPasseword().equals(senha)) {   
+            if (procurado.getUser().equals(user) && procurado.getPasseword().equals(senha)) {
                 return procurado;
             }
         }
         return null;
     }
 
-    public Jogador cadastrar() throws Exception {
-        System.out.println("## Bora se cadastrar ##");
-        System.out.println("Digita seu nome \n");
-        String nome = input();
-        System.out.println("Escolha uma senha\n");
-        String senha = input();
-        if (verificacao(nome, listaJogadores)) {        //Faz a verificação para ver se o jogador já está na lista
-            System.out.println("Você já está cadastrado");
+    public Jogador cadastrar(String nome, String senha) throws Exception {
+
+        if (verificacao(nome, listaJogadores)) {        //Faz a verificação para ver se o jogador já está na lista 
             return null;
         } else {                                        //Se não estiver, então o usuário é adicionado na lista
             Jogador novoJogador = new Jogador(nome, senha);
             listaJogadores.add(novoJogador);
             controleFile.salvarArquivo(listaJogadores, "Resources/Dados.data");     //Grava a lista de jogadores atualizada no arquivo binário
             listaJogadores = controleFile.recuperarJogadores();
-            System.out.println("Cadastro efetuado com sucesso!");
             return novoJogador;
 
         }
 
     }
 
-    public void loginJogador() throws Exception {           //Método que será chamado para adicionar o jogodor na partida
-        String user;
-        String senha;
-        boolean flagJogadorCadastr = false;
-        System.out.println("Insira a quantidade de jogadores na partida:");
-        int quantidade = Integer.parseInt(input());
-        for (int i = 0; i < quantidade; i++) {
-            System.out.print("Jogador "+ (i+1) +" digite seu nome:");
-            user = input();
-            System.out.print("Senha:");
-            senha = input();
-            flagJogadorCadastr = verificacao(user, senha, listaJogadores);
-            Boolean flagJogadorPartida = verificacao(user, senha, jogadoresNaPartida);     //Verifica se o jogador já faz o login na partida
-            if (flagJogadorPartida) {
-                System.out.println("Tentativa invalida! " + user + " já está na partida.");
-            } else if (flagJogadorCadastr && !flagJogadorPartida) {                          //Se jogador estiver cadastrado e não estiver na partida, então o login será aceito
-                System.out.println("Login aceito!");
-                Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
-                jogadoresNaPartida.add(jogadorLogin);
+    public boolean loginJogador(String user, String senha) throws Exception {           //Método que será chamado para adicionar o jogodor na partida.
 
-            } else {
-                System.out.println("Login invalido! \n Digite 1 para tentar novamente \n Digite 2 para novo cadastro");
-                String opcaoS = input();
-                switch (opcaoS) {
-                    case "2":
-                        cadastrar();
-                        break;
-                    case "1":                       //
-                        loginJogador();
-                        break;
-                    default:
+        if (verificacao(user, senha, jogadoresNaPartida)) {
+            return false;
+        } else if(!verificacao(user, senha, listaJogadores)){
+            return false;
+        }                        
+        Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
+        jogadoresNaPartida.add(jogadorLogin);
+        return true;
 
-                }
-
-            }
-        }
     }
 
-    private String input() {                //Para resumir as entradas do teclado;
-        Scanner opcao = new Scanner(System.in);
-        return opcao.nextLine();
-    }
+    public Iterator mostrarJogadores() {
+        return listaJogadores.iterator();
 
-    public void mostrarJogadores() {
-        Iterator itera = listaJogadores.iterator();
-        while (itera.hasNext()) {                                               //Percorre a lista de jogadores imprimendo sua respectivas informações         
-            Jogador jogador = (Jogador) itera.next();
-            System.out.println(jogador.toString());
-        }
     }
 
     public LinkedList getListaJogadores() {
@@ -174,6 +143,7 @@ public class ControllerJogador {
     public LinkedList getJogadoresNaPartida() {
         return jogadoresNaPartida;
     }
+
     public ControllerFile getControleFile() {
         return controleFile;
     }

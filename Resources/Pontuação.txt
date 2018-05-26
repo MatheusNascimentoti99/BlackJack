@@ -11,3 +11,5 @@ Nome: jose --- Pontuação: 4 -- Partidas vencida: 1
 Nome: jubileu --- Pontuação: 3 -- Partidas vencida: 1
 
 Nome: antonio --- Pontuação: 0 -- Partidas vencida: 0
+
+Nome: joao --- Pontuação: 0 -- Partidas vencida: 0
