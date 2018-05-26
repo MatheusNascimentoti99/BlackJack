@@ -74,14 +74,14 @@ public class App {
         return opcao.nextLine();
     }
 
-    private static void cadastro(ControllerJogador controleUser) throws Exception {
+    private static void cadastro(ControllerJogador controleJogador) throws Exception {
         System.out.println("## Bora se cadastrar ##");
         System.out.println("Digita seu nome \n");
         String nome = input();
         System.out.println("Escolha uma senha\n");
         String senha = input();
         //Aba para novo cadastro
-        if (controleUser.cadastrar(nome, senha) == null) {
+        if (controleJogador.cadastrar(nome, senha) == false) {
             System.out.println("Você já está cadastrado");
         }
     }
@@ -97,10 +97,14 @@ public class App {
         controlePartida.baralhosDaPartida(escolherPartida(controlePartida));
         controlePartida.getPartida().getBaralho().embaralhar();
         int quantidade = quantidade();
-        for (int i = 0; i < quantidade; i++) {
+        Boolean sucessoLogin = true;
+        int numJogador = 0;
+        while (numJogador < quantidade) {
+            if(sucessoLogin )
+                numJogador++;
             System.out.println("## Bora fazer login ##");
-            System.out.print(i + 1 + " - ");
-            entrarLogin(controleJogador);
+            System.out.print(numJogador+ " - ");
+            sucessoLogin = entrarLogin(controleJogador);
 
         }
         for (int i = 0; i < 2; i++) {
@@ -140,32 +144,32 @@ public class App {
         return partidaPersonalizada();
     }
 
-    private static void entrarLogin(ControllerJogador controleJogador) throws Exception {
+    private static Boolean entrarLogin(ControllerJogador controleJogador) throws Exception {
 
         System.out.println("Digite seu nome:");
         String user = input();
         System.out.println("Digite sua senha:");
         String senha = input();
         if (controleJogador.loginJogador(user, senha) == false) {
-            if (controleJogador.verificacao(user)) {
+            if (controleJogador.verificacao(user, controleJogador.getJogadoresNaPartida())) {
                 System.out.println("Jogador já está na partida!");
-            } else if (controleJogador.verificacao(user, senha) == false) {
+            } else if (controleJogador.verificacao(user, senha, controleJogador.getListaJogadores()) == false) {
                 System.out.println("Jogador não está cadastrado!");
                 System.out.println("Deseja cadastrar esse novo jogador?(sim ou não):");
 
                 if ("sim".equals(input())) {
                     controleJogador.cadastrar(user, senha);
-
+                    
                 }
+                return false;
             }
-
-            entrarLogin(controleJogador);
         }
+        return true;
 
     }
 
     private static int quantidade() {
-        System.out.println("Insira a quantidade de jogadores na partida:");
+        System.out.println("Insira a quantidade de jogadores na partida[ máximo 5]:");
         Scanner input = new Scanner(System.in);
         int quantidade = 0;
 
@@ -174,7 +178,11 @@ public class App {
         } catch (InputMismatchException exe) {
             System.out.println("Valor inválido!");
         }
-        return quantidade == 0 ? quantidade() : quantidade;
+        if(quantidade == 0 || quantidade > 5){
+            System.out.println("Quantidade inválida!");
+            quantidade();
+        }
+        return quantidade;
 
     }
 

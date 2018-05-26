@@ -37,10 +37,11 @@ public class ControllerJogador {
      *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
      * @param senha Parâmetro utilizado para identificar a senha do usuário.
+     * @param listaJogadores Parâmetro utilizado para percorrer uma dada lista de jogadores para verificar se há um determinado jogador com o mesmo nome e senha.
      * @return Retorna um valor booleano, se o usuário existir na lista é
      * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
-    public boolean verificacao(String user, String senha) {
+    public boolean verificacao(String user, String senha, LinkedList listaJogadores) {
         if (listaJogadores == null) {       //Verifica se há lista de jogadores
             return false;
         }
@@ -63,23 +64,21 @@ public class ControllerJogador {
      * nome.
      *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
+     * @param listaJogadores Parâmetro utilizado para percorrer uma dada lista de jogadores para verificar se há um determinado jogador com o mesmo nome e senha.
      * @return Retorna um valor booleano, se o usuário existir na lista é
      * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
-    public boolean verificacao(String user) {        //Para verificar se o usuário já está cadastrado, essa verificação é feita procurando pelo nome
-        if (jogadoresNaPartida == null) {
+    public boolean verificacao(String user, LinkedList listaJogadores) {        //Para verificar se o usuário já está cadastrado, essa verificação é feita procurando pelo nome
+        if (listaJogadores == null) {
             return false;
         }
-        Iterator iterador = jogadoresNaPartida.iterator();
+        Iterator iterador = listaJogadores.iterator();
 
         while (iterador.hasNext()) {
 
             Jogador procurado = (Jogador) iterador.next();
 
-            if (!procurado.getUser().equals(user)) {
-            } else {
-                return true;
-            }
+            return procurado.getUser().equals(user);
         }
         return false;
     }
@@ -99,16 +98,16 @@ public class ControllerJogador {
         return null;
     }
 
-    public Jogador cadastrar(String nome, String senha) throws Exception {
+    public Boolean cadastrar(String nome, String senha) throws Exception {
 
-        if (verificacao(nome)) {        //Faz a verificação para ver se o jogador já está na lista 
-            return null;
+        if (verificacao(nome, listaJogadores)) {        //Faz a verificação para ver se o jogador já está na lista 
+            return false;
         } else {                                        //Se não estiver, então o usuário é adicionado na lista
             Jogador novoJogador = new Jogador(nome, senha);
             listaJogadores.add(novoJogador);
             controleFile.salvarArquivo(listaJogadores, "Resources/Dados.data");     //Grava a lista de jogadores atualizada no arquivo binário
             listaJogadores = controleFile.recuperarJogadores();
-            return novoJogador;
+            return true;
 
         }
 
@@ -116,9 +115,9 @@ public class ControllerJogador {
 
     public boolean loginJogador(String user, String senha) throws Exception {           //Método que será chamado para adicionar o jogodor na partida.
 
-        if (verificacao(user)) {
+        if (verificacao(user, jogadoresNaPartida)) {
             return false;
-        } else if(!verificacao(user, senha)){
+        } else if(!verificacao(user, senha, listaJogadores)){
             return false;
         }                        
         Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
