@@ -95,6 +95,7 @@ public class App {
 
     private static void partida(ControllerPartida controlePartida, ControllerJogador controleJogador) throws Exception {
         controlePartida.baralhosDaPartida(escolherPartida(controlePartida));
+        controlePartida.getPartida().getBaralho().embaralhar();
         int quantidade = quantidade();
         for (int i = 0; i < quantidade; i++) {
             System.out.println("## Bora fazer login ##");
@@ -180,9 +181,9 @@ public class App {
     public static void dinamicaPartida(ControllerJogador controleJogador, ControllerPartida controlePartida) throws Exception {
         Iterator BlackJack = controleJogador.getJogadoresNaPartida().iterator();
         Boolean flag;
+        
         while (BlackJack.hasNext()) {
             Jogador jogador = (Jogador) BlackJack.next();
-
             // Somente entrará se o jcontroleUserogador ou o croupier tiverem um blackJack.
             if (controlePartida.getPartida().getCroupier().getFlagBlackJack() == true || jogador.getFlagBlackJack() == true) {
 
@@ -261,15 +262,16 @@ public class App {
                 if (softCarta.next().equals("Ás")) {
                     controlePartida.getPartida().getCroupier().getMao().getCartasNaMao().add(controlePartida.getPartida().getCroupier().DarCarta(controlePartida.getPartida().getBaralho()));
                 }
+               
             }
         }
 
         // Enquanto o croupier tiver menos que 17 pontos, será adicionado cartas á mão dele.
         while (controlePartida.getPartida().getCroupier().getMao().getPontosEmMao() < 17) {
             controlePartida.getPartida().getCroupier().getMao().getCartasNaMao().add(controlePartida.getPartida().getCroupier().DarCarta(controlePartida.getPartida().getBaralho()));
+            
         }
         Boolean croupierEstourou = false;
-
         // Se o croupier ultrapassou os 21 pontos, estourou, todos jogadores vencem a partida e ganham 3 pontos.
         if (controlePartida.getPartida().getCroupier().getMao().getPontosEmMao() > 21) {
             croupierEstourou = true;
@@ -322,18 +324,14 @@ public class App {
                 }
                 System.out.println("");
             }
-            mostrarCroupier(controlePartida.getPartida().getCroupier());
-            // Chamada do método onde serão imprimidas as cartas ao final do jogo, ordenadas ou na ordem que iam sair do baralho.
-            controleJogador.getControleFile().salvarArquivo(controlePartida.getPartida().getBaralho().getCartas(), "Resources/baralho.data");
 
         }
-
-    }
-
-    private static void mostrarCroupier(Croupier croupier) {
         System.out.println("Cartas do Crupier:");
-        croupier.getMao().mostrarCartas();
-        System.out.println("Pontos na mão: " + croupier.getMao().getPontosEmMao());
+        controlePartida.getPartida().getCroupier().getMao().mostrarCartas();
+        System.out.println("Pontos na mão: " + controlePartida.getPartida().getCroupier().getMao().getPontosEmMao());
+        // Chamada do método onde serão imprimidas as cartas ao final do jogo, ordenadas ou na ordem que iam sair do baralho.
+        controleJogador.getControleFile().salvarArquivo(controlePartida.getPartida().getBaralho().getCartas(), "Resources/baralho.data");
+
     }
 
 }

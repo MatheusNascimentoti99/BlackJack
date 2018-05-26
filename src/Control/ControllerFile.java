@@ -72,7 +72,12 @@ public class ControllerFile {
     public LinkedList recuperarJogadores() {
         LinkedList jogadores;
         LinkedList jogadoresAux = new LinkedList();
-        jogadores = (LinkedList) lerArquivo("Resources/Dados.data");
+        try{
+            jogadores = (LinkedList) lerArquivo("Resources/Dados.data");
+        }
+        catch(ClassCastException exe){
+            return new LinkedList();
+        }
         for (Object aux : jogadores) {                              
             ((Jogador) aux).setMao(new MaoDeCarta());
             ((Jogador) aux).setFlagBlackJack(false);

@@ -18,6 +18,7 @@ import model.Partida;
  * @author Matheus Nascimento
  */
 public class ControllerPartida {
+
     Partida partida;
 
     public Partida getPartida() {
@@ -27,13 +28,12 @@ public class ControllerPartida {
     public void setPartida(Partida partida) {
         this.partida = partida;
     }
-   
 
-    public Boolean baralhosDaPartida(int escolha) {                                                                       
-            Baralho baralho = new Baralho(escolha);
-            partida = new Partida(baralho);
-            return true;
-        
+    public Boolean baralhosDaPartida(int escolha) {
+        Baralho baralho = new Baralho(escolha);
+        partida = new Partida(baralho);
+        return true;
+
     }
 
     public int quantBaralho(String nomePartida) {
@@ -45,25 +45,26 @@ public class ControllerPartida {
             case "longa":
                 return 8;
             case "personalizada":
-                return 0;            
+                return 0;
 
         }
         return -1;
     }
-    
-     public void darCartas(ControllerJogador controleJogador){
+
+    public void darCartas(ControllerJogador controleJogador) {
         //Distribuindo a 1° carta aos jogadores e ao croupier.
         Iterator iteradorCarta1 = controleJogador.getJogadoresNaPartida().iterator();
         while (iteradorCarta1.hasNext()) {
             Jogador jogador = (Jogador) iteradorCarta1.next();
             Carta carta1 = partida.getCroupier().DarCarta(partida.getBaralho());
             jogador.getMao().getCartasNaMao().add(carta1);
-             partida.getCroupier().getMao().getCartasNaMao().add(partida.getCroupier().DarCarta(partida.getBaralho()));
+
         }
+        partida.getCroupier().getMao().getCartasNaMao().add(partida.getCroupier().DarCarta(partida.getBaralho()));
     }
-     
-     public void temBlackJack(ControllerJogador controleJogador){
-         // Verificando se algum jogador tem um blackJack.
+
+    public void temBlackJack(ControllerJogador controleJogador) {
+        // Verificando se algum jogador tem um blackJack.
         Iterator iterador = controleJogador.getJogadoresNaPartida().iterator();
         while (iterador.hasNext()) {
             Jogador jogador = (Jogador) iterador.next();
@@ -71,16 +72,13 @@ public class ControllerPartida {
                 jogador.setFlagBlackJack(true);
             }
         }
-     }
-     public void blackJackCroupier(){
-         // Condicional para verificar se o croupier tem um blackJack.
+    }
+
+    public void blackJackCroupier() {
+        // Condicional para verificar se o croupier tem um blackJack.
         if (partida.getCroupier().getMao().getPontosEmMao() == 21) {
             partida.getCroupier().setFlagBlackJack(true);
         }
-     }
-     
-     
-
-
+    }
 
 }
