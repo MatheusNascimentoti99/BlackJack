@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;/**
+import java.io.PrintWriter;
+/**
  * A classe <b>ControllerFileJogadores</b> faz o gerenciamento dos arquivos
  * utilizados no programa.
  *
@@ -143,7 +144,7 @@ public class ControllerFile {
         for (int i = 0; !jogadores.isEmpty(); i++) {
             jogadoresArray[i] = (Jogador) jogadores.remove();
         }
-        ordenacao.selectionsSorte(jogadoresArray);
+        ordenacao.selectionSort(jogadoresArray);
         for (int i = 0; jogadoresArray.length > i; i++) {
             jogadores.add(jogadoresArray[i]);
         }
