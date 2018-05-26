@@ -83,8 +83,7 @@ public class App {
         //Aba para novo cadastro
         if (controleJogador.cadastrar(nome, senha) == false) {
             System.out.println("Você já está cadastrado");
-        }
-        else{
+        } else {
             System.out.println("Cadastrado com sucesso!");
         }
     }
@@ -103,13 +102,15 @@ public class App {
         Boolean sucessoLogin = true;
         int numJogador = 0;
         while (numJogador < quantidade) {
-            if(sucessoLogin )
-                numJogador++;
+
+            numJogador++;
+
             System.out.println("## Bora fazer login ##");
-            System.out.print(numJogador+ " - ");
-            sucessoLogin = entrarLogin(controleJogador);
+            System.out.print(numJogador + " - ");
+            entrarLogin(controleJogador);
 
         }
+        System.out.println("");
         for (int i = 0; i < 2; i++) {
             controlePartida.darCartas(controleJogador);
         }
@@ -147,7 +148,7 @@ public class App {
         return partidaPersonalizada();
     }
 
-    private static Boolean entrarLogin(ControllerJogador controleJogador) throws Exception {
+    private static void entrarLogin(ControllerJogador controleJogador) throws Exception {
 
         System.out.println("Digite seu nome:");
         String user = input();
@@ -158,18 +159,18 @@ public class App {
                 System.out.println("Jogador já está na partida!");
             } else if (controleJogador.verificacao(user, senha, controleJogador.getListaJogadores()) == false) {
                 System.out.println("Jogador não está cadastrado!");
-                System.out.println("Deseja cadastrar "+user+"?(sim ou não):");
+                System.out.println("Deseja cadastrar " + user + "?(sim ou não):");
 
                 if ("sim".equals(input())) {
-                    if(controleJogador.cadastrar(user, senha)){
+                    if (controleJogador.cadastrar(user, senha)) {
                         System.out.println("Cadastrado com sucesso!\n");
                     }
-                    entrarLogin(controleJogador);
+
                 }
-                return false;
+
             }
+            entrarLogin(controleJogador);
         }
-        return true;
 
     }
 
@@ -183,7 +184,7 @@ public class App {
         } catch (InputMismatchException exe) {
             System.out.println("Valor inválido!");
         }
-        if(quantidade == 0 || quantidade > 5){
+        if (quantidade == 0 || quantidade > 5) {
             System.out.println("Quantidade inválida!");
             quantidade();
         }
@@ -194,7 +195,7 @@ public class App {
     private static void dinamicaPartida(ControllerJogador controleJogador, ControllerPartida controlePartida) throws Exception {
         Iterator BlackJack = controleJogador.getJogadoresNaPartida().iterator();
         Boolean flag;
-        
+
         while (BlackJack.hasNext()) {
             Jogador jogador = (Jogador) BlackJack.next();
             // Somente entrará se o jcontroleUserogador ou o croupier tiverem um blackJack.
@@ -237,7 +238,7 @@ public class App {
 
 //                   // Se o método pedir carta de jogador retorna true, ou seja o jogador deseja mais carta e tem menos ou 21 pontos,
 //                   // É adicionado mais uma carta na mão do jogador.
-                    if (jogador.pedirCarta() == true && jogador.getMao().getPontosEmMao() <= 21) {
+                    if (pedirCarta(jogador) && jogador.getMao().getPontosEmMao() <= 21) {
                         flag = true;
                         Carta carta = controlePartida.getPartida().getCroupier().DarCarta(controlePartida.getPartida().getBaralho());
                         jogador.getMao().getCartasNaMao().add(carta);
@@ -275,14 +276,14 @@ public class App {
                 if (softCarta.next().equals("Ás")) {
                     controlePartida.getPartida().getCroupier().getMao().getCartasNaMao().add(controlePartida.getPartida().getCroupier().DarCarta(controlePartida.getPartida().getBaralho()));
                 }
-               
+
             }
         }
 
         // Enquanto o croupier tiver menos que 17 pontos, será adicionado cartas á mão dele.
         while (controlePartida.getPartida().getCroupier().getMao().getPontosEmMao() < 17) {
             controlePartida.getPartida().getCroupier().getMao().getCartasNaMao().add(controlePartida.getPartida().getCroupier().DarCarta(controlePartida.getPartida().getBaralho()));
-            
+
         }
         Boolean croupierEstourou = false;
         // Se o croupier ultrapassou os 21 pontos, estourou, todos jogadores vencem a partida e ganham 3 pontos.
@@ -344,7 +345,19 @@ public class App {
         System.out.println("Pontos na mão: " + controlePartida.getPartida().getCroupier().getMao().getPontosEmMao());
         // Chamada do método onde serão imprimidas as cartas ao final do jogo, ordenadas ou na ordem que iam sair do baralho.
         controleJogador.getControleFile().salvarArquivo(controlePartida.getPartida().getBaralho().getCartas(), "Resources/baralho.data");
-
+        controleJogador.getControleFile().imprimirPontuacao(controleJogador.getListaJogadores());     //Atualiza o rank de pontuação ao fim de qualquer execução do programa
+        controleJogador.getControleFile().salvarArquivo(controleJogador.getListaJogadores(), "Resources/Dados.data");
     }
 
+    private static Boolean pedirCarta(Jogador jogador) {
+        System.out.println("Deseja carta? Digite pedir ou parar");
+        String escolha = input();
+        if (jogador.pedirCarta(escolha)) {
+            switch (escolha) {
+                case "pedir": return true;
+                case "parar": return false;
+            }
+        }
+        return pedirCarta(jogador);
+    }
 }

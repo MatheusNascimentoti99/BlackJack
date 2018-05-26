@@ -1,13 +1,9 @@
 Pontuação geral de jogadores:
 
-Nome: jorge --- Pontuação: 3 -- Partidas vencida: 1
+Nome: elvis --- Pontuação: 19 -- Partidas vencida: 6
 
-Nome: jubileu --- Pontuação: 0 -- Partidas vencida: 0
+Nome: matheus --- Pontuação: 18 -- Partidas vencida: 5
 
-Nome: matheus --- Pontuação: 0 -- Partidas vencida: 0
+Nome: maria --- Pontuação: 3 -- Partidas vencida: 1
 
 Nome: jose --- Pontuação: 0 -- Partidas vencida: 0
-
-Nome: maria --- Pontuação: 0 -- Partidas vencida: 0
-
-Nome: marcos --- Pontuação: 0 -- Partidas vencida: 0

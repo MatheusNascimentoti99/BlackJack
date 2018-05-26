@@ -74,11 +74,13 @@ public class ControllerJogador {
         }
         Iterator iterador = listaJogadores.iterator();
 
-        while (iterador.hasNext()) {
+        while (iterador.hasNext()) {            //Percorre toda a lista até encontrar o jogador
 
             Jogador procurado = (Jogador) iterador.next();
 
-            return procurado.getUser().equals(user);
+            if (procurado.getUser().equals(user)) {
+                return true;
+            }
         }
         return false;
     }

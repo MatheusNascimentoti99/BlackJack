@@ -80,20 +80,18 @@ public class Jogador implements Serializable, Comparable {
     }
     
     // Método que retorna true se o jogador desejar mais carta e false caso não.
-    public boolean pedirCarta() {
-        System.out.println("Deseja carta? Digite pedir ou parar");
-        Scanner input = new Scanner(System.in);
-        String escolha = input.nextLine();
+    public boolean pedirCarta(String escolha) {
+        
         switch (escolha) {
 
             case "pedir":
                 return true;
             case "parar":
-                return false;
+                return true;
 
         }
         
-        return pedirCarta();
+        return false;
     }
 
     public boolean getFlagBlackJack() {

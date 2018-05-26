@@ -5,9 +5,7 @@
  */
 package Control;
 
-import java.util.InputMismatchException;
 import java.util.Iterator;
-import java.util.Scanner;
 import model.Baralho;
 import model.Carta;
 import model.Jogador;
@@ -18,7 +16,7 @@ import model.Partida;
  * @author Matheus Nascimento
  */
 public class ControllerPartida {
-
+    
     Partida partida;
 
     public Partida getPartida() {
