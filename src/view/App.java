@@ -229,6 +229,7 @@ public class App {
             } else { // Se o jogador e nem o croupier tiverem um blackJack.
 
                 do {
+                    System.out.println("------------------------------------------------------------------------");
                     System.out.print(jogador.getUser());
                     System.out.println(", suas cartas:");
                     jogador.getMao().mostrarCartas();
@@ -263,7 +264,7 @@ public class App {
                     } else {
                         flag = false;
                     }
-
+                    System.out.println("------------------------------------------------------------------------");
                 } while (flag == true);
                 System.out.println("\n");
             }
