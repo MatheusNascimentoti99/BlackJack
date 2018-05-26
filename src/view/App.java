@@ -84,6 +84,9 @@ public class App {
         if (controleJogador.cadastrar(nome, senha) == false) {
             System.out.println("Você já está cadastrado");
         }
+        else{
+            System.out.println("Cadastrado com sucesso!");
+        }
     }
 
     private static void mostrarJogadores(ControllerJogador controleJogador) {
@@ -155,11 +158,13 @@ public class App {
                 System.out.println("Jogador já está na partida!");
             } else if (controleJogador.verificacao(user, senha, controleJogador.getListaJogadores()) == false) {
                 System.out.println("Jogador não está cadastrado!");
-                System.out.println("Deseja cadastrar esse novo jogador?(sim ou não):");
+                System.out.println("Deseja cadastrar "+user+"?(sim ou não):");
 
                 if ("sim".equals(input())) {
-                    controleJogador.cadastrar(user, senha);
-                    
+                    if(controleJogador.cadastrar(user, senha)){
+                        System.out.println("Cadastrado com sucesso!\n");
+                    }
+                    entrarLogin(controleJogador);
                 }
                 return false;
             }
@@ -186,7 +191,7 @@ public class App {
 
     }
 
-    public static void dinamicaPartida(ControllerJogador controleJogador, ControllerPartida controlePartida) throws Exception {
+    private static void dinamicaPartida(ControllerJogador controleJogador, ControllerPartida controlePartida) throws Exception {
         Iterator BlackJack = controleJogador.getJogadoresNaPartida().iterator();
         Boolean flag;
         
