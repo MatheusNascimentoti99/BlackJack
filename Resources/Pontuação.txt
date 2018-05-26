@@ -1,6 +1,6 @@
 Pontuação geral de jogadores:
 
-Nome: matheus --- Pontuação: 61 -- Partidas vencida: 19
+Nome: matheus --- Pontuação: 67 -- Partidas vencida: 21
 
 Nome: elvis --- Pontuação: 43 -- Partidas vencida: 13
 
@@ -10,6 +10,8 @@ Nome: jose --- Pontuação: 4 -- Partidas vencida: 1
 
 Nome: jubileu --- Pontuação: 3 -- Partidas vencida: 1
 
-Nome: antonio --- Pontuação: 0 -- Partidas vencida: 0
+Nome: ss --- Pontuação: 3 -- Partidas vencida: 1
 
 Nome: joao --- Pontuação: 0 -- Partidas vencida: 0
+
+Nome: antonio --- Pontuação: 0 -- Partidas vencida: 0

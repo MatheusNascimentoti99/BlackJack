@@ -11,7 +11,7 @@ import java.util.Scanner;
 import model.Baralho;
 import model.Carta;
 import model.Jogador;
-import view.Partida;
+import model.Partida;
 
 /**
  *
@@ -19,6 +19,14 @@ import view.Partida;
  */
 public class ControllerPartida {
     Partida partida;
+
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
+    }
    
 
     public Boolean baralhosDaPartida(int escolha) {                                                                       
@@ -70,6 +78,8 @@ public class ControllerPartida {
             partida.getCroupier().setFlagBlackJack(true);
         }
      }
+     
+     
 
 
 

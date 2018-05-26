@@ -18,9 +18,9 @@ import model.Jogador;
  */
 public class ControllerJogador {
 
-    LinkedList listaJogadores = new LinkedList();                       //Lista de todos os jogadores cadastrados no jogo
-    LinkedList jogadoresNaPartida = new LinkedList();                   //Lista com jogadores apenas que estão em uma partida
-    ControllerFile controleFile = new ControllerFile();                 //Para poder ter recuperação de dados dos arquivos
+    private LinkedList listaJogadores = new LinkedList();                       //Lista de todos os jogadores cadastrados no jogo
+    private LinkedList jogadoresNaPartida = new LinkedList();                   //Lista com jogadores apenas que estão em uma partida
+    private ControllerFile controleFile = new ControllerFile();                 //Para poder ter recuperação de dados dos arquivos
 
     /**
      * O construtor de <b>ControllerJo</b> cria um novo genrenciador de arquivo
@@ -37,12 +37,10 @@ public class ControllerJogador {
      *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
      * @param senha Parâmetro utilizado para identificar a senha do usuário.
-     * @param listaJogadores Parâmetro utilizado para fazer a busca das
-     * informações do usuário.
      * @return Retorna um valor booleano, se o usuário existir na lista é
      * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
-    public boolean verificacao(String user, String senha, LinkedList listaJogadores) {
+    public boolean verificacao(String user, String senha) {
         if (listaJogadores == null) {       //Verifica se há lista de jogadores
             return false;
         }
@@ -65,16 +63,14 @@ public class ControllerJogador {
      * nome.
      *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
-     * @param listaJogadores Parâmetro utilizado para fazer a busca das
-     * informações do usuário.
      * @return Retorna um valor booleano, se o usuário existir na lista é
      * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
-    public boolean verificacao(String user, LinkedList listaJogadores) {        //Para verificar se o usuário já está cadastrado, essa verificação é feita procurando pelo nome
-        if (listaJogadores == null) {
+    public boolean verificacao(String user) {        //Para verificar se o usuário já está cadastrado, essa verificação é feita procurando pelo nome
+        if (jogadoresNaPartida == null) {
             return false;
         }
-        Iterator iterador = listaJogadores.iterator();
+        Iterator iterador = jogadoresNaPartida.iterator();
 
         while (iterador.hasNext()) {
 
@@ -105,7 +101,7 @@ public class ControllerJogador {
 
     public Jogador cadastrar(String nome, String senha) throws Exception {
 
-        if (verificacao(nome, listaJogadores)) {        //Faz a verificação para ver se o jogador já está na lista 
+        if (verificacao(nome)) {        //Faz a verificação para ver se o jogador já está na lista 
             return null;
         } else {                                        //Se não estiver, então o usuário é adicionado na lista
             Jogador novoJogador = new Jogador(nome, senha);
@@ -120,9 +116,9 @@ public class ControllerJogador {
 
     public boolean loginJogador(String user, String senha) throws Exception {           //Método que será chamado para adicionar o jogodor na partida.
 
-        if (verificacao(user, senha, jogadoresNaPartida)) {
+        if (verificacao(user)) {
             return false;
-        } else if(!verificacao(user, senha, listaJogadores)){
+        } else if(!verificacao(user, senha)){
             return false;
         }                        
         Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
