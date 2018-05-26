@@ -18,6 +18,23 @@ public class Partida {
     private Baralho baralho;
     private Croupier croupier;
     private ControllerJogador controleUser;
+    
+    public Croupier getCroupier() {
+        return croupier;
+    }
+
+    public void setCroupier(Croupier croupier) {
+        this.croupier = croupier;
+    }
+
+    public ControllerJogador getControleUser() {
+        return controleUser;
+    }
+
+    public void setControleUser(ControllerJogador controleUser) {
+        this.controleUser = controleUser;
+    }
+    
 
     public Partida(Baralho baralho) {
         this.baralho = baralho;
@@ -35,43 +52,17 @@ public class Partida {
     // Inicio da partida.
     public void partida(ControllerJogador controleUser) throws Exception {
 
-        //Distribuindo a 1° carta aos jogadores e ao croupier.
-        Iterator iteradorCarta1 = controleUser.getJogadoresNaPartida().iterator();
-        while (iteradorCarta1.hasNext()) {
-            Jogador jogador = (Jogador) iteradorCarta1.next();
-            Carta carta1 = croupier.DarCarta(baralho);
-            jogador.getMao().getCartasNaMao().add(carta1);
-        }
+        
 
-        croupier.getMao().getCartasNaMao().add(croupier.DarCarta(baralho));
+       
 
-        // Distribuindo a 2° carta aos jogadores e ao croupier.
-        Iterator iteradorCarta2 = controleUser.getJogadoresNaPartida().iterator();
-        while (iteradorCarta2.hasNext()) {
-            Jogador jogador = (Jogador) iteradorCarta2.next();
-            Carta carta2 = croupier.DarCarta(baralho);
-            jogador.getMao().getCartasNaMao().add(carta2);
-        }
 
-        croupier.getMao().getCartasNaMao().add(croupier.DarCarta(baralho));
+        
 
-        // Verificando se algum jogador tem um blackJack.
-        Iterator iterador = controleUser.getJogadoresNaPartida().iterator();
-        while (iterador.hasNext()) {
-            Jogador jogador = (Jogador) iterador.next();
-            if (jogador.getMao().getPontosEmMao() == 21) {
-                jogador.setFlagBlackJack(true);
-            }
-        }
+        
 
-        // Condicional para verificar se o croupier tem um blackJack.
-        if (croupier.getMao().getPontosEmMao() == 21) {
-            croupier.setFlagBlackJack(true);
-        }
-
-        String escolha2; // Variavel de entrada do jogador, que recebe se o próprio quer mais cartas ou não.
-        boolean flag = false; // Variavel para saída do loop.
-
+        
+        boolean flag = false; 
         //´Percorrendo a lista de jogadores para saber se algum jogador tem blackJack. 
         Iterator BlackJack = controleUser.getJogadoresNaPartida().iterator();
         while (BlackJack.hasNext()) {

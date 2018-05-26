@@ -8,8 +8,10 @@ package view;
 import Control.ControllerPartida;
 import Control.ControllerJogador;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 import model.Baralho;
+import model.Carta;
 
 import model.Croupier;
 import model.Jogador;
@@ -95,9 +97,16 @@ public class App {
         controlePartida.baralhosDaPartida(escolherPartida(controlePartida));
         int quantidade = quantidade();
         for (int i = 0; i < quantidade; i++) {
+            System.out.println("## Bora fazer login ##");
+            System.out.print(i + 1 + " - ");
             entrarLogin(controleJogador);
-            
+
         }
+        for (int i = 0; i < 2; i++) {
+            controlePartida.darCartas(controleJogador);
+        }
+        controlePartida.temBlackJack(controleJogador);
+        controlePartida.blackJackCroupier();
     }
 
     private static int escolherPartida(ControllerPartida controlePartida) {
@@ -130,7 +139,7 @@ public class App {
     }
 
     private static void entrarLogin(ControllerJogador controleUser) throws Exception {
-        System.out.println("## Bora fazer login ##");
+
         System.out.println("Digite seu nome:");
         String user = input();
         System.out.println("Digite sua senha:");
@@ -149,15 +158,15 @@ public class App {
     private static int quantidade() {
         System.out.println("Insira a quantidade de jogadores na partida:");
         Scanner input = new Scanner(System.in);
-        int quantidade;
-       
-        try{
-              quantidade = input.nextInt();
+        int quantidade = 0;
+
+        try {
+            quantidade = input.nextInt();
+        } catch (NumberFormatException exe) {
+            System.out.println("Valor inválido!");
         }
-        catch(NumberFormatException exe){
-            System.out.println("Valor inválido!");     
-        }
-        return Integer.parseInt(input());
+        return quantidade == 0 ? quantidade() : quantidade;
 
     }
+
 }
