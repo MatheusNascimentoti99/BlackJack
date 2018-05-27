@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelTest;
+package model;
 
 import java.util.LinkedList;
-import model.Baralho;
-import model.Carta;
-import model.MaoDeCarta;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import util.IStack;
-import util.Stack;
+
 
 /**
  *

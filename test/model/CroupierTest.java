@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelTest;
+package model;
 
 import model.Croupier;
 import model.Jogador;

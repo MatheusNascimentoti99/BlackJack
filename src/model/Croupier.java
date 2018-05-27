@@ -11,7 +11,7 @@ package model;
  */
 public class Croupier extends Jogador {
     public Croupier() {
-        super("crouper", "");
+        super("croupier", "");
     }
 
    public Carta DarCarta(Baralho baralho){                  //Método para retirar e retornar a ultima carta do baralho que o Croupier receber

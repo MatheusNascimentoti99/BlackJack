@@ -1,4 +1,4 @@
-package modelTest;
+package model;
 
 import model.Baralho;
 import model.Carta;

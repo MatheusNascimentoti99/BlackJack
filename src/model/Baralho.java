@@ -16,7 +16,6 @@ public class Baralho implements Serializable {
     private IStack cartas = new Stack();
 
     public Baralho() {
-        
     }
 
     public IStack getCartas() {

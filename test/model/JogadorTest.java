@@ -3,11 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelTest;
+package model;
 
-import model.Baralho;
-import model.Carta;
-import model.Jogador;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -61,7 +58,7 @@ public class JogadorTest {
         assertEquals(true, a.getFlagBlackJack());
         
         assertEquals(true,a.pedirCarta("pedir"));
-        assertEquals(false, a.pedirCarta("parar"));
+        assertEquals(true, a.pedirCarta("parar"));
        
     }
 }

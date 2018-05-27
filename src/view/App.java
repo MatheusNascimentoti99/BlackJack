@@ -51,7 +51,7 @@ public class App {
                 case "4":
 
                     Baralho baralhoLast = new Baralho();
-                    baralhoLast.setCartas(controleJogador.getControleFile().recuperarBaralho());
+                    baralhoLast.setCartas(controleJogador.getControleFile().recuperarCartas());
                     if (baralhoLast.getCartas() == null) {
                         System.out.println("Não há baralho");
                     } else {
@@ -120,9 +120,9 @@ public class App {
     }
 
     private static int escolherPartida(ControllerPartida controlePartida) {
-        System.out.println(" simples - Partida com 2 Baralho");
-        System.out.println(" regular - Partida com 4 Baralho");
-        System.out.println(" longa - Partida com 8 Baralho");
+        System.out.println(" simples - Partida com 2 Baralhos");
+        System.out.println(" regular - Partida com 4 Baralhos");
+        System.out.println(" longa - Partida com 8 Baralhos");
         System.out.println(" personalizada - Personalize a quantidade de baralhos da partida");
         System.out.println("Sua escolha:");
         String escolha = input();
@@ -163,7 +163,7 @@ public class App {
 
                 if ("sim".equals(input())) {
                     if (controleJogador.cadastrar(user, senha)) {
-                        System.out.println("Cadastrado com sucesso!\n");
+                        System.out.println("Cadastrado com sucesso!\n");  
                     }
 
                 }

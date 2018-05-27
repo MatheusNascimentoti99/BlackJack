@@ -1,11 +1,13 @@
 package blackJack;
 
 
-import modelTest.BaralhoTest;
-import modelTest.CartaTest;
-import modelTest.CroupierTest;
-import modelTest.JogadorTest;
-import modelTest.MaoDeCartaTest;
+import Controller.ControllerFileTest;
+import model.BaralhoTest;
+import model.CartaTest;
+import model.CroupierTest;
+import model.JogadorTest;
+import model.MaoDeCartaTest;
+import model.PartidaTest;
 import org.junit.runner.*;
 import org.junit.runners.*;
 import util.StackTest;
@@ -17,7 +19,10 @@ import util.StackTest;
 	CroupierTest.class,
 	JogadorTest.class,
         MaoDeCartaTest.class,
-        StackTest.class
+        StackTest.class,
+        ControllerFileTest.class,
+        PartidaTest.class
+                
         
 })
 public class AllTests { }

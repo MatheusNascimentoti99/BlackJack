@@ -95,7 +95,7 @@ public class ControllerFile {
      *
      * @return  Retorna uma pilha de cartas.
      */
-    public IStack recuperarBaralho() {
+    public IStack recuperarCartas() {
         IStack cartas;
         try {
             cartas = (IStack) lerArquivo("Resources/baralho.data");
@@ -106,7 +106,7 @@ public class ControllerFile {
         return cartas;
     }
 
-    private Object lerArquivo(String local) {
+    public Object lerArquivo(String local) {
         Object dado = new Object();
         try {
 
