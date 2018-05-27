@@ -59,5 +59,9 @@ public class JogadorTest {
         assertEquals(false, a.getFlagBlackJack());
         a.setFlagBlackJack(true);
         assertEquals(true, a.getFlagBlackJack());
+        
+        assertEquals(true,a.pedirCarta("pedir"));
+        assertEquals(false, a.pedirCarta("parar"));
+       
     }
 }

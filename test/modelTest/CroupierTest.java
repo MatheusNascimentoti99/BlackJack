@@ -49,7 +49,7 @@ public class CroupierTest {
        c.setFlagBlackJack(true);
        
        assertTrue(c.equals(b));
-
+       
      }
 
 }

@@ -70,14 +70,6 @@ public class Jogador implements Serializable, Comparable {
         this.passeword = passeword;
     }
 
-    public int compareTo(Jogador jogador) {
-        if (pontuacao > jogador.getPontuacao()) {
-            return 1;
-        } else if (pontuacao < jogador.getPontuacao()) {
-            return -1;
-        }
-        return 0;
-    }
     
     // Método que retorna true se o jogador desejar mais carta e false caso não.
     public boolean pedirCarta(String escolha) {
