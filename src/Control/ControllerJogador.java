@@ -137,6 +137,12 @@ public class ControllerJogador {
         return listaJogadores;
     }
 
+    public void setListaJogadores(LinkedList listaJogadores) {
+        this.listaJogadores = listaJogadores;
+    }
+    
+    
+
     public LinkedList getJogadoresNaPartida() {
         return jogadoresNaPartida;
     }

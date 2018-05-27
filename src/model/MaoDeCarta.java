@@ -3,29 +3,49 @@ package model;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
+import model.Carta;
 
 /**
- *
- * @author Matheus Nascimento
+ * Classe <b>MaoDeCarta</b>, a classe para os objetos do tipo MaoDeCarta.
+ * 
+ * @author Matheus Nascimento e Elvis Serafim
+ * @since May 2018
+ * @version 1.0
  */
 public class MaoDeCarta implements Serializable {
 
     private LinkedList cartasNaMao;
     private int pontosEmMao;
 
+    /**
+     * Construtor da classe <b>MaoDeCarta</b>, não tem parâmetros. Ele cria uma lista encadeada de cartas para cartaNaMao.
+     *
+     */
     public MaoDeCarta() {
         cartasNaMao = new LinkedList();
         pontosEmMao = 0;
     }
 
+    /**
+     * Método para o retorno da lista das cartas na mão.
+     * @return lista das cartas na mão.
+     */
     public LinkedList getCartasNaMao() {
         return cartasNaMao;
     }
 
+    /**
+     *Método para designar uma nova lista de cartas para a mão.
+     * @param cartasNaMao Nova lista de cartas.
+     */
     public void setCartasNaMao(LinkedList cartasNaMao) {
         this.cartasNaMao = cartasNaMao;
     }
 
+    /**
+     * Método que tem como retorno o total de pontos na mão.
+     * @return total de pontos na mão.
+     */
     public int getPontosEmMao() {
         pontosEmMao = 0;
         Iterator iterador = cartasNaMao.iterator();
@@ -33,10 +53,17 @@ public class MaoDeCarta implements Serializable {
         return pontosEmMao;
     }
 
+    /**
+     * Método que designa uma nova pontuação para a mão.
+     * @param pontosEmMao pontos a serem adicionados.
+     */
     public void setPontosEmMao(int pontosEmMao) {
         this.pontosEmMao = pontosEmMao;
     }
 
+    /**
+     * Método que mostra as cartas da mão.
+     */
     public void mostrarCartas() {
 
         Iterator iterador = cartasNaMao.iterator();
@@ -73,7 +100,7 @@ public class MaoDeCarta implements Serializable {
             }
             
         }
-        
+            
             if (aces != 0){
                 for (int i = 0; i < aces; i++){
 
@@ -89,6 +116,10 @@ public class MaoDeCarta implements Serializable {
         return total;
     }
 
+    /**
+     * Método que retorna uma representação string do objeto MãoDeCarta.
+     * @return cartas em mão.
+     */
     @Override
     public String toString() {
         return "Cartas na mão: " + cartasNaMao.size();
