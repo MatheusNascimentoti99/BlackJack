@@ -18,7 +18,7 @@ public class MaoDeCarta implements Serializable {
     private int pontosEmMao;
 
     /**
-     * Construtor da classe <b>MaoDeCarta</b>, não tem parâmetros. Ele cria uma lista encadeada de cartas para cartaNaMao.
+     * Construtor da classe <b>MaoDeCarta</b>, não tem parâmetros. Ele cria uma nova lista encadeada para cartaNaMao.
      *
      */
     public MaoDeCarta() {
@@ -27,16 +27,16 @@ public class MaoDeCarta implements Serializable {
     }
 
     /**
-     * Método para o retorno da lista das cartas na mão.
-     * @return lista das cartas na mão.
+     * Método para o retorno da LinkedList das cartas na mão.
+     * @return 
      */
     public LinkedList getCartasNaMao() {
         return cartasNaMao;
     }
 
     /**
-     *Método para designar uma nova lista de cartas para a mão.
-     * @param cartasNaMao Nova lista de cartas.
+     *Método para designar uma nova LinkedList para a mão.
+     * @param cartasNaMao Nova LinkedList de cartas.
      */
     public void setCartasNaMao(LinkedList cartasNaMao) {
         this.cartasNaMao = cartasNaMao;
@@ -53,13 +53,6 @@ public class MaoDeCarta implements Serializable {
         return pontosEmMao;
     }
 
-    /**
-     * Método que designa uma nova pontuação para a mão.
-     * @param pontosEmMao pontos a serem adicionados.
-     */
-    public void setPontosEmMao(int pontosEmMao) {
-        this.pontosEmMao = pontosEmMao;
-    }
 
     /**
      * Método que mostra as cartas da mão.
@@ -124,5 +117,14 @@ public class MaoDeCarta implements Serializable {
     public String toString() {
         return "Cartas na mão: " + cartasNaMao.size();
     }
+
+    /**
+     * Métodopara designar um novo total de pontos na mão.
+     * @param pontos pontos a serem designados
+     */
+    public void setPontosEmMao(int pontos) {
+        this.pontosEmMao = pontos;
+    }
+
 
 }

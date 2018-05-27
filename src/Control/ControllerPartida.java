@@ -12,21 +12,37 @@ import model.Jogador;
 import model.Partida;
 
 /**
+ * A classe <b>ControllerPartida</b> faz o gerenciamento da partida.
  *
- * @author Matheus Nascimento
+ * @author Matheus Nascimento e Elvis Serafim
+ * @since May 2018
+ * @version 1.0
  */
 public class ControllerPartida {
     
     Partida partida;
 
+    /**
+     * Método para retorno da partida a ser gerenciada.
+     * @return Uma Partida.
+     */
     public Partida getPartida() {
         return partida;
     }
 
+    /**
+     * Método para designar uma nova partida para ser gerenciada.
+     * @param partida Nova Partida.
+     */
     public void setPartida(Partida partida) {
         this.partida = partida;
     }
 
+    /**
+     * Método booleano que cria um baralho com a quantidade escolhida e cria uma partida com o baralho.
+     * @param escolha quantidade de baralhos.
+     * @return booleano, true.
+     */
     public Boolean baralhosDaPartida(int escolha) {
         Baralho baralho = new Baralho(escolha);
         partida = new Partida(baralho);
@@ -34,6 +50,11 @@ public class ControllerPartida {
 
     }
 
+    /**
+     * Método para indicar a quantidade de baralhos da partida.
+     * @param nomePartida escolha do modo da partida.
+     * @return quantidade de baralhos pelo modo da partida.
+     */
     public int quantBaralho(String nomePartida) {
         switch (nomePartida) {
             case "simples":
@@ -49,8 +70,11 @@ public class ControllerPartida {
         return -1;
     }
 
+    /**
+     * Método para distribuir as cartas aos jogadores e ao croupier.
+     * @param controleJogador ControllerJogador, onde contém a lista de jogadores na partida.
+     */
     public void darCartas(ControllerJogador controleJogador) {
-        //Distribuindo a 1° carta aos jogadores e ao croupier.
         Iterator iteradorCarta1 = controleJogador.getJogadoresNaPartida().iterator();
         while (iteradorCarta1.hasNext()) {
             Jogador jogador = (Jogador) iteradorCarta1.next();
@@ -61,6 +85,10 @@ public class ControllerPartida {
         partida.getCroupier().getMao().getCartasNaMao().add(partida.getCroupier().DarCarta(partida.getBaralho()));
     }
 
+    /**
+     * Método para verificar se algum jogador tem um blackJack.
+     * @param controleJogador ControllerJogador, onde contém a lista de jogadores na partida.
+     */
     public void temBlackJack(ControllerJogador controleJogador) {
         // Verificando se algum jogador tem um blackJack.
         Iterator iterador = controleJogador.getJogadoresNaPartida().iterator();
@@ -72,6 +100,9 @@ public class ControllerPartida {
         }
     }
 
+    /**
+     * Método para verificar se o croupier da partida tem um blackJack.
+     */
     public void blackJackCroupier() {
         // Condicional para verificar se o croupier tem um blackJack.
         if (partida.getCroupier().getMao().getPontosEmMao() == 21) {

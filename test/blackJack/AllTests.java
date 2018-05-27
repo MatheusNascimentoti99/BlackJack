@@ -2,6 +2,8 @@ package blackJack;
 
 
 import Controller.ControllerFileTest;
+import Controller.ControllerJogadorTest;
+import Controller.ControllerPartidaTest;
 import model.BaralhoTest;
 import model.CartaTest;
 import model.CroupierTest;
@@ -18,10 +20,13 @@ import util.StackTest;
 	CartaTest.class,
 	CroupierTest.class,
 	JogadorTest.class,
+        PartidaTest.class,
         MaoDeCartaTest.class,
         StackTest.class,
         ControllerFileTest.class,
-        PartidaTest.class
+        ControllerJogadorTest.class,
+        ControllerPartidaTest.class
+        
                 
         
 })

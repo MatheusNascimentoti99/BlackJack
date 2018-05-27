@@ -18,13 +18,13 @@ public class Baralho implements Serializable {
     private int quantidaDeBaralho;
     private IStack cartas = new Stack();
 
-      /**
-     *Construtor de <b>Baralho</b>, sem parâmetros.
+    /**
+     *Construtor de <b>Baralho</b> que não tem parâmetros, apenas para inicializar os atributos.
      * 
      */
-    public Baralho() {
-    }
-
+    public Baralho(){
+         
+     }
         
     /**
      * Método para retorno da pilha de cartas do baralho.
@@ -35,6 +35,8 @@ public class Baralho implements Serializable {
         return cartas;
     }
 
+    /**
+
      /**
      * Método para designar um novo conjunto para a pilha de cartas do baralho.
      * 
@@ -43,7 +45,7 @@ public class Baralho implements Serializable {
     public void setCartas(IStack cartas) {
         this.cartas = cartas;
     }
-
+    
     /**
      * Segundo Construtor de <b>Baralho</b>, tem como parâmetro a quantidade de baralhos que serão criados para a partida.
      * Ele atribui o valor passado para a quantidade de baralho da classe e cria uma pilha de cartas.
@@ -56,6 +58,7 @@ public class Baralho implements Serializable {
         cartas = create(quantidadeBaralho);
     }
 
+    
     private Stack create(int quantidadeBaralho) {           //Método para criar o(s) baralho(s)
         String naipe;
         IStack naipes = new Stack();                        //Pilha para adicionar os naipes das cartas
@@ -104,6 +107,7 @@ public class Baralho implements Serializable {
         return (Stack) cartas;                              //retorna uma pilha de cartas
     }
 
+
     /**
      * Método para criar um baralho com a mesma quantidade escolhida.
      */
@@ -120,6 +124,7 @@ public class Baralho implements Serializable {
         }
         cartas = temp;                                      //A pilha original recupera todas as cartas removidas
     }
+
     
     /**
      *Método que imprime as cartas, ordenadas ou na ordem que iam ser retiradas do baralho, ao final da partida.
@@ -141,8 +146,7 @@ public class Baralho implements Serializable {
 
         }
     }
- 
-    
+     
      /**
      * Método que ordena as cartas do baralho, utilizando o algoritmo Selection Sort.
      * 
@@ -179,7 +183,6 @@ public class Baralho implements Serializable {
             cartas.push(aux);
         }
     }
-
     
     /**
      * Método que embaralha as cartas do baralho.
@@ -229,7 +232,6 @@ public class Baralho implements Serializable {
         final Baralho other = (Baralho) obj;
         return Objects.equals(this.cartas, other.cartas);
     }
-
     // Método que predefine valor das cartas.
     private enum Value {
 

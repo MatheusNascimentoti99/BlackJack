@@ -15,6 +15,7 @@ import java.util.Objects;
  * @since May 2018
  * @version 1.0
  */
+
 public class Carta implements Comparable, Serializable {
 
     private String value;
@@ -31,6 +32,9 @@ public class Carta implements Comparable, Serializable {
         this.value = value;
         this.naipe = naipe;
     }
+
+ 
+    /**
 
      /**
      * Método para retorno do valor da carta.
@@ -50,7 +54,8 @@ public class Carta implements Comparable, Serializable {
         this.value = value;
     }
 
-     /**
+
+    /**
      * Método para retorno do naipe da carta.
      * 
      * @return Naipe da carta.

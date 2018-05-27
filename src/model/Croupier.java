@@ -32,8 +32,8 @@ public class Croupier extends Jogador {
         return (Carta) baralho.getCartas().pop();
     }
 
-  
-     /**
+
+     /**     
      * Método para retorno do usuário do Croupier.
      * 
      * @return O nome do usuário do croupier.
