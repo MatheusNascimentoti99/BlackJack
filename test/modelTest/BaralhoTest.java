@@ -38,12 +38,17 @@ public class BaralhoTest {
         
         baralho.setCartas(b);
         assertFalse(baralho.getCartas().equals(c));
+        
         //Verificar os getters e setters das cartas.
         c.setValue("TesteValor");
         assertEquals("TesteValor",c.getValue());
         c.setNaipe("TesteNaipe");
         assertEquals("TesteNaipe", c.getNaipe());
         
+        baralho.resetaBaralho();
+        assertEquals(52, baralho.getCartas().size());
+        baralho.embaralhar();
+        assertEquals(52, baralho.getCartas().size());
         
     }
     

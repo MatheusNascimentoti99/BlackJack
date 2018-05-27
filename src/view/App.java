@@ -68,7 +68,7 @@ public class App {
         } while (!escolha.equals("5"));                                                             //Executa o programa até o usuário digitar 4 entre as opções do menu principal
 
     }
-
+    
     private static String input() {                //Para resumir as entradas do teclado;
         Scanner opcao = new Scanner(System.in);
         return opcao.nextLine();
