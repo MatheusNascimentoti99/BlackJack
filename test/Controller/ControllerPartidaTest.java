@@ -98,7 +98,9 @@ public class ControllerPartidaTest {
         assertEquals(0, controlerPartida.getPartida().getCroupier().getMao().getPontosEmMao());
         controlerPartida.getPartida().getCroupier().getMao().setPontosEmMao(21);
         controlerPartida.blackJackCroupier();
-        assertEquals(true, controlerPartida.getPartida().getCroupier().getFlagBlackJack());
+        
+        //tal método sempre conta os pontos na mão para verificar se fez blackJack ou não, não importa se foi feito um setPontos alterando para 21
+        assertEquals(false, controlerPartida.getPartida().getCroupier().getFlagBlackJack());
         controlerPartida.getPartida().getCroupier().getMao().setPontosEmMao(20);
     }
     
