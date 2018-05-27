@@ -186,7 +186,7 @@ public class App {
         }
         if (quantidade == 0 || quantidade > 5) {
             System.out.println("Quantidade inválida!");
-            quantidade();
+            quantidade = quantidade();
         }
         return quantidade;
 
@@ -197,6 +197,7 @@ public class App {
         Boolean flag;
 
         while (BlackJack.hasNext()) {
+            System.out.println("------------------------------------------------------------------------");
             Jogador jogador = (Jogador) BlackJack.next();
             // Somente entrará se o jcontroleUserogador ou o croupier tiverem um blackJack.
             if (controlePartida.getPartida().getCroupier().getFlagBlackJack() == true || jogador.getFlagBlackJack() == true) {
@@ -229,7 +230,7 @@ public class App {
             } else { // Se o jogador e nem o croupier tiverem um blackJack.
 
                 do {
-                    System.out.println("------------------------------------------------------------------------");
+                    
                     System.out.print(jogador.getUser());
                     System.out.println(", suas cartas:");
                     jogador.getMao().mostrarCartas();
@@ -264,10 +265,11 @@ public class App {
                     } else {
                         flag = false;
                     }
-                    System.out.println("------------------------------------------------------------------------");
+                    
                 } while (flag == true);
                 System.out.println("\n");
             }
+            System.out.println("------------------------------------------------------------------------");
         }
 
         // Se o croupier tem um soft, ou seja um Ás e uma carta entre 2 e 9 na mão, é adicionado mais uma carta a sua mão.

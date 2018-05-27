@@ -6,4 +6,6 @@ Nome: matheus --- Pontuação: 18 -- Partidas vencida: 5
 
 Nome: maria --- Pontuação: 3 -- Partidas vencida: 1
 
+Nome: jubileu --- Pontuação: 3 -- Partidas vencida: 1
+
 Nome: jose --- Pontuação: 0 -- Partidas vencida: 0
