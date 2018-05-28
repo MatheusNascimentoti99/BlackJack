@@ -2,16 +2,8 @@ Pontuação geral de jogadores:
 
 Nome: matheus --- Pontuação: 6 -- Partidas vencida: 2
 
-Nome: Jose --- Pontuação: 0 -- Partidas vencida: 0
+Nome: elvis --- Pontuação: 4 -- Partidas vencida: 1
 
-Nome: Fernando --- Pontuação: 0 -- Partidas vencida: 0
+Nome: jose --- Pontuação: 3 -- Partidas vencida: 1
 
-Nome: Guilherme --- Pontuação: 0 -- Partidas vencida: 0
-
-Nome: Glauber --- Pontuação: 0 -- Partidas vencida: 0
-
-Nome: marclecio --- Pontuação: 0 -- Partidas vencida: 0
-
-Nome: Antonio --- Pontuação: 0 -- Partidas vencida: 0
-
-Nome: jose --- Pontuação: 0 -- Partidas vencida: 0
+Nome: maria --- Pontuação: 2 -- Partidas vencida: 0

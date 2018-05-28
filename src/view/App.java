@@ -68,7 +68,7 @@ public class App {
         } while (!escolha.equals("5"));                                                             //Executa o programa até o usuário digitar 4 entre as opções do menu principal
 
     }
-    
+
     private static String input() {                //Para resumir as entradas do teclado;
         Scanner opcao = new Scanner(System.in);
         return opcao.nextLine();
@@ -142,16 +142,16 @@ public class App {
         String input = input();
 
         int partidaEscolha = 0;
-        
-         try {
+
+        try {
             partidaEscolha = Integer.parseInt(input);
         } catch (NumberFormatException exe) {
             System.out.println("Valor inválido!");
         }
-         if (partidaEscolha >= 1 && partidaEscolha <= 8) {                   //Controla o mínimo e máximo de baralhos que uma partida pode ter 
+        if (partidaEscolha >= 1 && partidaEscolha <= 8) {                   //Controla o mínimo e máximo de baralhos que uma partida pode ter 
             return partidaEscolha;
         }
-        
+
         return partidaPersonalizada();
     }
 
@@ -170,7 +170,7 @@ public class App {
 
                 if ("sim".equals(input())) {
                     if (controleJogador.cadastrar(user, senha)) {
-                        System.out.println("Cadastrado com sucesso!\n");  
+                        System.out.println("Cadastrado com sucesso!\n");
                     }
 
                 }
@@ -237,7 +237,7 @@ public class App {
             } else { // Se o jogador e nem o croupier tiverem um blackJack.
 
                 do {
-                    
+
                     System.out.print(jogador.getUser());
                     System.out.println(", suas cartas:");
                     jogador.getMao().mostrarCartas();
@@ -272,7 +272,7 @@ public class App {
                     } else {
                         flag = false;
                     }
-                    
+
                 } while (flag == true);
                 System.out.println("\n");
             }
@@ -353,9 +353,8 @@ public class App {
         System.out.println("Cartas do Crupier:");
         controlePartida.getPartida().getCroupier().getMao().mostrarCartas();
         System.out.println("Pontos na mão: " + controlePartida.getPartida().getCroupier().getMao().getPontosEmMao());
-        // Chamada do método onde serão imprimidas as cartas ao final do jogo, ordenadas ou na ordem que iam sair do baralho.
         controleJogador.getControleFile().salvarArquivo(controlePartida.getPartida().getBaralho().getCartas(), "Resources/baralho.data");
-        controleJogador.getControleFile().imprimirPontuacao(controleJogador.getListaJogadores());     //Atualiza o rank de pontuação ao fim de qualquer execução do programa
+        controleJogador.getControleFile().imprimirPontuacao(controleJogador.getListaJogadores());     
         controleJogador.getControleFile().salvarArquivo(controleJogador.getListaJogadores(), "Resources/Dados.data");
     }
 
@@ -364,8 +363,10 @@ public class App {
         String escolha = input();
         if (jogador.pedirCarta(escolha)) {
             switch (escolha) {
-                case "pedir": return true;
-                case "parar": return false;
+                case "pedir":
+                    return true;
+                case "parar":
+                    return false;
             }
         }
         return pedirCarta(jogador);
