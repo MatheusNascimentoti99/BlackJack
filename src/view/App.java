@@ -29,7 +29,7 @@ public class App {
         do {                                                                    //Laço para manter a execução do programa após o termino das principais operações do mesmo.            
             ControllerPartida controlePartida = new ControllerPartida();
             ControllerJogador controleJogador = new ControllerJogador();
-            System.out.println("Digite 1 para Cadastrar jogador ");
+            System.out.println("Digite 1 para cadastrar jogador ");
             System.out.println("Digite 2 para iniciar uma partida");
             System.out.println("Digite 3 para mostrar placar");
             System.out.print("Digite 4 para imprmir cartas da última partida \t\t");
@@ -141,10 +141,17 @@ public class App {
         System.out.println("Digite a quantidade desejada de cartas[1 a 8]:");
         String input = input();
 
-        int partidaEscolha = Integer.parseInt(input);
-        if (partidaEscolha >= 1 && partidaEscolha <= 8) {                   //Controla o mínimo e máximo de baralhos que uma partida pode ter 
+        int partidaEscolha = 0;
+        
+         try {
+            partidaEscolha = Integer.parseInt(input);
+        } catch (NumberFormatException exe) {
+            System.out.println("Valor inválido!");
+        }
+         if (partidaEscolha >= 1 && partidaEscolha <= 8) {                   //Controla o mínimo e máximo de baralhos que uma partida pode ter 
             return partidaEscolha;
         }
+        
         return partidaPersonalizada();
     }
 
@@ -159,7 +166,7 @@ public class App {
                 System.out.println("Jogador já está na partida!");
             } else if (controleJogador.verificacao(user, senha, controleJogador.getListaJogadores()) == false) {
                 System.out.println("Jogador não está cadastrado!");
-                System.out.println("Deseja cadastrar " + user + "?(sim ou não):");
+                System.out.println("Deseja cadastrar " + user + "?[sim]:");
 
                 if ("sim".equals(input())) {
                     if (controleJogador.cadastrar(user, senha)) {

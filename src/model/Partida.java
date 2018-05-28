@@ -1,10 +1,7 @@
 package model;
 
 import Control.ControllerJogador;
-import model.Baralho;
-import model.Baralho;
-import model.Croupier;
-import model.Croupier;
+
 
 /**
  * Classe <b>Partida</b>, a classe para os objetos do tipo Partida.

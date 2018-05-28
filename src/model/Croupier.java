@@ -5,7 +5,6 @@
  */
 package model;
 
-import model.Jogador;
 
 /**
  * Classe <b>Croupier</b>, a classe para os objetos do tipo Croupier.

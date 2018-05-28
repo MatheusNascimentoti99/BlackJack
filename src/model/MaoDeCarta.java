@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
-import model.Carta;
 
 /**
  * Classe <b>MaoDeCarta</b>, a classe para os objetos do tipo MaoDeCarta.
