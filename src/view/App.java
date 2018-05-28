@@ -138,7 +138,7 @@ public class App {
     }
 
     private static int partidaPersonalizada() {
-        System.out.println("Digite a quantidade desejada de cartas[1 a 8]:");
+        System.out.println("Digite a quantidade desejada de baralhos[1 a 8]:");
         String input = input();
 
         int partidaEscolha = 0;

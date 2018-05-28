@@ -1,9 +1,9 @@
 Pontuação geral de jogadores:
 
-Nome: matheus --- Pontuação: 6 -- Partidas vencida: 2
+Nome: matheus --- Pontuação: 9 -- Partidas vencidas: 3
 
-Nome: elvis --- Pontuação: 4 -- Partidas vencida: 1
+Nome: elvis --- Pontuação: 7 -- Partidas vencidas: 2
 
-Nome: jose --- Pontuação: 3 -- Partidas vencida: 1
+Nome: jose --- Pontuação: 3 -- Partidas vencidas: 1
 
-Nome: maria --- Pontuação: 2 -- Partidas vencida: 0
+Nome: maria --- Pontuação: 2 -- Partidas vencidas: 0
