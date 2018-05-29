@@ -5,19 +5,22 @@
  */
 package util;
 
-
 /**
- *A classe <b>SelectionSort</b> tem a ação de ordenar objetos comparaveis, usando como estrutura de ordenação o próprio <i>Selectionsort</i>
+ * A classe <b>SelectionSort</b> tem a ação de ordenar objetos comparaveis,
+ * usando como estrutura de ordenação o próprio <i>Selectionsort</i>
+ *
  * @since May 2018
  * @version 1.0
  * @author Matheus Nascimento
  */
- 
 public class SelectionSort {
 
     /**
-     *O método <b>selectionSort</b> é o responsavel pela estrutura de ordenação utilizada pela classe.
-     * @param obj É o conjuto de <i>objetos</i> comparaveis que a estrutura de ordenação utilizará.
+     * O método <b>selectionSort</b> é o responsavel pela estrutura de ordenação
+     * utilizada pela classe.
+     *
+     * @param obj É o conjuto de <i>objetos</i> comparaveis que a estrutura de
+     * ordenação utilizará.
      */
     public void selectionSort(Comparable[] obj) {
         for (int i = 0; i < obj.length; i++) {

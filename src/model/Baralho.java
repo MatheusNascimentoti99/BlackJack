@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * Classe <b>Baralho</b>, a classe para os objetos do tipo Baralho.
- * 
+ *
  * @author Matheus Nascimento e Elvis Serafim
  * @since May 2018
  * @version 1.0
@@ -19,16 +19,17 @@ public class Baralho implements Serializable {
     private IStack cartas = new Stack();
 
     /**
-     *Construtor de <b>Baralho</b> que não tem parâmetros, apenas para inicializar os atributos.
-     * 
+     * Construtor de <b>Baralho</b> que não tem parâmetros, apenas para
+     * inicializar os atributos.
+     *
      */
-    public Baralho(){
-         
-     }
-        
+    public Baralho() {
+
+    }
+
     /**
      * Método para retorno da pilha de cartas do baralho.
-     * 
+     *
      * @return Pilha de cartas.
      */
     public IStack getCartas() {
@@ -36,21 +37,23 @@ public class Baralho implements Serializable {
     }
 
     /**
-
-     /**
+     *
+     * /**
      * Método para designar um novo conjunto para a pilha de cartas do baralho.
-     * 
+     *
      * @param cartas Pilha de cartas.
      */
     public void setCartas(IStack cartas) {
         this.cartas = cartas;
     }
-    
+
     /**
-     * Segundo Construtor de <b>Baralho</b>, tem como parâmetro a quantidade de baralhos que serão criados para a partida.
-     * Ele atribui o valor passado para a quantidade de baralho da classe e cria uma pilha de cartas.
-     * 
-     * @param quantidadeBaralho  Quantidade de baralhos que serão gerados para a partida.
+     * Segundo Construtor de <b>Baralho</b>, tem como parâmetro a quantidade de
+     * baralhos que serão criados para a partida. Ele atribui o valor passado
+     * para a quantidade de baralho da classe e cria uma pilha de cartas.
+     *
+     * @param quantidadeBaralho Quantidade de baralhos que serão gerados para a
+     * partida.
      */
     public Baralho(int quantidadeBaralho) {
 
@@ -58,7 +61,6 @@ public class Baralho implements Serializable {
         cartas = create(quantidadeBaralho);
     }
 
-    
     private Stack create(int quantidadeBaralho) {           //Método para criar o(s) baralho(s)
         String naipe;
         IStack naipes = new Stack();                        //Pilha para adicionar os naipes das cartas
@@ -107,7 +109,6 @@ public class Baralho implements Serializable {
         return (Stack) cartas;                              //retorna uma pilha de cartas
     }
 
-
     /**
      * Método para criar um baralho com a mesma quantidade escolhida.
      */
@@ -125,10 +126,10 @@ public class Baralho implements Serializable {
         cartas = temp;                                      //A pilha original recupera todas as cartas removidas
     }
 
-    
     /**
-     *Método que imprime as cartas, ordenadas ou na ordem que iam ser retiradas do baralho, ao final da partida.
-     * 
+     * Método que imprime as cartas, ordenadas ou na ordem que iam ser retiradas
+     * do baralho, ao final da partida.
+     *
      */
     public void imprimirCartas() {
         System.out.println("Imprimir cartas[1 para desordenadas e 2 para ordenadas]:");
@@ -146,10 +147,11 @@ public class Baralho implements Serializable {
 
         }
     }
-     
-     /**
-     * Método que ordena as cartas do baralho, utilizando o algoritmo Selection Sort.
-     * 
+
+    /**
+     * Método que ordena as cartas do baralho, utilizando o algoritmo Selection
+     * Sort.
+     *
      */
     public void ordenarCartas() {
         Carta[] cartasO = new Carta[cartas.size()];
@@ -165,7 +167,7 @@ public class Baralho implements Serializable {
                 j--;
             }
 
-        }     
+        }
         for (int i = 1; i < cartasO.length; i++) {          //Segunda critério de ordenação, utilizando o SelectionSort para ordenar de acordo com o valor da carta
             int j = i;
             while (j > 0 && cartasO[j].compareTo(cartasO[j - 1]) == 0) {
@@ -183,7 +185,7 @@ public class Baralho implements Serializable {
             cartas.push(aux);
         }
     }
-    
+
     /**
      * Método que embaralha as cartas do baralho.
      */
@@ -212,9 +214,9 @@ public class Baralho implements Serializable {
 
     }
 
-    
     /**
      * Método equals para comparar objetos da classe.
+     *
      * @param obj objeto a ser comparado.
      * @return booleano, true ou false.
      */
@@ -232,6 +234,7 @@ public class Baralho implements Serializable {
         final Baralho other = (Baralho) obj;
         return Objects.equals(this.cartas, other.cartas);
     }
+
     // Método que predefine valor das cartas.
     private enum Value {
 
@@ -240,8 +243,8 @@ public class Baralho implements Serializable {
         Q("Q", 10),
         K("K", 10),
         Dez("Dez", 10);
-        private int valor;
-        private String tipo;
+        private final int valor;
+        private final String tipo;
 
         Value(String tipo, int valor) {
             this.valor = valor;

@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * Classe <b>MaoDeCarta</b>, a classe para os objetos do tipo MaoDeCarta.
- * 
+ *
  * @author Matheus Nascimento e Elvis Serafim
  * @since May 2018
  * @version 1.0
@@ -25,9 +25,10 @@ public class Jogador implements Serializable, Comparable {
     private boolean flagBlackJack;// Atributo para verificar se o jogador tem um blackJack ou não.
 
     /**
-     * Construtor da classe <b>Jogador</b>, tem como parâmetros, o usuário e a senha do jogador. 
-     * Atribui os valores passados para os atributos da classe e cria uma nova mão de carta.
-     * 
+     * Construtor da classe <b>Jogador</b>, tem como parâmetros, o usuário e a
+     * senha do jogador. Atribui os valores passados para os atributos da classe
+     * e cria uma nova mão de carta.
+     *
      * @param user Usuário do jogador.
      * @param passeword Senha do jogador.
      */
@@ -45,7 +46,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para retorno da mão de carta do jogador.
-     * 
+     *
      * @return a mão de carta do jogador.
      */
     public MaoDeCarta getMao() {
@@ -54,7 +55,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para designar uma nova mão de carta para o jogador.
-     * 
+     *
      * @param mao Mão de Carta.
      */
     public void setMao(MaoDeCarta mao) {
@@ -63,7 +64,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para retorno da pontuação do jogador.
-     * 
+     *
      * @return pontuação do jogador.
      */
     public int getPontuacao() {
@@ -72,7 +73,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para retorno da quantidade de partidas vencidas pelo jogador.
-     * 
+     *
      * @return partida vencidas pelo jogador.
      */
     public int getPartidaVencidas() {
@@ -80,8 +81,9 @@ public class Jogador implements Serializable, Comparable {
     }
 
     /**
-     * Método para somar a quantidade de partidas vencidas com a quantidade de partida vencida passado por parâmetro.
-     * 
+     * Método para somar a quantidade de partidas vencidas com a quantidade de
+     * partida vencida passado por parâmetro.
+     *
      * @param partidaGanhas partidas ganhas a serem somadas.
      */
     public void setPartidaVencidas(int partidaGanhas) {
@@ -90,7 +92,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para retorno do usuário do jogador.
-     * 
+     *
      * @return usuário do jogador.
      */
     public String getUser() {
@@ -99,7 +101,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para designar um novo usuário para o jogador.
-     * 
+     *
      * @param user novo usuário do jogador.
      */
     public void setUser(String user) {
@@ -108,7 +110,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para retorno da senha do jogador.
-     * 
+     *
      * @return senha do jogador.
      */
     public String getPasseword() {
@@ -117,34 +119,37 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para designar uma nova senha para o jogador.
-     * 
+     *
      * @param passeword nova senha do jogador.
      */
     public void setPasseword(String passeword) {
         this.passeword = passeword;
     }
 
-    
     /**
-     * Método booleano em que o jogador pede carta ou não. Se retornar true, o jogador deseja mais carta, se retornar false,
-     * o jogador não deseja mais carta.
+     * Método booleano em que o jogador pede carta ou não. Se retornar true, o
+     * jogador deseja mais carta, se retornar false, o jogador não deseja mais
+     * carta.
+     *
      * @param escolha escolha do jogador, se deseja ou não mais cartas.
      * @return boolean, true ou false.
      */
-      public boolean pedirCarta(String escolha) {
+    public boolean pedirCarta(String escolha) {
         switch (escolha) {
             case "pedir":
                 return true;
             case "parar":
                 return true;
-            }
-        
+        }
+
         return false;
     }
 
     /**
-     * Método para retorno do atributo flagBlackJack. Se retornar true, o jogador tem um blackJack, se retornar false,
-     *  o jogador não tem um blackJack.
+     * Método para retorno do atributo flagBlackJack. Se retornar true, o
+     * jogador tem um blackJack, se retornar false, o jogador não tem um
+     * blackJack.
+     *
      * @return o flagBlackJack, true ou false.
      */
     public boolean getFlagBlackJack() {
@@ -153,7 +158,7 @@ public class Jogador implements Serializable, Comparable {
 
     /**
      * Método para designar um novo valor, true ou false, para FlagBlackJack.
-     * 
+     *
      * @param flagBlackJack valor booleano, true ou false.
      */
     public void setFlagBlackJack(boolean flagBlackJack) {
@@ -161,7 +166,9 @@ public class Jogador implements Serializable, Comparable {
     }
 
     /**
-     * Método para somar a pontuação do jogador com os pontos passados por parâmetros.
+     * Método para somar a pontuação do jogador com os pontos passados por
+     * parâmetros.
+     *
      * @param pontos pontos a serem somados.
      */
     public void pontuacao(int pontos) {
@@ -194,5 +201,3 @@ public class Jogador implements Serializable, Comparable {
     }
 
 }
-
-

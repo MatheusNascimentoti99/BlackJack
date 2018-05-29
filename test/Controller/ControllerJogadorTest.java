@@ -14,37 +14,39 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 /**
- *<b>ControllerJogadorTest<b/> alterará as informações do arquivo, então recomenda-se não fazer esse teste de forma desnecessária.
+ * <b>ControllerJogadorTest</b> alterará as informações do arquivo, então
+ * recomenda-se não fazer esse teste de forma desnecessária.
+ *
  * @author Usuário 01
  */
 public class ControllerJogadorTest {
-    
+
     ControllerJogador controlerJogador;
     LinkedList jogadores;
     LinkedList jogadores2;
     Jogador jogador1, jogador2, jogador3;
     boolean test;
-    
+
     @Before
-    public void setUp(){
+    public void setUp() {
         controlerJogador = new ControllerJogador();
         jogadores = new LinkedList();
         jogador1 = new Jogador("Antonio", "123");
         jogador2 = new Jogador("Jose", "1345");
         jogador3 = new Jogador("Fernando", "fernando123");
-        
+
     }
-    
+
     /**
-     *Test of verificacao method, of class ControllerJogador.
+     * Test of verificacao method, of class ControllerJogador.
      */
     @Test
     public void testVerificacaoLogin() {
-        
+
         jogadores.add(jogador1);
         jogadores.add(jogador2);
         jogadores.add(jogador3);
-        
+
         test = controlerJogador.verificacao("Antonio", "123", jogadores);
         assertEquals(true, test);
         test = controlerJogador.verificacao("Fernando", "1345", jogadores);
@@ -53,7 +55,7 @@ public class ControllerJogadorTest {
         assertEquals(true, test);
         test = controlerJogador.verificacao("Jose", "fernando123", jogadores);
         assertEquals(false, test);
-        
+
         jogadores.removeAll(jogadores);
         assertEquals(0, jogadores.size());
     }
@@ -63,7 +65,7 @@ public class ControllerJogadorTest {
      */
     @Test
     public void testVerificacaoJogadorDuplicado() {
-        
+
         test = controlerJogador.verificacao("Maicon", jogadores);
         assertEquals(false, test);
         jogadores.add(jogador1);
@@ -75,7 +77,7 @@ public class ControllerJogadorTest {
         jogadores.add(jogador3);
         test = controlerJogador.verificacao("Fernando", jogadores);
         assertEquals(true, test);
-        
+
         jogadores.removeAll(jogadores);
         assertEquals(0, jogadores.size());
     }
@@ -85,11 +87,11 @@ public class ControllerJogadorTest {
      */
     @Test
     public void testRecuperarJogador() {
-        
+
         jogadores.add(jogador1);
         jogadores.add(jogador2);
         jogadores.add(jogador3);
-        
+
         controlerJogador.setListaJogadores(jogadores);
         Jogador jogador = (Jogador) controlerJogador.recuperarJogador("Antonio", "2334");
         assertSame(jogador, null);
@@ -101,49 +103,53 @@ public class ControllerJogadorTest {
         assertSame(maisUmJogador, null);
         Jogador ultimoJogador = (Jogador) controlerJogador.recuperarJogador("Jose", "1345");
         assertSame(ultimoJogador, jogador2);
-        
+
         jogadores.removeAll(jogadores);
         assertEquals(0, jogadores.size());
-        
+
     }
 
     /**
      * Test of cadastrar method, of class ControllerJogador.
+     *
+     * @throws java.lang.Exception
      */
     @Test
     public void testCadastrar() throws Exception {
-        
+
         jogadores.add(jogador1);
         jogadores.add(jogador2);
         jogadores.add(jogador3);
-        
+
         controlerJogador.setListaJogadores(jogadores);
-        
+
         test = controlerJogador.cadastrar("Antonio", "abc");
         assertEquals(false, test);
-        test = controlerJogador.cadastrar("Guilherme", "123a");    
+        test = controlerJogador.cadastrar("Guilherme", "123a");
         assertEquals(true, test);
         test = controlerJogador.cadastrar("Glauber", "gs23");
         assertEquals(true, test);
         test = controlerJogador.cadastrar("Guilherme", "23gu");
         assertEquals(false, test);
-        
+
         jogadores.removeAll(jogadores);
         assertEquals(0, jogadores.size());
     }
 
     /**
      * Test of loginJogador method, of class ControllerJogador.
+     *
+     * @throws java.lang.Exception
      */
     @Test
     public void testLoginJogador() throws Exception {
-        
+
         jogadores.add(jogador1);
         jogadores.add(jogador2);
         jogadores.add(jogador3);
-        
+
         controlerJogador.setListaJogadores(jogadores);
-        
+
         test = controlerJogador.loginJogador("Antonio", "abc");
         assertEquals(false, test);
         test = controlerJogador.loginJogador("Antonio", "123");
@@ -154,10 +160,10 @@ public class ControllerJogadorTest {
         assertEquals(true, test);
         test = controlerJogador.loginJogador("Fernando", "1267");
         assertEquals(false, test);
-        
+
         jogadores.removeAll(jogadores);
         assertEquals(0, jogadores.size());
-        
+
     }
 
     /**
@@ -165,13 +171,13 @@ public class ControllerJogadorTest {
      */
     @Test
     public void testMostrarJogadores() {
-        
+
         jogadores.add(jogador1);
         jogadores.add(jogador2);
         jogadores.add(jogador3);
-        
+
         controlerJogador.setListaJogadores(jogadores);
-        
+
         Iterator iterador = controlerJogador.mostrarJogadores();
         assertTrue(iterador.hasNext());
         Jogador jogador = (Jogador) iterador.next();
@@ -183,7 +189,7 @@ public class ControllerJogadorTest {
         Jogador ultimoJogador = (Jogador) iterador.next();
         assertSame(ultimoJogador, jogador3);
         assertFalse(iterador.hasNext());
-        
+
     }
-    
+
 }

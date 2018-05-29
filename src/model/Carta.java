@@ -10,21 +10,20 @@ import java.util.Objects;
 
 /**
  * Classe <b>Carta</b>, a classe para os objetos do tipo Carta.
- * 
+ *
  * @author Matheus Nascimento e Elvis Serafim
  * @since May 2018
  * @version 1.0
  */
-
 public class Carta implements Comparable, Serializable {
 
     private String value;
     private String naipe;
 
     /**
-     * Construtor da classe <b>Carta</b> tem como parâmetro o valor da carta e o naipe.
-     * Atribui os valores passados para os atributos da classe.
-     * 
+     * Construtor da classe <b>Carta</b> tem como parâmetro o valor da carta e o
+     * naipe. Atribui os valores passados para os atributos da classe.
+     *
      * @param value Valor da carta.
      * @param naipe Naipe da carta.
      */
@@ -33,12 +32,11 @@ public class Carta implements Comparable, Serializable {
         this.naipe = naipe;
     }
 
- 
     /**
-
-     /**
+     *
+     * /**
      * Método para retorno do valor da carta.
-     * 
+     *
      * @return Valor da carta.
      */
     public String getValue() {
@@ -47,17 +45,16 @@ public class Carta implements Comparable, Serializable {
 
     /**
      * Método para designar um novo valor para a carta.
-     * 
+     *
      * @param value Novo valor da carta.
      */
     public void setValue(String value) {
         this.value = value;
     }
 
-
     /**
      * Método para retorno do naipe da carta.
-     * 
+     *
      * @return Naipe da carta.
      */
     public String getNaipe() {
@@ -66,7 +63,7 @@ public class Carta implements Comparable, Serializable {
 
     /**
      * Método para designar um novo naipe para a carta.
-     * 
+     *
      * @param naipe Novo naipe da carta.
      */
     public void setNaipe(String naipe) {
@@ -75,6 +72,7 @@ public class Carta implements Comparable, Serializable {
 
     /**
      * Método que retorna uma representação string do objeto carta.
+     *
      * @return Naipe e valor da carta.
      */
     @Override
@@ -84,6 +82,7 @@ public class Carta implements Comparable, Serializable {
 
     /**
      * Método para comparar objetos da classe.
+     *
      * @param obj objeto a ser comparado.
      * @return booleano, true ou false.
      */
@@ -104,12 +103,10 @@ public class Carta implements Comparable, Serializable {
         }
         return Objects.equals(this.naipe, other.naipe);
     }
-    
 
     @Override
     public int compareTo(Object o) {
         return naipe.compareTo(((Carta) o).getNaipe());
-          
 
     }
 

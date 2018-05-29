@@ -37,7 +37,9 @@ public class ControllerJogador {
      *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
      * @param senha Parâmetro utilizado para identificar a senha do usuário.
-     * @param listaJogadores Parâmetro utilizado para percorrer uma dada lista de jogadores para verificar se há um determinado jogador com o mesmo nome e senha.
+     * @param listaJogadores Parâmetro utilizado para percorrer uma dada lista
+     * de jogadores para verificar se há um determinado jogador com o mesmo nome
+     * e senha.
      * @return Retorna um valor booleano, se o usuário existir na lista é
      * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
@@ -64,7 +66,9 @@ public class ControllerJogador {
      * nome.
      *
      * @param user Parâmetro utilizado para identificar o nome do usuário.
-     * @param listaJogadores Parâmetro utilizado para percorrer uma dada lista de jogadores para verificar se há um determinado jogador com o mesmo nome e senha.
+     * @param listaJogadores Parâmetro utilizado para percorrer uma dada lista
+     * de jogadores para verificar se há um determinado jogador com o mesmo nome
+     * e senha.
      * @return Retorna um valor booleano, se o usuário existir na lista é
      * retornado <i>true</i>, se não for encontrado retorna <i>false</i>.
      */
@@ -119,9 +123,9 @@ public class ControllerJogador {
 
         if (verificacao(user, jogadoresNaPartida)) {
             return false;
-        } else if(!verificacao(user, senha, listaJogadores)){
+        } else if (!verificacao(user, senha, listaJogadores)) {
             return false;
-        }                        
+        }
         Jogador jogadorLogin = (Jogador) recuperarJogador(user, senha);
         jogadoresNaPartida.add(jogadorLogin);
         return true;
@@ -140,8 +144,6 @@ public class ControllerJogador {
     public void setListaJogadores(LinkedList listaJogadores) {
         this.listaJogadores = listaJogadores;
     }
-    
-    
 
     public LinkedList getJogadoresNaPartida() {
         return jogadoresNaPartida;

@@ -1,8 +1,6 @@
 package blackJack;
 
-
 import Controller.ControllerFileTest;
-import Controller.ControllerJogadorTest;
 import Controller.ControllerPartidaTest;
 import model.BaralhoTest;
 import model.CartaTest;
@@ -16,17 +14,16 @@ import util.StackTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	BaralhoTest.class,
-	CartaTest.class,
-	CroupierTest.class,
-	JogadorTest.class,
-        PartidaTest.class,
-        MaoDeCartaTest.class,
-        StackTest.class,
-        ControllerFileTest.class,
-        ControllerPartidaTest.class
-        
-                
-        
+    BaralhoTest.class,
+    CartaTest.class,
+    CroupierTest.class,
+    JogadorTest.class,
+    PartidaTest.class,
+    MaoDeCartaTest.class,
+    StackTest.class,
+    ControllerFileTest.class,
+    ControllerPartidaTest.class
+
 })
-public class AllTests { }
+public class AllTests {
+}

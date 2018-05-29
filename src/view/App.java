@@ -1,13 +1,13 @@
-/*******************************************************************************
-Autor: Matheus Nascimento e Elvis Serafim
-Componente Curricular: Programação
-Concluido em: 27/05/2018
-Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
-trecho de código de outro colega ou de outro autor, tais como provindos de livros e
-apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
-de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
-do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
-******************************************************************************************/
+/** *****************************************************************************
+ * Autor: Matheus Nascimento e Elvis Serafim
+ * Componente Curricular: Programação
+ * Concluido em: 27/05/2018
+ * Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+ * trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+ * apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+ * de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+ * do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+ ***************************************************************************************** */
 package view;
 
 import Control.ControllerPartida;
@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.Scanner;
 import model.Baralho;
 import model.Carta;
-import model.Croupier;
 
 import model.Jogador;
 
@@ -30,7 +29,7 @@ public class App {
 
     public static void main(String args[]) throws IOException, Exception {
         String escolha;
-        
+
         do {                                                                    //Laço para manter a execução do programa após o termino das principais operações do mesmo.            
             ControllerPartida controlePartida = new ControllerPartida();
             ControllerJogador controleJogador = new ControllerJogador();
@@ -359,7 +358,7 @@ public class App {
         controlePartida.getPartida().getCroupier().getMao().mostrarCartas();
         System.out.println("Pontos na mão: " + controlePartida.getPartida().getCroupier().getMao().getPontosEmMao());
         controleJogador.getControleFile().salvarArquivo(controlePartida.getPartida().getBaralho().getCartas(), "Resources/baralho.data");
-        controleJogador.getControleFile().imprimirPontuacao(controleJogador.getListaJogadores());     
+        controleJogador.getControleFile().imprimirPontuacao(controleJogador.getListaJogadores());
         controleJogador.getControleFile().salvarArquivo(controleJogador.getListaJogadores(), "Resources/Dados.data");
     }
 

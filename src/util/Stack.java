@@ -11,9 +11,11 @@ import java.io.Serializable;
  *
  * @author Matheus Nascimento
  */
-public class Stack implements IStack, Serializable{
+public class Stack implements IStack, Serializable {
+
     private Celula head;
     private int size;
+
     @Override
     public void push(Object data) {                             //Adiciona um node na pilha
         Celula novo = new Celula(data);
@@ -24,13 +26,13 @@ public class Stack implements IStack, Serializable{
 
     @Override
     public Object pop() {                                       //Remove um node da pilha e retorna o objeto que estava dentro desse node removido
-        if(!isEmpty()){
-            
+        if (!isEmpty()) {
+
             Celula temp = head;
             head = head.next;
             size--;
             return temp.data;
-            
+
         }
         return null;
     }
@@ -42,18 +44,20 @@ public class Stack implements IStack, Serializable{
 
     @Override
     public boolean isEmpty() {                                      //Verifica se a pilha está vazia
-        return head== null;
+        return head == null;
     }
 
     @Override
     public int size() {                                             //Retorna o tamanho da pilha
         return size;
     }
-    
-    private class Celula implements Serializable{                                           //Subclasse para o funcionamento da pilha
+
+    private class Celula implements Serializable {                                           //Subclasse para o funcionamento da pilha
+
         Object data;
         Celula next;
-        private Celula(Object data){
+
+        private Celula(Object data) {
             this.data = data;
         }
 
@@ -72,7 +76,6 @@ public class Stack implements IStack, Serializable{
         public void setNext(Celula next) {
             this.next = next;
         }
-        
+
     }
 }
-

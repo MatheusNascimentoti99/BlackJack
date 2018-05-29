@@ -16,17 +16,18 @@ import org.junit.Test;
  * @author Matheus Nascimento
  */
 public class CartaTest {
+
     Carta c1;
 
     @Before
     public void setUp() throws Exception {
         c1 = new Carta("10", "♥");
-        
+
     }
 
     @Test
     public void testBasic() {
-        
+
         assertEquals("10", c1.getValue());
         assertEquals("♥", c1.getNaipe());
 
@@ -34,12 +35,12 @@ public class CartaTest {
         assertFalse(c1.equals(c2));
         c2.setNaipe("♥");
         c2.setValue("10");
-        
+
         assertTrue(c1.equals(c2));
-        
+
         assertTrue(c1.compareTo(c2) == 0);
         c2.setNaipe("♦");
         assertFalse(c1.compareTo(c2) == 0);
-       
+
     }
 }

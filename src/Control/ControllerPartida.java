@@ -19,11 +19,12 @@ import model.Partida;
  * @version 1.0
  */
 public class ControllerPartida {
-    
+
     Partida partida;
 
     /**
      * Método para retorno da partida a ser gerenciada.
+     *
      * @return Uma Partida.
      */
     public Partida getPartida() {
@@ -32,6 +33,7 @@ public class ControllerPartida {
 
     /**
      * Método para designar uma nova partida para ser gerenciada.
+     *
      * @param partida Nova Partida.
      */
     public void setPartida(Partida partida) {
@@ -39,7 +41,9 @@ public class ControllerPartida {
     }
 
     /**
-     * Método booleano que cria um baralho com a quantidade escolhida e cria uma partida com o baralho.
+     * Método booleano que cria um baralho com a quantidade escolhida e cria uma
+     * partida com o baralho.
+     *
      * @param escolha quantidade de baralhos.
      * @return booleano, true.
      */
@@ -52,6 +56,7 @@ public class ControllerPartida {
 
     /**
      * Método para indicar a quantidade de baralhos da partida.
+     *
      * @param nomePartida escolha do modo da partida.
      * @return quantidade de baralhos pelo modo da partida.
      */
@@ -72,7 +77,9 @@ public class ControllerPartida {
 
     /**
      * Método para distribuir as cartas aos jogadores e ao croupier.
-     * @param controleJogador ControllerJogador, onde contém a lista de jogadores na partida.
+     *
+     * @param controleJogador ControllerJogador, onde contém a lista de
+     * jogadores na partida.
      */
     public void darCartas(ControllerJogador controleJogador) {
         Iterator iteradorCarta1 = controleJogador.getJogadoresNaPartida().iterator();
@@ -87,7 +94,9 @@ public class ControllerPartida {
 
     /**
      * Método para verificar se algum jogador tem um blackJack.
-     * @param controleJogador ControllerJogador, onde contém a lista de jogadores na partida.
+     *
+     * @param controleJogador ControllerJogador, onde contém a lista de
+     * jogadores na partida.
      */
     public void temBlackJack(ControllerJogador controleJogador) {
         // Verificando se algum jogador tem um blackJack.

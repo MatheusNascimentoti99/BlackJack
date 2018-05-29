@@ -15,26 +15,26 @@ import org.junit.Test;
  * @author Matheus Nascimento
  */
 public class PartidaTest {
+
     Partida partida;
     Baralho baralho;
-    
-    
+
     @Before
     public void setUp() throws Exception {
         baralho = new Baralho(1);
         partida = new Partida(baralho);
-        
+
     }
 
     @Test
     public void testBasic() {
-        
+
         //Verificar a saida dos dados
-        assertEquals("croupier",partida.getCroupier().getUser());
-        assertEquals(52,partida.getBaralho().getCartas().size());
-        
+        assertEquals("croupier", partida.getCroupier().getUser());
+        assertEquals(52, partida.getBaralho().getCartas().size());
+
         partida.setBaralho(new Baralho(2));
         assertFalse(partida.getBaralho().getCartas().size() == 52);
-        
+
     }
 }

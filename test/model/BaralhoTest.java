@@ -1,7 +1,6 @@
 package model;
 
-import model.Baralho;
-import model.Carta;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -13,6 +12,7 @@ public class BaralhoTest {
 
     private Baralho baralho;
     private IStack b;
+
     @Before
     public void setUp() throws Exception {
         baralho = new Baralho(1);
@@ -28,30 +28,27 @@ public class BaralhoTest {
         //Verificar se removeu uma carta do baralho
         baralho.getCartas().pop();
         assertFalse(c.equals(baralho.getCartas().pop()));
-        
+
         //Verificar se manteu a mesma quantidade de cartas.
         baralho.embaralhar();
         assertEquals(50, baralho.getCartas().size());
 
         assertFalse(baralho.getCartas().isEmpty());
-        
-        
+
         baralho.setCartas(b);
         assertFalse(baralho.getCartas().equals(c));
-        
+
         //Verificar os getters e setters das cartas.
         c.setValue("TesteValor");
-        assertEquals("TesteValor",c.getValue());
+        assertEquals("TesteValor", c.getValue());
         c.setNaipe("TesteNaipe");
         assertEquals("TesteNaipe", c.getNaipe());
-        
+
         baralho.resetaBaralho();
         assertEquals(52, baralho.getCartas().size());
         baralho.embaralhar();
         assertEquals(52, baralho.getCartas().size());
-        
+
     }
-    
-    
 
 }
