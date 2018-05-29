@@ -7,6 +7,7 @@ package Controller;
 
 import Control.ControllerJogador;
 import Control.ControllerPartida;
+import java.io.File;
 import model.Baralho;
 import model.Carta;
 import model.Croupier;
@@ -102,6 +103,9 @@ public class ControllerPartidaTest {
         //tal método sempre conta os pontos na mão para verificar se fez blackJack ou não, não importa se foi feito um setPontos alterando para 21
         assertEquals(false, controlerPartida.getPartida().getCroupier().getFlagBlackJack());
         controlerPartida.getPartida().getCroupier().getMao().setPontosEmMao(20);
+        
+        File arq = new File("Resources/Dados.data");
+        arq.delete();
     }
     
 }

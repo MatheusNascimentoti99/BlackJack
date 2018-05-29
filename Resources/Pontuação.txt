@@ -1,13 +1,7 @@
 Pontuação geral de jogadores:
 
-Nome: Antonio --- Pontuação: 0 -- Partidas vencidas: 0
-
-Nome: Jose --- Pontuação: 0 -- Partidas vencidas: 0
-
-Nome: Fernando --- Pontuação: 0 -- Partidas vencidas: 0
-
-Nome: Guilherme --- Pontuação: 0 -- Partidas vencidas: 0
-
-Nome: Glauber --- Pontuação: 0 -- Partidas vencidas: 0
-
 Nome: matheus --- Pontuação: 0 -- Partidas vencidas: 0
+
+Nome: elvis --- Pontuação: 0 -- Partidas vencidas: 0
+
+Nome: jose --- Pontuação: 0 -- Partidas vencidas: 0
