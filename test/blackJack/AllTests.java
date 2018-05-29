@@ -24,7 +24,6 @@ import util.StackTest;
         MaoDeCartaTest.class,
         StackTest.class,
         ControllerFileTest.class,
-        ControllerJogadorTest.class,
         ControllerPartidaTest.class
         
                 

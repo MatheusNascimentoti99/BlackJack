@@ -25,7 +25,7 @@ public class App {
 
     public static void main(String args[]) throws IOException, Exception {
         String escolha;
-
+        
         do {                                                                    //Laço para manter a execução do programa após o termino das principais operações do mesmo.            
             ControllerPartida controlePartida = new ControllerPartida();
             ControllerJogador controleJogador = new ControllerJogador();

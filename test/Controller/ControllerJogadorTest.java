@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 /**
- *
+ *<b>ControllerJogadorTest<b/> alterará as informações do arquivo, então recomenda-se não fazer esse teste de forma desnecessária.
  * @author Usuário 01
  */
 public class ControllerJogadorTest {
